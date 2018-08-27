@@ -1,0 +1,10 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% if template_style == "banner" %}
+{% include "product/_product_list_banner.html" with products=product_list %}
+{% endif %}
+
+{% if template_style == "grid" %}
+{% include "product/_product_list_grid.html" with products=product_list %}
+{% endif %}

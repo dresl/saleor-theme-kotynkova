@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n saleor_ext %}
+
+{% block content %}
+  <div class="home__featured">
+    {% collection_prodcuts collection_slug="obrazy-banneru" template_style="banner" %}
+  </div>
+  <div class="container new-pictures">
+    <h1 class="text-center">{% trans "New pictures" %}</h1>
+    {% collection_prodcuts collection_slug="home-produkty" template_style="grid" %}
+  </div>
+  <div class="all-pictures">
+    <a class="btn btn-order" href="">{% trans "All pictures" %}</a>
+  </div>
+  <div class="container exhibitions">
+    <h1 class="text-center">{% trans "Exhibitions" %}</h1>
+    
+  </div>
+  <script type="application/ld+json">{{ webpage_schema|safe }}</script>
+  </div>
+{% endblock %}

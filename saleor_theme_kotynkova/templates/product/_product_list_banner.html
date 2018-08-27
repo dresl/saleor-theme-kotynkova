@@ -1,0 +1,68 @@
+{% load bootstrap_field from bootstrap4 %}
+{% load build_absolute_uri from urls %}
+{% load get_object_properties from attributes %}
+{% load get_thumbnail from product_images %}
+{% load i18n %}
+{% load markdown from markdown %}
+{% load placeholder thumbnail watermark %}
+{% load staticfiles %}
+{% load taxed_prices %}
+
+<style type="text/css">
+{% for product in products %}
+{% thumbnail product.get_first_image "1920x1080" format="PNG" as product_image %}
+.banner-item.item-{{ product.id }} {
+  background-image: url(/static/img/logo-kotynkova.png), url("/static/img/front_banner_layer_full.png"), url("{{ product_image.url|watermark:"obraz,position=br,opacity=100" }}");
+}
+{% endthumbnail %}
+{% endfor %}
+</style>
+
+<div id="frontbannerCarousel" class="carousel slide front-banner" data-ride="carousel">
+  <ol class="carousel-indicators">
+    {% for product in products %}
+    <li data-target="#frontbannerCarousel" data-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}"></li>
+    {% endfor %}
+  </ol>
+  <div class="carousel-inner">
+    {% for product in products %}
+    <div class="carousel-item banner-item item-{{ product.id }} {% if forloop.first %}active{% endif %}">
+      <div class="container">
+        <div class="item-info col-md-4 offset-md-8">
+          <div class="row">
+          <div class="col-md-7">
+            <a href="{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}">
+              <h3>{{ product.translated }}</h3>
+            </a>
+            {% for attribute, value in product.get_product_attributes.items %}
+            {% if attribute.slug == 'format' %}
+                <span class="format">{{ value.translated }}</span>
+            {% endif %}
+            {% endfor %}
+            {% if product.all_vartiants_in_stock %}
+            <span class='status available'>{% trans 'Available' %}</span>
+            {% else %}
+            <span class='status sold_out'><b>{% trans 'Reserved / Not for sale' %}</b></span>
+            {% endif %}
+          </div>
+          <div class="col-md-5">
+            {% if product.all_vartiants_in_stock %}
+            <a class="open-modal btn btn-order" href="{{ product.get_absolute_url }}">{% trans "Reserve" %}</a>
+            {% endif %}
+            <a class="open-modal btn btn-order" href="{{ product.get_absolute_url }}">{% trans "Order copy" %}</a>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#frontbannerCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#frontbannerCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

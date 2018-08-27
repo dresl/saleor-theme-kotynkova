@@ -1,0 +1,87 @@
+{% load i18n %}
+{% load staticfiles %}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<div class="product-filters">
+  <!-- <div class="product-filters__title">
+    <h2>
+      <strong>{{ object.translated }}</strong>
+    </h2>
+    {% if object.parent %}
+    <a href="{{ object.parent.get_absolute_url }}">Zobrazit všechny obrazy</a>
+    {% endif %}
+    {% block title_tree %}{% endblock title_tree %}
+  </div> -->
+</div>
+<div class="filters-menu__body d-none d-md-block">
+  <!-- <h2>
+    {% trans 'Filters' context 'Filter heading title' %}
+    {% if filter_set.is_bound_unsorted %}
+      <a href="./">
+        <span class="clear-filters float-right">{% trans 'Clear filters' context 'Product list page filters' %}</span>
+      </a>
+    {% endif %}
+  </h2> -->
+  <div class="product-filters container-fluid">
+    <div class="product-filters__attributes" data-icon-up="{% static "images/chevron-up.svg" %}" data-icon-down="{% static "images/chevron-down.svg" %}">
+      <form method="get">
+        <div class="row">
+        {% for field in filter_set.form %}
+          {% if field.name == 'sort_by' %}
+            {% comment %}
+              Field 'sort_by' is hidden because it is rendered in header.
+              This is required if you want to have sorting to be kept during further filtering.
+            {% endcomment %}
+            <input type="hidden" name="sort_by" value="{% if request.GET.sort_by %}{{ request.GET.sort_by }}{% endif %}">
+          {% elif field.name == 'price' %}
+          {% elif field.name == 'obraz-typ' %}
+          {% else %}
+            <div class="filter-product" title="{{ field.label }}">
+                {{ field }}
+            </div>
+          {% endif %}
+          {% if forloop.last %}
+          <div class="filter-product search-name" title="Name">
+            <div class="btn-group">
+              <input class="" type="text" name="name" placeholder="Hledat..." value="{% if request.GET.name %}{{ request.GET.name }}{% endif %}">
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+        {% for field in filter_set.form %}
+          {% if field.name == 'price' %}
+            <!-- <div class="filter-section" aria-expanded="true">
+              <div class="filter-section__header">
+                <h3>{{ field.label }}</h3>
+                <div class="filter-section__icon">
+                  <img class="lazyload lazypreload" data-src="{% static "images/chevron-up.svg" %}">
+                </div>
+              </div>
+              <div class="filter-section__content">
+                <div class="filter-form-field price-field">
+                  <input id="{{ field.auto_id }}_0" name="{{ field.name }}_0"
+                        value="{% if field.value.0 %}{{ field.value.0 }}{% endif %}" type="number" min="0"
+                        class="form-control d-inline"
+                        placeholder="{% trans 'from' context 'Product price filter' %}"/><span>-</span><input id="{{ field.auto_id }}_1" name="{{ field.name }}_1"
+                        value="{% if field.value.1 %}{{ field.value.1 }}{% endif %}" type="number" min="0"
+                        class="form-control d-inline" placeholder="{% trans 'to' context 'Product price filter' %}"/>
+                </div>
+              </div>
+            </div> -->
+          {% endif %}
+        {% endfor %}
+        <button class="btn btn-order" type="submit">{% trans 'Update' context 'Apply filters button' %}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  jQuery(function($) {
+    $("select[multiple=multiple]").map(function(){
+      $(this).attr("title", $(this).parent().attr("title")).addClass("selectpicker").selectpicker({});
+    });
+  });
+</script>

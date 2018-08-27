@@ -1,0 +1,6 @@
+include LICENSE
+include MANIFEST.in
+include README.rst
+recursive-include saleor_theme_kotynkova/templates *
+recursive-include saleor_theme_kotynkova/static *
+recursive-include saleor_theme_kotynkova/locale *

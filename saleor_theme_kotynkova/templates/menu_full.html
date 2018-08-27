@@ -1,0 +1,53 @@
+{% load menu from shop %}
+{% load placeholder i18n %}
+{% load render_bundle from webpack_loader %}
+{% load staticfiles %}
+{% load translate_url from urls %}
+<li class="dropdown">
+  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    <div id="nav-icon1">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </a>
+  <ul class="dropdown-menu">
+    {% menu site_menu=site.settings.top_menu horizontal=True %}
+    <div class="dropdown-divider"></div>
+    {% if user.is_authenticated %}
+      {% if user.is_staff or request.impersonator.is_staff %}
+        <li>
+          <a href="{% url "dashboard:index" %}" target="_blank" rel="noopener">
+            {% trans "Dashboard" context "Main navigation item" %}
+          </a>
+        </li>
+      {% endif %}
+      <li>
+        <a href="{% url "account:details" %}">
+          {% trans "Your account" context "Main navigation item" %}</a>
+      </li>
+      {% if user.is_impersonate %}
+        <li>
+          <a href="{% url "impersonate-stop" %}">
+            {% trans 'Stop impersonating' context 'Main navigation item' %}
+          </a>
+        </li>
+      {% else %}
+        <li>
+          <a href="{% url "account:logout" %}">
+            {% trans "Log out" context "Main navigation item" %}</a>
+        </li>
+      {% endif %}
+    {% else %}
+      <li>
+        <a rel="nofollow" href="{% url "account:signup" %}">
+          {% trans "Register" context "Main navigation item" %}</a>
+      </li>
+      <li>
+        <a rel="nofollow" href="{% url "account:login" %}">
+          {% trans "Log in" context "Main navigation item" %}
+        </a>
+      </li>
+    {% endif %}
+  </ul>
+</li>

@@ -1,0 +1,12 @@
+{% url 'home' as home_url %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% load get_menu_item_name from shop %}
+
+{% for item in menu_items %}
+  <li class="menu-item">
+    <a href="{{ item.url }}">
+      {% get_menu_item_name lang_code=LANGUAGE_CODE menu_item=item %}
+    </a>
+  </li>
+{% endfor %}

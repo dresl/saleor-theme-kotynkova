@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+
+{% load bootstrap_field from bootstrap4 %}
+{% load build_absolute_uri from urls %}
+{% load get_object_properties from attributes %}
+{% load get_thumbnail from product_images %}
+{% load i18n %}
+{% load markdown from markdown %}
+{% load placeholder %}
+{% load staticfiles thumbnail %}
+{% load taxed_prices %}
+{% load render_bundle from webpack_loader %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block title %}
+  {% if product.seo_title %}
+    {{ product.translated.seo_title }}
+  {% else %}
+    {{ product.translated.name }} - {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block main_menu %}
+{% endblock %}
+{% block meta %}{% endblock %}
+{% block meta_tags %}{% endblock %}
+{% block content %}
+  {% if not is_visible %}
+    <div class="alert alert-warning" role="alert">
+      {% blocktrans trimmed with date=product.available_on|date context "Product details text" %}
+        <strong>Warning!</strong>
+        You are previewing a product that will become visible on <strong>{{ date }}</strong>.
+      {% endblocktrans %}
+    </div>
+  {% endif %}
+  <div class="row product">
+    <script type="application/ld+json">{{ json_ld_product_data|safe }}</script>
+    <div class="col-md-5 col-12 product__gallery">
+      {% with images=product_images %}
+        {% if images %}
+          <div id="carousel-example-generic" class="carousel slide">
+            <div class="carousel-inner" role="listbox">
+              {% for image in images %}
+                <div class="carousel-item{% if forloop.first %} active{% endif %}">
+                  {% thumbnail image.image "x540" as detail_image %}
+                  <img src="{{ detail_image.url }}">
+                  {% endthumbnail %}
+                </div>
+              {% endfor %}
+            </div>
+            {% if images|length > 1 %}
+              <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
+                <svg data-src="{% static "images/gallery-arrow.svg" %}" />
+              </a>
+              <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
+                <svg data-src="{% static "images/gallery-arrow.svg" %}" />
+              </a>
+            {% endif %}
+            <ol class="carousel-indicators d-none d-md-block">
+              {% for image in images %}
+                {% if images|length > 1 %}
+                  <li data-target="#carousel-example-generic" data-slide-to="{{ forloop.counter0 }}"{% if forloop.first %} class="active"{% endif %}>
+                    <img data-src="{% get_thumbnail image.image method="crop" size=60 %}"
+                         data-srcset="{% get_thumbnail image.image method="crop" size=60 %} 1x, {% get_thumbnail image.image method="crop" size=120 %} 2x"
+                         alt=""
+                         class="lazyload lazypreload"
+                         src="{% placeholder size=60 %}">
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ol>
+          </div>
+        {% else %}
+          <img data-src="{% placeholder size=540 %}"
+               data-srcset="{% placeholder size=540 %} 1x, {% placeholder size=1080 %} 2x"
+               alt=""
+               class="img-fluid lazyload lazypreload">
+        {% endif %}
+      {% endwith %}
+    </div>
+    <div class="col-md-7 col-12 product__info">
+      <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+        <span class="sr-only">{% trans "Close" %}</span>
+      </button>
+      <h1 class="product__info__name">
+        {{ product.translated }}
+      </h1>
+      {% if user.is_staff %}
+        <p>
+          <a href="{% url "dashboard:product-details" pk=product.pk %}">
+            {% trans "Edit in dashboard" context "Product details link text" %}
+          </a>
+        </p>
+      {% endif %}
+      {% if availability.available %}
+        {% if show_variant_picker %}
+          <div id="variant-price-component"></div>
+          <script type="text/javascript">
+            {% if LANGUAGE_CODE == "cs" %}
+            jQuery(function($) {
+              setTimeout(function(){
+                {% if site.settings.display_gross_prices %}
+                var VAT_INFO = "včetně DPH"
+                {% else %}
+                var VAT_INFO = "nezahrnuje DPH"
+                {% endif %}
+                $("#variant-price-component .product__info__price > small").text(VAT_INFO);
+              }, 200);
+            });
+            {% endif %}
+          </script>
+        {% else %}
+          <h2 class="product__info__price">
+            <span>{% price_range availability.price_range %}</span>
+            {% if availability.discount %}
+              <small class="product__info__price__undiscounted">
+                {% price availability.price_range_undiscounted %}
+              </small>
+            {% endif %}
+            {% if availability.price_range_local_currency %}
+              <br>
+              <small class="text-info">
+                &asymp;
+                {% price availability.price_range_local_currency %}
+              </small>
+            {% endif %}
+            {% if request.taxes %}
+              <small>
+                {% if site.settings.display_gross_prices %}
+                  
+                {% else %}
+                  
+                {% endif %}
+              </small>
+            {% endif %}
+          </h2>
+        {% endif %}
+      {% endif %}
+      {% if is_visible and product.is_in_stock %}
+        {% block orderform %}
+          {% if show_variant_picker %}
+            {% csrf_token %}
+            <div id="variant-picker" data-variant-picker-data="{{ variant_picker_data }}" data-action="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}"></div>
+          {% else %}
+            <form id="product-form" role="form" class="product-form clearfix" method="post" action="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}" novalidate>
+              {% csrf_token %}
+              {% bootstrap_field form.variant %}
+              <div class="product__info__quantity">
+                {% bootstrap_field form.quantity %}
+              </div>
+
+              <div class="form-group product__info__button">
+                <button class="btn primary">
+                  {% trans "Add to cart" context "Product details primary action" %}
+                </button>
+              </div>
+            </form>
+          {% endif %}
+        {% endblock %}
+        <div class="product__info__form-error">
+          <small class="text-danger"></small>
+        </div>
+
+      {% else %}
+        <p class="alert alert-warning">
+          {% blocktrans context "Product details text" %}This product is currently <strong>unavailable</strong>.{% endblocktrans %}
+        </p>
+      {% endif %}
+      <div class="product__info__description">
+        <h3>{% trans "Description" context "Product details title" %}</h3>
+        <hr>
+        {{ product.translated.description|safe }}
+      </div>
+      <hr>
+      <table>
+        {% for attribute, value in product_attributes.items %}
+        {% if attribute.slug == "format" %}
+          <tr>
+            <td>{{ attribute.translated }}:</td>
+            <td><strong>{{ value.translated }}</strong></td>
+          </tr>
+         {% endif %}
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+  <script type="text/javascript">
+    function checkVariantAvailability() {
+      if ($(".form-group.product__info__button button").hasClass("disabled")){
+        $(".product__info__form-error small").html("{% trans 'This product variant is not in stock.' %}");
+      } else {
+        $(".product__info__form-error small").html("");
+      }
+    }
+    jQuery(function($) {
+      setTimeout(function(){
+        checkVariantAvailability();
+        $(".modal-close").click(function(){
+          setTimeout(function(){
+            $("#modal-container").html("");
+          }, 300);
+        });
+        $(".btn.variant-picker__option").click(function() {
+          setTimeout(function(){
+            checkVariantAvailability();
+          }, 300);
+        });
+      }, 200);
+    });
+  </script>
+{% endblock content %}
+{% block footer_scripts %}
+{% render_bundle 'storefront' 'js' %}
+{% endblock %}
+{% block footer %}{% endblock %}
