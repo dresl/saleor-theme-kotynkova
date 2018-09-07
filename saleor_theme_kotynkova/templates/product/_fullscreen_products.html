@@ -297,13 +297,13 @@ jQuery(function($) {
             $(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index")).addClass('is-active');
         })
         .slick({
-            swipeToSlide: true,
             slidesToShow: 8,
             slidesToScroll: 3,
             dots: false,
             centerMode: true,
             focusOnSelect: false,
             infinite: false,
+            swipeToSlide: true,
             lazyLoad: 'ondemand',
             responsive: [{
                 breakpoint: 1024,

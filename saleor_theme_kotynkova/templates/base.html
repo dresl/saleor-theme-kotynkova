@@ -45,6 +45,25 @@
   <!--[if lt IE 9]>
     <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  <style type="text/css">
+body {
+    overflow-y: scroll;
+}
+.main-menu .dropdown,
+.main-menu .dropdown *, {
+    z-index: 99999999!important;
+}
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active {
+    color: #ffffff;
+    background-color: #4ba6d8;
+    border-color: #4ba6d8;
+}
+.carousel-control-next, .carousel-control-prev {
+    top: 25%;
+    height: 50%;
+}
+  </style>
 </head>
 
 <body>

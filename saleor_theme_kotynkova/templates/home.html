@@ -1,21 +1,125 @@
 {% extends "base.html" %}
 {% load i18n saleor_ext %}
+{% load fullcalendar_tags %}
 
 {% block content %}
+
+{% fullcalendar_css %}
+{% fullcalendar_print_css %}
+{% fullcalendar_jquery %}
+{% fullcalendar_jquery_ui %}
+{% fullcalendar_javascript %}
+
+
+<style type="text/css">
+
+/* calendar */
+.fc-day-grid-container {
+    height: auto!important;
+}
+.fc-basic-view tbody .fc-row {
+    max-height: 38px!important;
+    min-height: 38px!important;
+}
+
+.bubble {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 20px 28px;
+    border: 1px solid #1d1d1d;
+    border-radius: 3px;
+    box-shadow: 0px 0px 12px 0px black;
+    background-color: #1d1d1d;
+    z-index: 9999;
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+    display: none;
+}
+.fc-unthemed .fc-today {
+    background: #636363 !important;
+}
+.fc td {
+    border-style: solid;
+    border-width: 1px;
+    padding: 0;
+    vertical-align: top;
+    border-color: #000;
+    border: 2px solid black;
+    background-color: #171717;
+    padding: 0px!important;
+    margin: 0px!important;
+}
+
+.fc-day-grid-container {
+    height: auto!important;
+}
+.fc-basic-view tbody .fc-row {
+    max-height: 38px!important;
+    min-height: 38px!important;
+}
+span.fc-day-number {
+    position: absolute;
+    z-index: 5;
+    top: 10px;
+    margin-left: 5%;
+}
+.fc-event {
+    border-radius: 0px!important;
+    border: 1px solid #f67a02!important;
+    background-color: #f67a02!important;
+}
+.fc-event .fc-content {
+    height: 32px;
+}
+.fc-event .fc-content span {
+    display: none;
+}
+.fc-unthemed .fc-today {
+    background: #636363!important;
+}
+
+.fc-grid .fc-day-number {
+    float: right;
+    padding: 0 2px;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+}
+
+</style>
+
+
   <div class="home__featured">
     {% collection_prodcuts collection_slug="obrazy-banneru" template_style="banner" %}
   </div>
   <div class="container new-pictures">
     <h1 class="text-center">{% trans "New pictures" %}</h1>
-    {% collection_prodcuts collection_slug="home-produkty" template_style="grid" %}
+    {% collection_prodcuts collection_slug="home-produkty" template_style="grid" count=6 %}
   </div>
   <div class="all-pictures">
-    <a class="btn btn-order" href="">{% trans "All pictures" %}</a>
+    <a class="btn btn-order" href="{% get_category_url 'obrazy' %}">{% trans "All pictures" %}</a>
   </div>
   <div class="container exhibitions">
     <h1 class="text-center">{% trans "Exhibitions" %}</h1>
-    
+    <div class="row">
+      <div class="col-md-6">
+        {% get_event_list %}
+      </div>
+      <div class="col-md-6">
+        {% calendar %}
+      </div>
+    </div>
   </div>
+  <script type="text/javascript">
+    jQuery(function($) {
+      $(function(){
+        $('#calendar').fullCalendar({% fullcalendar_config %});
+      });
+    });
+  </script>
   <script type="application/ld+json">{{ webpage_schema|safe }}</script>
   </div>
+
 {% endblock %}
