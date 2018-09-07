@@ -49,8 +49,8 @@
 body {
     overflow-y: scroll;
 }
-.main-menu .dropdown,
-.main-menu .dropdown *, {
+.dropdown,
+.dropdown *, {
     z-index: 99999999!important;
 }
 .btn-secondary:not(:disabled):not(.disabled).active,
@@ -67,6 +67,7 @@ body {
 </head>
 
 <body>
+<div class="bubble"></div>
 {% block header %}
   <div class="navbar fixed-top" role="navigation">
     <div class="container">

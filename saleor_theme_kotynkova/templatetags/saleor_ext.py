@@ -30,25 +30,29 @@ def fullcalendar_config():
     events = CalendarEvent.objects.all()
     final_config = SafeString("""{  timeFormat: "H:mm",
                 header: {
-                    left: 'prev,next today',
+                    left: 'prev,next,today',
                     center: 'title',
                     right: '',
                 },
-                allDaySlot: false,
-                locale: 'cs',
                 firstDay: 1,
-                slotMinutes: 15,
-                defaultEventMinutes: 30,
-                minTime: 8,
-                maxTime: 20,
-                editable: false,
-                eventClick: function(event, jsEvent, view) {
-                    
+                editable: true,
+                locale: 'cs',
+                eventMouseover: function (calEvent, jsEvent, view) {
+                    $(".bubble").html(
+                            "<p><b>" + calEvent.title + "</b></p>" +
+                            "<p>" + calEvent.description + "</p>"
+                            );
+                    $(".bubble").css({ top: jsEvent.pageY + 20, left: jsEvent.pageX + 20}).show(200);
                 },
+                eventMouseout: function (calEvent, jsEvent, view) {
+                    $(".bubble").hide();
+                },
+                eventLimit: true,
                 events: [
             """)
     for event in events:
         final_config += SafeString("{" + "title:" + "'{}'".format(event.title) + ",")
+        final_config += SafeString("description:" + "'{}'".format(event.description) + ",")
         final_config += SafeString("start:" + "'{}-{}T{}'".format(event.start.year, event.start.strftime("%m-%d"), event.start.strftime("%H:%M:%S")) + ",")
         final_config += SafeString("end:" + "'{}-{}T{}'".format(event.end.year, event.end.strftime("%m-%d"), event.end.strftime("%H:%M:%S")) + ",},")
     final_config += SafeString("],}")

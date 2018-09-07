@@ -1,95 +1,50 @@
 {% extends "base.html" %}
 {% load i18n saleor_ext %}
-{% load fullcalendar_tags %}
+{% load fullcalendar_tags staticfiles %}
 
 {% block content %}
 
-{% fullcalendar_css %}
-{% fullcalendar_print_css %}
 {% fullcalendar_jquery %}
 {% fullcalendar_jquery_ui %}
-{% fullcalendar_javascript %}
-
-
+<link rel="stylesheet" type="text/css" href="{% static 'fullcalendar/js/fullcalendar/fullcalendar-all.css' %}">
 <style type="text/css">
-
-/* calendar */
-.fc-day-grid-container {
-    height: auto!important;
-}
-.fc-basic-view tbody .fc-row {
-    max-height: 38px!important;
-    min-height: 38px!important;
-}
-
 .bubble {
     position: absolute;
     width: auto;
     height: auto;
-    padding: 20px 28px;
-    border: 1px solid #1d1d1d;
+    padding: 16px;
     border-radius: 3px;
-    box-shadow: 0px 0px 12px 0px black;
-    background-color: #1d1d1d;
+    background-color: #777777;
     z-index: 9999;
     color: #fff;
-    font-size: 13px;
-    text-transform: uppercase;
+    box-shadow: 0px 9px 14px 0px #c1c1c1;
     display: none;
+    font-size: 14px;
 }
-.fc-unthemed .fc-today {
-    background: #636363 !important;
+.fc-toolbar {
+    margin-bottom: 8px;
 }
-.fc td {
-    border-style: solid;
-    border-width: 1px;
-    padding: 0;
-    vertical-align: top;
-    border-color: #000;
-    border: 2px solid black;
-    background-color: #171717;
-    padding: 0px!important;
-    margin: 0px!important;
-}
-
-.fc-day-grid-container {
-    height: auto!important;
+.fc-scroller.fc-day-grid-container {
+    height: 282px!important;
 }
 .fc-basic-view tbody .fc-row {
-    max-height: 38px!important;
-    min-height: 38px!important;
+    min-height: 47px!important;
+    height: 47px!important;
+    font-size: 14px;
+    text-align: center;
 }
-span.fc-day-number {
-    position: absolute;
-    z-index: 5;
-    top: 10px;
-    margin-left: 5%;
+td.fc-day.fc-widget-content {
+    background-color: #8a8a8a;
+    border: 2px solid #fff;
+}
+.fc-ltr .fc-basic-view .fc-day-number {
+    color: #fff;
 }
 .fc-event {
-    border-radius: 0px!important;
-    border: 1px solid #f67a02!important;
-    background-color: #f67a02!important;
+    border: 1px solid #e07507;
+    background-color: #e07507;
 }
-.fc-event .fc-content {
-    height: 32px;
-}
-.fc-event .fc-content span {
-    display: none;
-}
-.fc-unthemed .fc-today {
-    background: #636363!important;
-}
-
-.fc-grid .fc-day-number {
-    float: right;
-    padding: 0 2px;
-    color: #fff;
-    text-align: center;
-    width: 100%;
-}
-
 </style>
-
 
   <div class="home__featured">
     {% collection_prodcuts collection_slug="obrazy-banneru" template_style="banner" %}
@@ -112,6 +67,9 @@ span.fc-day-number {
       </div>
     </div>
   </div>
+  <script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'fullcalendar/js/fullcalendar/fullcalendar.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/locale-all.js' %}"></script>
   <script type="text/javascript">
     jQuery(function($) {
       $(function(){
