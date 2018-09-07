@@ -28,7 +28,8 @@
   {% include 'favicon.html' %}
   {% render_bundle 'storefront' 'css' attrs='async' %}
   {% block stylesheet %}{% endblock stylesheet %}
-  <link rel="stylesheet" type="text/css" href="{% static 'css/extra_styles.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'fullcalendar/js/fullcalendar/fullcalendar-full.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/extra-styles.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/slick.css' %}">
   {% block meta_tags %}
@@ -49,8 +50,7 @@
 body {
     overflow-y: scroll;
 }
-.dropdown,
-.dropdown *, {
+.dropdown-menu.show {
     z-index: 99999999!important;
 }
 .btn-secondary:not(:disabled):not(.disabled).active,
