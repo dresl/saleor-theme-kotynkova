@@ -21,7 +21,7 @@
                         <h2>{{ product.translated }}</h2>\
                         {% for attribute, value in product.get_product_attributes.items %}\
                         {% if attribute.slug == 'format' %}\
-                            <span>{{ value.translated }}</span>\
+                            <span>{{ value.translated }}</span><br/>\
                         {% endif %}\
                         {% endfor %}\
                         {{ product.translated.description|safe }}\

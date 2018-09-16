@@ -78,11 +78,11 @@
         {% endif %}
       {% endwith %}
     </div>
+    <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">×</span>
+      <span class="sr-only">{% trans "Close" %}</span>
+    </button>
     <div class="col-md-7 col-12 product__info">
-      <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">×</span>
-        <span class="sr-only">{% trans "Close" %}</span>
-      </button>
       <h1 class="product__info__name">
         {{ product.translated }}
       </h1>
@@ -185,6 +185,11 @@
       </table>
     </div>
   </div>
+  <style type="text/css">
+    body.modal-open > .modal-close {
+        display: block;
+    }
+  </style>
   <script type="text/javascript">
     function checkVariantAvailability() {
       if ($(".form-group.product__info__button button").hasClass("disabled")){
@@ -195,6 +200,9 @@
     }
     jQuery(function($) {
       setTimeout(function(){
+        $("body > .modal-close").click(function(){
+          $("#modal-container .modal-close").trigger("click");
+        });
         checkVariantAvailability();
         $(".modal-close").click(function(){
           setTimeout(function(){

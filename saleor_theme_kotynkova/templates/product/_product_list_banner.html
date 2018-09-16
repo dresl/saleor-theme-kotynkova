@@ -28,9 +28,9 @@
     {% for product in products %}
     <div class="carousel-item banner-item item-{{ product.id }} {% if forloop.first %}active{% endif %}">
       <div class="container">
-        <div class="item-info col-md-4 offset-md-8">
+        <div class="item-info col-lg-4 offset-lg-8">
           <div class="row">
-          <div class="col-md-7">
+          <div class="col-lg-7">
             <a href="{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}">
               <h3>{{ product.translated }}</h3>
             </a>
@@ -45,7 +45,7 @@
             <span class='status sold_out'><b>{% trans 'Reserved / Not for sale' %}</b></span>
             {% endif %}
           </div>
-          <div class="col-md-5">
+          <div class="col-lg-5">
             {% if product.all_vartiants_in_stock %}
             <a class="open-modal btn btn-order" href="{{ product.get_absolute_url }}">{% trans "Reserve" %}</a>
             {% endif %}
