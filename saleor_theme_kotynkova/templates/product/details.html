@@ -219,6 +219,7 @@
           $("#modal-container .modal-close").trigger("click");
         });
         checkVariantAvailability();
+        checkVariantOriginal();
         $(".modal-close").click(function(){
           setTimeout(function(){
             $("#modal-container").html("");

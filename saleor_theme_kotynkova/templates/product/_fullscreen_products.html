@@ -5,7 +5,7 @@
 <script type="text/javascript" src="/static/js/slick.min.js"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
 
-<div class="object-detail more-info-opened categories-opened" slick-active-index="">
+<div class="object-detail more-info-opened search-tab-opened" slick-active-index="">
     <div class="row">
         <!-- <h1>{{ object.translation.title }}</h1> -->
         <div class="col-xs-12 padding-none main-images-preview">
@@ -26,7 +26,7 @@
                         {% endfor %}\
                         <hr>\
                         {% for variant in product.variants.all %}\
-                            <span class='variant-item'>{{ variant.name }}</span><a class='btn btn-order open-modal' href='{{ product.get_absolute_url }}'>{% blocktrans context 'Order variants' %}Order{% endblocktrans %}</a><br/>\
+                            <span class='variant-item'>{{ variant.name }}</span><a activate='{{ variant.name }}' class='btn btn-order open-modal' href='{{ product.get_absolute_url }}'>{% blocktrans context 'Order variants' %}Order{% endblocktrans %}</a><br/>\
                         {% endfor %}\
                         <hr>\
                         <span class='description'>{{ product.translated.description|safe }}</span>\
@@ -50,7 +50,6 @@
         <div class="categories">
             <div class="container-fluid">
                 <div class="top-panel">
-                    <span class="btn-search">Vyhledávání <i class="fa fa-search" aria-hidden="true"></i></span>
                     <span class="close">×</span>
                     <div class="search-tab">
                     {% include "product/_filters.html" %}
@@ -125,6 +124,23 @@ jQuery(function($) {
         lazyLoad: 'ondemand',
     });
     $(function() {
+        $(".info-object .btn-order").click(function(){
+            variantText = $(this).attr("activate");
+            variantInterval = setInterval(function(){
+                $(".variant-picker__option").map(function(){
+                    if ($(this).text() == variantText) {
+                        $(this).addClass("active");
+                    } else {
+                        $(this).removeClass("active");
+                    }
+                })
+                if ($(".modal .row.product")) {
+                    setTimeout(function(){
+                        clearInterval(variantInterval);
+                    }, 500);
+                }
+            }, 1)
+        });
         // toggle class more info
         $(".btn-open-panel").click(function(){
             $(".object-detail").toggleClass("more-info-opened");
@@ -138,15 +154,17 @@ jQuery(function($) {
             $(".object-detail").addClass("search-tab-opened");
         }
 
+        // click hide categories
+        $(".object-image").click(function(){
+            $(".object-detail").removeClass("categories-opened");
+        });
+
         // toggle class on catgories
         $(".btn-categories").click(function(){
             $(".object-detail").toggleClass("categories-opened");
         });
         $(".categories .top-panel .close").click(function(){
             $(".object-detail").toggleClass("categories-opened");
-        });
-        $(".categories .top-panel .btn-search").click(function(){
-            $(".object-detail").toggleClass("search-tab-opened");
         });
 
         // fix slick id
@@ -255,11 +273,11 @@ jQuery(function($) {
                 $(".object-detail").removeClass("more-info-opened");
             }, 4000);
         }
-        function hideCategoriesPanel() {
-            categoriesTimeOut = setTimeout(function(){
-                $(".object-detail").removeClass("categories-opened");
-            }, 4000);
-        }
+        // function hideCategoriesPanel() {
+        //     categoriesTimeOut = setTimeout(function(){
+        //         $(".object-detail").removeClass("categories-opened");
+        //     }, 4000);
+        // }
         // info actions
         hideInfoPanel()
         $(".panel-more-info").mouseout(function(){

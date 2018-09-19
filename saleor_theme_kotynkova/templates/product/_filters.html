@@ -27,7 +27,7 @@
     <div class="product-filters__attributes" data-icon-up="{% static "images/chevron-up.svg" %}" data-icon-down="{% static "images/chevron-down.svg" %}">
       <form method="get">
         <div class="row">
-        {% for field in filter_set.form %}
+        {% for field in filter_set.form reversed %}
           {% if field.name == 'sort_by' %}
             {% comment %}
               Field 'sort_by' is hidden because it is rendered in header.
@@ -36,6 +36,7 @@
             <input type="hidden" name="sort_by" value="{% if request.GET.sort_by %}{{ request.GET.sort_by }}{% endif %}">
           {% elif field.name == 'price' %}
           {% elif field.name == 'obraz-typ' %}
+          <span class="search-title">Vyhledávání:</span>
           {% else %}
             <div class="filter-product" title="{{ field.label }}">
                 {{ field }}
