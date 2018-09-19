@@ -24,18 +24,12 @@
                             <span>{{ value.translated }}</span><br/>\
                         {% endif %}\
                         {% endfor %}\
-                        {{ product.translated.description|safe }}\
-                        <div class='actions'>\
-                        {% if product.all_vartiants_in_stock %}\
-                        <p class='status available'>{% trans 'Available' %}</p>\
-                        {% else %}\
-                        <p class='status sold_out'><b>{% trans 'Reserved / Not for sale' %}</b></p>\
-                        {% endif %}\
-                        {% if product.all_vartiants_in_stock %}\
-                        <a class='open-modal btn btn-order btn-block' href='{{ product.get_absolute_url }}'>{% trans 'Reserve' %}</a>\
-                        {% endif %}\
-                        <a class='open-modal btn btn-order btn-block' href='{{ product.get_absolute_url }}'>{% trans 'Order copy' %}</a>\
-                        </div>\
+                        <hr>\
+                        {% for variant in product.variants.all %}\
+                            <span class='variant-item'>{{ variant.name }}</span><a class='btn btn-order open-modal' href='{{ product.get_absolute_url }}'>{% blocktrans context 'Order variants' %}Order{% endblocktrans %}</a><br/>\
+                        {% endfor %}\
+                        <hr>\
+                        <span class='description'>{{ product.translated.description|safe }}</span>\
                         </div>").appendTo($(".panel-more-info"));
                         $("<span class='btn-title' data-slick-index='{{ forloop.counter0 }}'>{{ product.translated }}</span>").appendTo($(".btn-open-panel"));
                     });

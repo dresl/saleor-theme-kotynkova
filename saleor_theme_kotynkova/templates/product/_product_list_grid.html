@@ -18,16 +18,17 @@
         <h4>{{ product.translated }}</h4>
         {% for attribute, value in product.get_product_attributes.items %}
         {% if attribute.slug == 'format' %}
-        <span class="format">{{ value.translated }}</span>
+            <span class="format">{{ value.translated }},&nbsp;</span>
         {% endif %}
+        {% endfor %}
+        {% for variant in product.variants.all %}
+            {% if not variant.name == 'original' %}
+            <span class="format">{{ variant.name }}{% if not forloop.last %},&nbsp;{% endif %}</span>
+            {% endif %}
         {% endfor %}
       </div>
       <div class="col-6 desc">
-        {% if product.all_vartiants_in_stock %}
-        <a class="open-modal btn btn-order" href="{{ product.get_absolute_url }}">{% trans "Reserve" %}</a>
-        {% else %}
-        <a class="open-modal btn btn-order" href="{{ product.get_absolute_url }}">{% trans "Order copy" %}</a>
-        {% endif %}
+        <a class="btn btn-order" href="{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}">{% trans "View" %}</a>
       </div>
     </div>
     {% endfor %}

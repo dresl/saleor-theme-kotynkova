@@ -198,6 +198,21 @@
         $(".product__info__form-error small").html("");
       }
     }
+    function convertToSlug(string)
+    {
+      return string
+        .toLowerCase()
+        .replace(/[^\w ]+/g,'')
+        .replace(/ +/g,'-')
+        ;
+    }
+    function checkVariantOriginal() {
+      if (convertToSlug($(".variant-picker .variant-picker__option.active").text()) == "originl") {
+        $(".product__info__quantity").css("visibility", "hidden");
+      } else {
+        $(".product__info__quantity").css("visibility", "visible");
+      }
+    }
     jQuery(function($) {
       setTimeout(function(){
         $("body > .modal-close").click(function(){
@@ -212,6 +227,7 @@
         $(".btn.variant-picker__option").click(function() {
           setTimeout(function(){
             checkVariantAvailability();
+            checkVariantOriginal();
           }, 300);
         });
       }, 200);

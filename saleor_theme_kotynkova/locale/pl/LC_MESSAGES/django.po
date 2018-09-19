@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-22 07:58-0500\n"
+"POT-Creation-Date: 2018-09-19 20:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,53 +20,49 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: templates/base.html:82 templates/base.html:165
+#: templates/base.html:372 templates/base.html:421
 msgctxt "Main navigation item"
 msgid "Your Cart"
 msgstr ""
 
-#: templates/base.html:107
-msgctxt "Hamburger button text"
-msgid "menu"
-msgstr ""
-
-#: templates/base.html:124
-msgid "Search for product"
-msgstr ""
-
-#: templates/base.html:172 templates/menu_full.html:21
+#: templates/base.html:428 templates/menu_full.html:21
 msgctxt "Main navigation item"
 msgid "Dashboard"
 msgstr ""
 
-#: templates/base.html:177
+#: templates/base.html:433
 msgctxt "Main navigation item"
 msgid "Style guide"
 msgstr ""
 
-#: templates/base.html:183 templates/menu_full.html:27
+#: templates/base.html:439 templates/menu_full.html:27
 msgctxt "Main navigation item"
 msgid "Your account"
 msgstr ""
 
-#: templates/base.html:189 templates/menu_full.html:32
+#: templates/base.html:445 templates/menu_full.html:32
 msgctxt "Main navigation item"
 msgid "Stop impersonating"
 msgstr ""
 
-#: templates/base.html:195 templates/menu_full.html:38
+#: templates/base.html:451 templates/menu_full.html:38
 msgctxt "Main navigation item"
 msgid "Log out"
 msgstr ""
 
-#: templates/base.html:201 templates/menu_full.html:44
+#: templates/base.html:457 templates/menu_full.html:44
 msgctxt "Main navigation item"
 msgid "Register"
 msgstr ""
 
-#: templates/base.html:206 templates/menu_full.html:48
+#: templates/base.html:462 templates/menu_full.html:48
 msgctxt "Main navigation item"
 msgid "Log in"
+msgstr ""
+
+#: templates/base.html:501 templates/product/_fullscreen_products.html:117
+#: templates/product/details.html:83
+msgid "Close"
 msgstr ""
 
 #: templates/cart_dropdown.html:39
@@ -89,12 +85,12 @@ msgctxt "Cart dropdown primary action"
 msgid "Checkout"
 msgstr ""
 
-#: templates/cart_dropdown.html:62 templates/checkout/index.html:92
+#: templates/cart_dropdown.html:62 templates/checkout/index.html:93
 msgctxt "Empty cart message"
 msgid "There are no products in your shopping cart."
 msgstr ""
 
-#: templates/cart_dropdown.html:67 templates/checkout/index.html:93
+#: templates/cart_dropdown.html:67 templates/checkout/index.html:94
 msgctxt "Empty cart link"
 msgid "Check out our sales"
 msgstr ""
@@ -109,100 +105,100 @@ msgctxt "Checkout top message"
 msgid "Easy and secure!"
 msgstr ""
 
-#: templates/checkout/details.html:20
+#: templates/checkout/details.html:17
 msgctxt "Checkout title"
 msgid "Checkout"
 msgstr ""
 
-#: templates/checkout/details.html:36
+#: templates/checkout/details.html:33
 msgctxt "Order review title"
 msgid "Order review"
 msgstr ""
 
-#: templates/checkout/details.html:52
+#: templates/checkout/details.html:49
 msgctxt "Order review section"
 msgid "Subtotal"
 msgstr ""
 
-#: templates/checkout/details.html:62
+#: templates/checkout/details.html:59
 msgctxt "Order review section"
 msgid "Shipment"
 msgstr ""
 
-#: templates/checkout/details.html:78
+#: templates/checkout/details.html:75
 msgctxt "Order review section title"
 msgid "Taxes (included)"
 msgstr ""
 
-#: templates/checkout/details.html:80
+#: templates/checkout/details.html:77
 msgctxt "Order review section title"
 msgid "Taxes"
 msgstr ""
 
-#: templates/checkout/details.html:90
+#: templates/checkout/details.html:87
 msgctxt "Order review section title"
 msgid "Promo code"
 msgstr ""
 
-#: templates/checkout/details.html:96
+#: templates/checkout/details.html:93
 msgctxt "Order review section title"
 msgid "Total"
 msgstr ""
 
-#: templates/checkout/index.html:7
+#: templates/checkout/index.html:8
 msgctxt "Cart page title"
 msgid "Your cart"
 msgstr ""
 
-#: templates/checkout/index.html:11
+#: templates/checkout/index.html:12
 msgctxt "Main navigation item"
 msgid "Home"
 msgstr ""
 
-#: templates/checkout/index.html:12
+#: templates/checkout/index.html:13
 msgctxt "Cart breadcrumb"
 msgid "Cart"
 msgstr ""
 
-#: templates/checkout/index.html:23
+#: templates/checkout/index.html:24
 msgctxt "Cart message"
 msgid "Product has been removed from cart"
 msgstr ""
 
-#: templates/checkout/index.html:31
+#: templates/checkout/index.html:32
 msgctxt "Cart table header"
 msgid "Product"
 msgstr ""
 
-#: templates/checkout/index.html:34
+#: templates/checkout/index.html:35
 msgctxt "Cart table header"
 msgid "Quantity"
 msgstr ""
 
-#: templates/checkout/index.html:37
+#: templates/checkout/index.html:38
 msgctxt "Cart table header"
 msgid "Price"
 msgstr ""
 
-#: templates/checkout/index.html:82
+#: templates/checkout/index.html:83
 msgctxt "Cart primary action"
 msgid "Checkout"
 msgstr ""
 
-#: templates/checkout/index.html:85
+#: templates/checkout/index.html:86
 msgctxt "cart page: secondary action, empty the cart"
 msgid "Clear cart"
 msgstr ""
 
-#: templates/home.html:9
+#: templates/home.html:13
 msgid "New pictures"
 msgstr ""
 
-#: templates/home.html:13
+#: templates/home.html:17
 msgid "All pictures"
 msgstr ""
 
-#: templates/home.html:16
+#: templates/home.html:20
 msgid "Exhibitions"
 msgstr ""
 
@@ -231,25 +227,16 @@ msgctxt "Apply filters button"
 msgid "Update"
 msgstr ""
 
-#: templates/product/_fullscreen_products.html:30
-#: templates/product/_product_list_banner.html:43
-msgid "Available"
-msgstr ""
-
-#: templates/product/_fullscreen_products.html:32
-#: templates/product/_product_list_banner.html:45
-msgid "Reserved / Not for sale"
+#: templates/product/_fullscreen_products.html:29
+msgctxt "Order variants"
+msgid "Order"
 msgstr ""
 
 #: templates/product/_fullscreen_products.html:35
-#: templates/product/_product_list_banner.html:50
-#: templates/product/_product_list_grid.html:27
 msgid "Reserve"
 msgstr ""
 
 #: templates/product/_fullscreen_products.html:37
-#: templates/product/_product_list_banner.html:52
-#: templates/product/_product_list_grid.html:29
 msgid "Order copy"
 msgstr ""
 
@@ -257,12 +244,12 @@ msgstr ""
 msgid "Displayed"
 msgstr ""
 
-#: templates/product/_fullscreen_products.html:117
-#: templates/product/details.html:83
-msgid "Close"
+#: templates/product/_product_list_banner.html:49
+#: templates/product/_product_list_grid.html:31
+msgid "View"
 msgstr ""
 
-#: templates/product/details.html:29
+#: templates/product/details.html:30
 #, python-format
 msgctxt "Product details text"
 msgid ""
@@ -270,35 +257,27 @@ msgid ""
 "visible on <strong>%(date)s</strong>."
 msgstr ""
 
-#: templates/product/details.html:91
+#: templates/product/details.html:92
 msgctxt "Product details link text"
 msgid "Edit in dashboard"
 msgstr ""
 
-#: templates/product/details.html:117
-msgid "including VAT"
-msgstr ""
-
-#: templates/product/details.html:119
-msgid "excluding VAT"
-msgstr ""
-
-#: templates/product/details.html:141
+#: templates/product/details.html:155
 msgctxt "Product details primary action"
 msgid "Add to cart"
 msgstr ""
 
-#: templates/product/details.html:153
+#: templates/product/details.html:167
 msgctxt "Product details text"
 msgid "This product is currently <strong>unavailable</strong>."
 msgstr ""
 
-#: templates/product/details.html:157
+#: templates/product/details.html:171
 msgctxt "Product details title"
 msgid "Description"
 msgstr ""
 
-#: templates/product/details.html:177
+#: templates/product/details.html:196
 msgid "This product variant is not in stock."
 msgstr ""
 
