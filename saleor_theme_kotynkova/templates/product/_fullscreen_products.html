@@ -128,7 +128,7 @@ jQuery(function($) {
             variantText = $(this).attr("activate");
             variantInterval = setInterval(function(){
                 $(".variant-picker__option").map(function(){
-                    if ($(this).text() == variantText) {
+                    if ($(this).text().toLowerCase() == variantText.toLowerCase()) {
                         $(this).addClass("active");
                     } else {
                         $(this).removeClass("active");
