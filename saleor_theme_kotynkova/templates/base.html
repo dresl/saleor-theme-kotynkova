@@ -398,8 +398,32 @@ p, a, span, li {
 .dropdown-menu.show {
     display: block!important;
 }
+.carousel-control-next,
+.carousel-control-prev {
+    height: 50%;
+    top: 8%;
+}
 .footer {
     margin-top: 0px;
+    background-color: #000;
+    margin-top: 0px;
+}
+footer ul li {
+    display: inline-block;
+    padding-right: 4px;
+}
+footer ul li a:after {
+    content: '|';
+    margin-left: 4px;
+}
+footer ul li:last-child a:after {
+    display: none;
+}
+footer .col-md-1 svg {
+    width: 30px;
+}
+footer .footer__logo img {
+    width: 130px;
 }
 </style>
 </head>
@@ -481,12 +505,12 @@ p, a, span, li {
   <footer class="footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-3 col-sm-6">
           <a href="{% url 'home' %}" class="footer__logo">
             <img src="{% static "img/logo-kotynkova.png" %}"/>
           </a>
         </div>
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-8 col-sm-6">
           <ul>
             <li>
               <a rel="nofollow" href="{% url "cart:index" %}">
@@ -537,7 +561,7 @@ p, a, span, li {
             {% endif %}
           </ul>
         </div>
-        <div class="col-md-4 col-sm-12">
+        <div class="col-md-1 col-sm-12">
           <a target="_blank" rel="noopener" class="social-footer" href="https://www.facebook.com/mirumeelabs/">
             <svg data-src="{% static "images/facebook-logo.svg" %}" width="45px" height="45px"/>
           </a>
