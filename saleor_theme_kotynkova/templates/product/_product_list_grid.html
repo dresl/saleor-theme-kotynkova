@@ -3,7 +3,7 @@
 {% load taxed_prices %}
 {% load get_thumbnail from product_images %}
 {% load placeholder %}
-{% load thumbnail watermark %}
+{% load thumbnail %}
 
 <div class="picture-list">
   <div class="row">
@@ -11,18 +11,18 @@
     <div class="list-item col-md-4">
       <a href="{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}">
         {% thumbnail product.get_first_image "520x270" format="PNG" crop="center" as image %}
-          <img src="{{ image.url|watermark:"obraz-small,position=br,opacity=100" }}" width="{{ image.width }}" height="{{ image.height }}">
+          <img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}">
         {% endthumbnail %}
       </a>
       <div class="col-6 desc">
         <h4>{{ product.translated }}</h4>
         {% for attribute, value in product.get_product_attributes.items %}
         {% if attribute.slug == 'format' %}
-            <span class="format">{{ value.translated }},&nbsp;</span>
+            <span class="format">{{ value.translated }}{% if product.variants.count != 1%},&nbsp;{% endif %}</span>
         {% endif %}
         {% endfor %}
         {% for variant in product.variants.all %}
-            {% if not variant.name == 'original' %}
+            {% if not variant.name == 'originál' %}
             <span class="format">{{ variant.name }}{% if not forloop.last %},&nbsp;{% endif %}</span>
             {% endif %}
         {% endfor %}

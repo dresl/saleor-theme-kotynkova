@@ -60,13 +60,14 @@ def fullcalendar_config():
     return final_config
 
 @register.simple_tag
-def get_event_list():
-    events = CalendarEvent.objects.all()
+def get_event_list(ongoing, const_coop, year=None):
+    events = CalendarEvent.objects.filter(ongoing=ongoing, constant_cooperation=const_coop)
+    if year != None:
+        events = events.filter(start__year=year)
     event_list = SafeString("<ul>")
     for event in events:
         event_list += SafeString("<li>{}</li>".format(event.title))
     event_list += SafeString("</ul>")
-
     return event_list
 
 @register.simple_tag

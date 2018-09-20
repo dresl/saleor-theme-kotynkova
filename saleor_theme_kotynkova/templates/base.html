@@ -196,8 +196,11 @@
 .btn.primary {
     padding: 6px 40px;
 }
-.new-pictures h1, .exhibitions h1 {
+.new-pictures h1,
+.exhibitions h1,
+.about-me h1 {
     font-size: 28px;
+    font-weight: bold;
 }
 .btn.primary {
     background-color: #828282;
@@ -266,6 +269,7 @@ p, a, span, li {
 }
 .navbar.fixed-top .heading-info {
     transition: all 0.5s ease;
+    font-size: 13px;
 }
 .navbar.fixed-top.tagged .heading-info {
     padding-top: 4px;
@@ -394,6 +398,9 @@ p, a, span, li {
 .dropdown-menu.show {
     display: block!important;
 }
+.footer {
+    margin-top: 0px;
+}
 </style>
 </head>
 
@@ -430,7 +437,11 @@ p, a, span, li {
         <div class="navbar__brand__cart float-right">
           <a rel="nofollow" class="cart__icon" href="{% url "cart:index" %}">
             <span class="cart-label d-none d-md-inline-block">
+              {% if request.user.is_authenticated %}
+              {{ request.user.email }}
+              {% else %}
               {% trans "Your Cart" context "Main navigation item" %}
+              {% endif %}
             </span>
             <div class="navbar__brand__cart__icon">
               <svg data-src="{% static "images/cart.svg" %}" width="35" height="30"/>

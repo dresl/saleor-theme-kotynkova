@@ -1,11 +1,49 @@
 {% extends "base.html" %}
 {% load i18n saleor_ext %}
-{% load fullcalendar_tags staticfiles %}
+{% load staticfiles %}
 
 {% block content %}
-
-{% fullcalendar_jquery %}
-{% fullcalendar_jquery_ui %}
+<style type="text/css">
+.filter-by-year li {
+    cursor: pointer;
+}
+.filter-by-year li.active {
+    border: 1px solid #b7b7b7;
+}
+.exhib {
+    display: none;
+}
+.exhib.active {
+    display: block;
+}
+.exhibitions ul {
+    list-style-type: none;
+    padding: 0;
+}
+.exhibitions .col-md-12 {
+    margin-bottom: 35px;
+}
+.container-fluid.about-me {
+    padding-top: 50px;
+    padding-bottom: 0px;
+    background-image: url("{% static 'img/BG_OMe.jpg' %}");
+    background-size: cover;
+}
+.about-me .desc {
+    background-color: rgba(255, 255, 255, 0.6);
+    font-weight: bold;
+    font-size: 13px;
+    padding: 35px 75px;
+}
+.about-me h1 {
+    color: #fff;
+    padding-bottom: 50px;
+    padding-top: 10px;
+}
+.about-me .btn.btn-order {
+    padding: 8px 50px;
+}
+</style>
   <div class="home__featured">
     {% collection_prodcuts collection_slug="obrazy-banneru" template_style="banner" %}
   </div>
@@ -19,25 +57,78 @@
   <div class="container exhibitions">
     <h1 class="text-center">{% trans "Exhibitions" %}</h1>
     <div class="row">
-      <div class="col-md-6">
-        {% get_event_list %}
+      <div class="col-md-12 text-center">
+        <h3>{% trans "Ongoing Exhibitions" %}</h3>
+        {% get_event_list ongoing=True const_coop=False %}
+        <h3>{% trans "Constant Cooperation" %}</h3>
+        {% get_event_list ongoing=False const_coop=True %}
       </div>
-      <div class="col-md-6">
-        {% calendar %}
+      <div class="col-md-3 text-center">
+        <h3>{% trans "Older Exhibitions" %}</h3>
+        <ul class="filter-by-year">
+          <li year="2018" class="active">2018</li>
+          <li year="2011">2011</li>
+          <li year="2010">2010</li>
+          <li year="2009">2009</li>
+          <li year="2008">2008</li>
+          <li year="2007">2007</li>
+          <li year="2006">2006</li>
+          <li year="2005">2005</li>
+          <li year="2004">2004</li>
+          <li year="2003">2003</li>
+          <li year="2002">2002</li>
+          <li year="2001">2001</li>
+        </ul>
+      </div>
+      <div class="col-md-9 text-center">
+        <h3>{% trans "Exhibitions" %}</h3>
+        <div year="2018" class="exhib active">
+          {% get_event_list ongoing=False const_coop=False year=2018 %}
+        </div>
+        <div year="2008" class="exhib">
+          {% get_event_list ongoing=False const_coop=False year=2008 %}
+        </div>
+        <div year="2007" class="exhib">
+          {% get_event_list ongoing=False const_coop=False year=2007 %}
+        </div>
+        <div year="2006" class="exhib">
+          {% get_event_list ongoing=False const_coop=False year=2006 %}
+        </div>
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="{% static 'js/moment.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'fullcalendar/js/fullcalendar/fullcalendar.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/locale-all.js' %}"></script>
+  <div class="container-fluid about-me">
+    <div class="container">
+      <h1 class="text-center">{% trans "About me" %}</h1>
+      <div class="desc text-center">
+        <h3>Ivana Kotýnková</h3>
+        <p>*16.11.1958, České Budějovice</p>
+        <p>Věnuji se malbě a kreslení profesionálně více než čtvrt
+století. Při výběru námětů se většinou vracím do svého
+rodného kraje jižních Čech, nebo do vzpomínek na jiná
+zajímavá místa, ale i do vzpomínek na setkání s milými
+lidmi. Obrazy krajin jsou určitou výpovědí o vlastním pocitu
+o místě, či o okamžiku v něm, smutku a hlavně o radosti. U
+zátiší jsou převládajícím motivem kytice, které si nosím z
+procházky. I zde se snažím především vyjádřit pocit dobré
+nálady a pohody. Figurami akcentuji určité životní postoje
+člověka v různých životních situacích ať již v přírodě či
+v rodině.</p>
+        <a href="/cs/page/o-mne/" class="btn btn-order">Více</a>
+      </div>
+    </div>
+  </div>
+  <script type="application/ld+json">{{ webpage_schema|safe }}</script>
+  </div>
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
   <script type="text/javascript">
-    jQuery(function($) {
-      $(function(){
-        $('#calendar').fullCalendar({% fullcalendar_config %});
+    $(function(){
+      $(".filter-by-year li").click(function(){
+        $(".exhib").css("display", "none");
+        $(".filter-by-year li").removeClass("active");
+        $(this).addClass("active");
+        $(".exhib[year='" + $(this).attr('year') + "']").css("display", "block");
       });
     });
   </script>
-  <script type="application/ld+json">{{ webpage_schema|safe }}</script>
-  </div>
-
 {% endblock %}

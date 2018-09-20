@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 20:26+0200\n"
+"POT-Creation-Date: 2018-09-20 12:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,47 +18,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: templates/base.html:372 templates/base.html:421
+#: templates/base.html:441 templates/base.html:491
 msgctxt "Main navigation item"
 msgid "Your Cart"
 msgstr "Váš košík"
 
-#: templates/base.html:428 templates/menu_full.html:21
+#: templates/base.html:498 templates/menu_full.html:21
 msgctxt "Main navigation item"
 msgid "Dashboard"
 msgstr "Ńástěnka"
 
-#: templates/base.html:433
+#: templates/base.html:503
 msgctxt "Main navigation item"
 msgid "Style guide"
 msgstr "Průvodce stylů"
 
-#: templates/base.html:439 templates/menu_full.html:27
+#: templates/base.html:509 templates/menu_full.html:27
 msgctxt "Main navigation item"
 msgid "Your account"
 msgstr "Váš účet"
 
-#: templates/base.html:445 templates/menu_full.html:32
+#: templates/base.html:515 templates/menu_full.html:32
 msgctxt "Main navigation item"
 msgid "Stop impersonating"
 msgstr ""
 
-#: templates/base.html:451 templates/menu_full.html:38
+#: templates/base.html:521 templates/menu_full.html:38
 msgctxt "Main navigation item"
 msgid "Log out"
 msgstr "Odhlásit se"
 
-#: templates/base.html:457 templates/menu_full.html:44
+#: templates/base.html:527 templates/menu_full.html:44
 msgctxt "Main navigation item"
 msgid "Register"
 msgstr "Registrovat se"
 
-#: templates/base.html:462 templates/menu_full.html:48
+#: templates/base.html:532 templates/menu_full.html:48
 msgctxt "Main navigation item"
 msgid "Log in"
 msgstr "Přihlásit se"
 
-#: templates/base.html:501 templates/product/_fullscreen_products.html:117
+#: templates/base.html:571 templates/product/_fullscreen_products.html:110
 #: templates/product/details.html:83
 msgid "Close"
 msgstr "Zavřít"
@@ -197,17 +197,29 @@ msgctxt "cart page: secondary action, empty the cart"
 msgid "Clear cart"
 msgstr "Smazat obsah košíku"
 
-#: templates/home.html:13
+#: templates/home.html:24
 msgid "New pictures"
 msgstr "Nové obrazy"
 
-#: templates/home.html:17
+#: templates/home.html:28
 msgid "All pictures"
 msgstr "Všechny obrazy"
 
-#: templates/home.html:20
+#: templates/home.html:31 templates/home.html:57
 msgid "Exhibitions"
 msgstr "Výstavy"
+
+#: templates/home.html:34
+msgid "Ongoing Exhibitions"
+msgstr "Probíhající výstavy"
+
+#: templates/home.html:36
+msgid "Constant Cooperation"
+msgstr "Stálá spolupráce"
+
+#: templates/home.html:40
+msgid "Older Exhibitions"
+msgstr "Starší výstavy"
 
 #: templates/product/_filters.html:19
 msgctxt "Filter heading title"
@@ -219,17 +231,17 @@ msgctxt "Product list page filters"
 msgid "Clear filters"
 msgstr "Smazat filtry"
 
-#: templates/product/_filters.html:67
+#: templates/product/_filters.html:68
 msgctxt "Product price filter"
 msgid "from"
 msgstr "od"
 
-#: templates/product/_filters.html:69
+#: templates/product/_filters.html:70
 msgctxt "Product price filter"
 msgid "to"
 msgstr "do"
 
-#: templates/product/_filters.html:75
+#: templates/product/_filters.html:76
 msgctxt "Apply filters button"
 msgid "Update"
 msgstr "Aktualizovat"
@@ -239,15 +251,7 @@ msgctxt "Order variants"
 msgid "Order"
 msgstr "Objednat"
 
-#: templates/product/_fullscreen_products.html:35
-msgid "Reserve"
-msgstr "Rezervovat"
-
-#: templates/product/_fullscreen_products.html:37
-msgid "Order copy"
-msgstr "Objednat atyp / kopii"
-
-#: templates/product/_fullscreen_products.html:52
+#: templates/product/_fullscreen_products.html:46
 msgid "Displayed"
 msgstr "Zobrazeno"
 
@@ -299,6 +303,12 @@ msgstr "Je nám líto, pro váš požadavek nebyly nalezeny žádné výsledky."
 msgctxt "Search without results text"
 msgid "Try again or shop new arrivals."
 msgstr "Zkuste to znovu nebo si prohlédněte nabídku našich produktů"
+
+#~ msgid "Reserve"
+#~ msgstr "Rezervovat"
+
+#~ msgid "Order copy"
+#~ msgstr "Objednat atyp / kopii"
 
 #~ msgid "Available"
 #~ msgstr "Dostupné"

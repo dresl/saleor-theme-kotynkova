@@ -1,5 +1,5 @@
-{% load i18n watermark %}
-{% load staticfiles thumbnail watermark saleor_ext %}
+{% load i18n %}
+{% load staticfiles thumbnail saleor_ext %}
 
 <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
 <script type="text/javascript" src="/static/js/slick.min.js"></script>
@@ -12,7 +12,7 @@
             {% for product, available in picture_list %}
             <div class="object-image" data-picture-id="{{ product.id }}"" data-slick-index="{{ forloop.counter0 }}">
                 {% thumbnail product.get_first_image "1920x1080" format="PNG" as image %}
-                <img class="project-image image-{{ product.id }}" src="{{ image.url|watermark:'obraz,position=br,opacity=100' }}"/>
+                <img class="project-image image-{{ product.id }}" src="{{ image.url }}"/>
                 {% endthumbnail %}
                 <script type="text/javascript">
                 jQuery(function($) {

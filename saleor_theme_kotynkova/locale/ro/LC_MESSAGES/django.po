@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-19 20:26+0200\n"
+"POT-Creation-Date: 2018-09-20 12:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,47 +19,47 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: templates/base.html:372 templates/base.html:421
+#: templates/base.html:441 templates/base.html:491
 msgctxt "Main navigation item"
 msgid "Your Cart"
 msgstr ""
 
-#: templates/base.html:428 templates/menu_full.html:21
+#: templates/base.html:498 templates/menu_full.html:21
 msgctxt "Main navigation item"
 msgid "Dashboard"
 msgstr ""
 
-#: templates/base.html:433
+#: templates/base.html:503
 msgctxt "Main navigation item"
 msgid "Style guide"
 msgstr ""
 
-#: templates/base.html:439 templates/menu_full.html:27
+#: templates/base.html:509 templates/menu_full.html:27
 msgctxt "Main navigation item"
 msgid "Your account"
 msgstr ""
 
-#: templates/base.html:445 templates/menu_full.html:32
+#: templates/base.html:515 templates/menu_full.html:32
 msgctxt "Main navigation item"
 msgid "Stop impersonating"
 msgstr ""
 
-#: templates/base.html:451 templates/menu_full.html:38
+#: templates/base.html:521 templates/menu_full.html:38
 msgctxt "Main navigation item"
 msgid "Log out"
 msgstr ""
 
-#: templates/base.html:457 templates/menu_full.html:44
+#: templates/base.html:527 templates/menu_full.html:44
 msgctxt "Main navigation item"
 msgid "Register"
 msgstr ""
 
-#: templates/base.html:462 templates/menu_full.html:48
+#: templates/base.html:532 templates/menu_full.html:48
 msgctxt "Main navigation item"
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:501 templates/product/_fullscreen_products.html:117
+#: templates/base.html:571 templates/product/_fullscreen_products.html:110
 #: templates/product/details.html:83
 msgid "Close"
 msgstr ""
@@ -189,16 +189,28 @@ msgctxt "cart page: secondary action, empty the cart"
 msgid "Clear cart"
 msgstr ""
 
-#: templates/home.html:13
+#: templates/home.html:24
 msgid "New pictures"
 msgstr ""
 
-#: templates/home.html:17
+#: templates/home.html:28
 msgid "All pictures"
 msgstr ""
 
-#: templates/home.html:20
+#: templates/home.html:31 templates/home.html:57
 msgid "Exhibitions"
+msgstr ""
+
+#: templates/home.html:34
+msgid "Ongoing Exhibitions"
+msgstr ""
+
+#: templates/home.html:36
+msgid "Constant Cooperation"
+msgstr ""
+
+#: templates/home.html:40
+msgid "Older Exhibitions"
 msgstr ""
 
 #: templates/product/_filters.html:19
@@ -211,17 +223,17 @@ msgctxt "Product list page filters"
 msgid "Clear filters"
 msgstr ""
 
-#: templates/product/_filters.html:67
+#: templates/product/_filters.html:68
 msgctxt "Product price filter"
 msgid "from"
 msgstr ""
 
-#: templates/product/_filters.html:69
+#: templates/product/_filters.html:70
 msgctxt "Product price filter"
 msgid "to"
 msgstr ""
 
-#: templates/product/_filters.html:75
+#: templates/product/_filters.html:76
 msgctxt "Apply filters button"
 msgid "Update"
 msgstr ""
@@ -231,15 +243,7 @@ msgctxt "Order variants"
 msgid "Order"
 msgstr ""
 
-#: templates/product/_fullscreen_products.html:35
-msgid "Reserve"
-msgstr ""
-
-#: templates/product/_fullscreen_products.html:37
-msgid "Order copy"
-msgstr ""
-
-#: templates/product/_fullscreen_products.html:52
+#: templates/product/_fullscreen_products.html:46
 msgid "Displayed"
 msgstr ""
 

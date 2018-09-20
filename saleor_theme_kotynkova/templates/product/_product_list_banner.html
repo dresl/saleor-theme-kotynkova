@@ -4,7 +4,7 @@
 {% load get_thumbnail from product_images %}
 {% load i18n %}
 {% load markdown from markdown %}
-{% load placeholder thumbnail watermark %}
+{% load placeholder thumbnail %}
 {% load staticfiles %}
 {% load taxed_prices %}
 
@@ -12,7 +12,7 @@
 {% for product in products %}
 {% thumbnail product.get_first_image "x900" format="PNG" as product_image %}
 .banner-item.item-{{ product.id }} {
-  background-image: url(/static/img/logo-kotynkova.png), url("/static/img/front_banner_layer_full.png"), url("{{ product_image.url|watermark:"obraz,position=br,opacity=100" }}");
+  background-image: url(/static/img/logo-kotynkova.png), url("/static/img/front_banner_layer_full.png"), url("{{ product_image.url }}");
 }
 {% endthumbnail %}
 {% endfor %}
@@ -36,11 +36,11 @@
             </a>
             {% for attribute, value in product.get_product_attributes.items %}
             {% if attribute.slug == 'format' %}
-                <span class="format">{{ value.translated }},&nbsp;</span>
+                <span class="format">{{ value.translated }}{% if product.variants.count != 1%},&nbsp;{% endif %}</span>
             {% endif %}
             {% endfor %}
             {% for variant in product.variants.all %}
-                {% if not variant.name == 'original' %}
+                {% if not variant.name == 'originál' %}
                 <span class="format">{{ variant.name }}{% if not forloop.last %},&nbsp;{% endif %}</span>
                 {% endif %}
             {% endfor %}
