@@ -326,9 +326,6 @@ p, a, span, li {
     background-color: #000;
     color: #fff;
 }
-.categories .top-panel {
-    padding-top: 50px;
-}
 .object-detail.categories-opened.search-tab-opened .top-panel .btn-search {
     top: 78px;
 }
@@ -343,6 +340,7 @@ p, a, span, li {
 }
 .btn-open-panel.more-info {
     z-index: 37;
+    -webkit-transform: translate3d(0,0,0);
 }
 .panel-more-info {
     z-index: 35;
@@ -370,23 +368,56 @@ p, a, span, li {
     display: none;
 }
 .object-detail.categories-opened.search-tab-opened .search-tab {
-    margin-left: 10%;
+    margin-left: 0;
+    width: 92%;
 }
 .categories .top-panel .close {
     color: #fff;
 }
 .categories .filter-product {
-    width: 161px;
+    width: 100%;
+}
+.search-group {
+    width: 100%;
 }
 .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
-    width: 182px;
+    width: 100%!important;
+    padding: 0px;
+}
+.product-filters {
+    padding-bottom: 0px;
+    padding-left: 9vw;
+    padding-right: 9vw;
+}
+.search-tab .product-filters .btn-order {
+    width: auto;
+    margin-left: 4px;
+    height: 37px;
+    padding: 0px 15px;
 }
 .categories .filter-product.search-name input {
     padding-left: 10px;
-    height: 37px;
-    width: 163px;
-    margin-left: 49px;
+    height: 35px;
+    width: 100%;
+    border-radius: 0px;
     border: 0;
+    margin-top: 1px;
+    margin-left: 1px;
+}
+.categories .top-panel .btn.dropdown-toggle.btn-default {
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 9px;
+    height: 37px;
+    border-radius: 0px!important;
+    font-size: 15px;
+}
+.categories .top-panel .filter-option {
+    padding: 0px;
+}
+.categories .top-panel .title.filter-option {
+    margin-top: 4px;
+    text-align: left;
 }
 .all-pictures {
     height: 114px;

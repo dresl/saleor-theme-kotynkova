@@ -1,0 +1,16 @@
+{% load i18n %}
+
+<div class='info-object info-slick'>
+    <h2>{{ product.translated }}</h2>
+    {% for attribute, value in product.get_product_attributes.items %}
+    {% if attribute.slug == 'format' %}
+        <span>{{ value.translated }}</span><br/>
+    {% endif %}
+    {% endfor %}
+    <hr>
+    {% for variant in product.variants.all %}
+        <span class='variant-item'>{{ variant.name }}</span><a activate='{{ variant.name }}' class='btn btn-order open-modal' href='{{ product.get_absolute_url }}'>{% blocktrans context 'Order variants' %}Order{% endblocktrans %}</a><br/>
+    {% endfor %}
+    <hr>
+    <span class='description'>{{ product.translated.description|safe }}</span>
+</div>

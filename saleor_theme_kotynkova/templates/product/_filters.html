@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load staticfiles %}
+{% load staticfiles saleor_ext %}
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 
@@ -23,7 +23,7 @@
       </a>
     {% endif %}
   </h2> -->
-  <div class="product-filters container-fluid">
+  <div class="product-filters">
     <div class="product-filters__attributes" data-icon-up="{% static "images/chevron-up.svg" %}" data-icon-down="{% static "images/chevron-down.svg" %}">
       <form method="get">
         <div class="row">
@@ -36,43 +36,40 @@
             <input type="hidden" name="sort_by" value="{% if request.GET.sort_by %}{{ request.GET.sort_by }}{% endif %}">
           {% elif field.name == 'price' %}
           {% elif field.name == 'obraz-typ' %}
-          <span class="search-title">Vyhledávání:</span>
+          <div class="col-1 title filter-option">
+            <span class="search-title">{% trans "Search" %}:</span>
+          </div>
           {% else %}
+          <div class="col-2 filter-option">
             <div class="filter-product" title="{{ field.label }}">
                 {{ field }}
             </div>
+          </div>
           {% endif %}
           {% if forloop.last %}
-          <div class="filter-product search-name" title="Name">
-            <div class="btn-group">
-              <input class="" type="text" name="name" placeholder="Hledat..." value="{% if request.GET.name %}{{ request.GET.name }}{% endif %}">
+          <div class="col-2 filter-option">
+              <div class="filter-product" title="{% trans 'Varianta' %}">
+                {% with request.GET|get_list:'variants' as variants_list %}
+                <select a="{{ variants_list }}" name="variants" id="id_varianta" multiple="multiple" title="{% trans 'Varianta' %}" class="selectpicker" tabindex="-98">
+                  {% for value in product_attr.values.all %}
+                  <option value="{{ value.id }}" {% if value.id|is_in:variants_list %}selected{% endif %}>{{ value.translated }}</option>
+                  {% endfor %}
+                </select>
+                {% endwith %}
+              </div>
+          </div>
+          <div class="col-2 filter-option">
+            <div class="filter-product search-name" title="Name">
+              <div class="btn-group search-group">
+                <input class="" type="text" name="name" placeholder="{% trans 'Searched text' %}..." value="{% if request.GET.name %}{{ request.GET.name }}{% endif %}">
+              </div>
             </div>
           </div>
           {% endif %}
         {% endfor %}
-        {% for field in filter_set.form %}
-          {% if field.name == 'price' %}
-            <!-- <div class="filter-section" aria-expanded="true">
-              <div class="filter-section__header">
-                <h3>{{ field.label }}</h3>
-                <div class="filter-section__icon">
-                  <img class="lazyload lazypreload" data-src="{% static "images/chevron-up.svg" %}">
-                </div>
-              </div>
-              <div class="filter-section__content">
-                <div class="filter-form-field price-field">
-                  <input id="{{ field.auto_id }}_0" name="{{ field.name }}_0"
-                        value="{% if field.value.0 %}{{ field.value.0 }}{% endif %}" type="number" min="0"
-                        class="form-control d-inline"
-                        placeholder="{% trans 'from' context 'Product price filter' %}"/><span>-</span><input id="{{ field.auto_id }}_1" name="{{ field.name }}_1"
-                        value="{% if field.value.1 %}{{ field.value.1 }}{% endif %}" type="number" min="0"
-                        class="form-control d-inline" placeholder="{% trans 'to' context 'Product price filter' %}"/>
-                </div>
-              </div>
-            </div> -->
-          {% endif %}
-        {% endfor %}
-        <button class="btn btn-order" type="submit">{% trans 'Update' context 'Apply filters button' %}</button>
+        <div class="col-1 filter-option">
+          <button class="btn btn-order" type="submit">{% trans 'Update' context 'Apply filters button' %}</button>
+        </div>
         </div>
       </form>
     </div>

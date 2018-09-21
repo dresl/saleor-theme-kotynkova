@@ -59,6 +59,17 @@ def fullcalendar_config():
 
     return final_config
 
+@register.filter
+def get_list(dictionary, key):
+    return dictionary.getlist(key)
+
+@register.filter
+def is_in(dictionary, key):
+    if str(dictionary) in key:
+        return True
+    else:
+        return False
+
 @register.simple_tag
 def get_event_list(ongoing, const_coop, year=None):
     events = CalendarEvent.objects.filter(ongoing=ongoing, constant_cooperation=const_coop)

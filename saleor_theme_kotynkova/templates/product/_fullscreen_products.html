@@ -5,36 +5,85 @@
 <script type="text/javascript" src="/static/js/slick.min.js"></script>
 <script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
 
+<style type="text/css">
+.product-list .object-image img {
+    height: 100vh;
+    width: auto;
+    margin: 0 auto;
+}
+.info-object {
+    display: block;
+    opacity: 1;
+    transition: all 0.5s ease;
+    text-align: left;
+}
+.btn-load {
+    visibility: hidden;
+}
+#pictureModalFullscreen .modal-body img {
+    height: 100vh;
+    width: auto;
+}
+.categories .container-fluid {
+    padding: 37px 0px;
+    display: block;
+}
+.categories .container-fluid .all-images {
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    padding-left: 9vw;
+    padding-right: 9vw;
+}
+.categories .top-panel {
+    padding-top: 20px;
+    padding-bottom: 70px;
+}
+.categories .container-fluid .all-images .thumb-item {
+    margin-bottom: 0;
+    padding: 2px;
+    cursor: pointer;
+}
+.categories .container-fluid .all-images .thumb-item img {
+    width: 100%;
+    height: auto;
+}
+.categories .container-fluid .all-images .thumb-item.active img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    border: 7px solid #000;
+}
+.btn-categories .arrow {
+    border-color: #fff;
+}
+</style>
+
 <div class="object-detail more-info-opened search-tab-opened" slick-active-index="">
+    <script type="text/javascript">
+        function get_product_image(product_url, element) {
+            $.ajax({    
+                url: product_url,
+                    success: function(data) {
+                        $('.object-image.slick-slide.slick-current.slick-active').html(data);
+                        $('#pictureModalFullscreen .modal-body').html(data);
+                    }
+            });
+        };
+        function get_product_details(product_url) {
+            $.ajax({    
+                url: product_url,
+                    success: function(data) {
+                        $('.panel-more-info').html(data);
+                    }
+            });
+        };
+    </script>
     <div class="row">
         <!-- <h1>{{ object.translation.title }}</h1> -->
         <div class="col-xs-12 padding-none main-images-preview">
             {% for product, available in picture_list %}
-            <div class="object-image" data-picture-id="{{ product.id }}"" data-slick-index="{{ forloop.counter0 }}">
-                {% thumbnail product.get_first_image "1920x1080" format="PNG" as image %}
-                <img class="project-image image-{{ product.id }}" src="{{ image.url }}"/>
-                {% endthumbnail %}
-                <script type="text/javascript">
-                jQuery(function($) {
-                    $(function(){
-                        $("<div class='info-object info-slick' data-slick-index='{{ forloop.counter0 }}'>\
-                        <h2>{{ product.translated }}</h2>\
-                        {% for attribute, value in product.get_product_attributes.items %}\
-                        {% if attribute.slug == 'format' %}\
-                            <span>{{ value.translated }}</span><br/>\
-                        {% endif %}\
-                        {% endfor %}\
-                        <hr>\
-                        {% for variant in product.variants.all %}\
-                            <span class='variant-item'>{{ variant.name }}</span><a activate='{{ variant.name }}' class='btn btn-order open-modal' href='{{ product.get_absolute_url }}'>{% blocktrans context 'Order variants' %}Order{% endblocktrans %}</a><br/>\
-                        {% endfor %}\
-                        <hr>\
-                        <span class='description'>{{ product.translated.description|safe }}</span>\
-                        </div>").appendTo($(".panel-more-info"));
-                        $("<span class='btn-title' data-slick-index='{{ forloop.counter0 }}'>{{ product.translated }}</span>").appendTo($(".btn-open-panel"));
-                    });
-                });
-                </script>
+            <div class="object-image" data-picture-id="{{ product.id }}" data-slick-index="{{ forloop.counter0 }}" onclick="get_product_image('{% url 'product:render_product_image' product_id=product.id %}');get_product_details('{% url 'product:render_product_details' product_id=product.id %}');">
             </div>
             {% endfor %}
         </div>
@@ -55,37 +104,15 @@
                     {% include "product/_filters.html" %}
                     </div>
                 </div>
-                <div class="project-categories">
-                {% for category in project_categories %}
-                    <div class="col-md-1 item {% if category.translated.slug in request.path %}active{% endif %}">
-                        <span class="title">{{ category.translated }}</span>
-                        {% thumbnail category.background_image "200x100" crop="center" format="PNG" as cat_image %}
-                        <a href="{{ category.get_absolute_url }}"><img class="" src="{{ cat_image.url }}" /></a>
-                        {% endthumbnail %}
-                    </div>
-                {% endfor %}    
-                    <div class="col-md-2 item link-all-pictures {% if not object.parent %}active{% endif %}">
-                        {% if object.parent %}
-                        <a href="{{ object.parent.get_absolute_url }}" class="title">Všechny obrazy
-                        <img src="{% static 'img/glyphicons-pictures.png' %}">
-                        </a>
-                        {% else %}
-                        <span class="title">Všechny obrazy</span>
-                        <img src="{% static 'img/glyphicons-pictures.png' %}">
-                        {% endif %}
-                    </div>
-                </div>
-                <hr>
-                <ul class="categories-menu similar-images-preview">
-                {% for sim_item, available in picture_list %}
-                    <div class="object-image">
-                        <span class="title">{{ sim_item.translated }}</span>
-                        {% thumbnail sim_item.get_first_image "250x150" crop="center" format="PNG" as sim_image %}
-                        <img class="" data-lazy="{{ sim_image.url }}" />
+                <div class="row all-images">
+                {% for product, available in picture_list %}
+                    <div class="col-md-1 thumb-item" product-id="{{ product.id }}" data-product-id="{{ product.id }}">
+                        {% thumbnail product.get_first_image "125x125" format="PNG" crop="center" as image %}
+                        <img src="{{ image.url }}">
                         {% endthumbnail %}
                     </div>
                 {% endfor %}
-                </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -146,13 +173,8 @@ jQuery(function($) {
             $(".object-detail").toggleClass("more-info-opened");
         });
         $(".panel-more-info .close").click(function(){
-            $(".object-detail").toggleClass("more-info-opened");
+            $(".object-detail").removeClass("more-info-opened");
         });
-
-        // activate search
-        if (location.search != "") {
-            $(".object-detail").addClass("search-tab-opened");
-        }
 
         // click hide categories
         $(".object-image").click(function(){
@@ -177,95 +199,37 @@ jQuery(function($) {
             $('.main-images-preview').slick("slickGoTo", index);
         }
 
-        // left info panel functions
-        function compareInfoContentSlickActive(element) {
-            if ($(element).attr("data-slick-index") == $(".maincontent").attr("slick-active-index")) {
-                $(element).animate({opacity:1},300).show();
-            } else {
-                $(element).animate({opacity:0},300).hide();
-            }
-        }
-        function compareBtnOpenInfoSlickActive(element) {
-            if ($(element).attr("data-slick-index") == $(".slick-current.slick-active").attr("data-slick-index")) {
-                $(element).css("right", "0px").css("display", "block");
-            } else {
-                $(element).css("right", "-42px").css("display", "none");
-            }
-        }
-        // fix portrait picture
-        function fixPortraitPicture(element) {
-            $(element).map(function(){
-                if (($(this).width() - $(this).height()) <= 200) {
-                    $(this).addClass("image-portrait");
-                }
-                $(".slick-slide").css("min-height", $(this).height(), "important").css("max-height", $(this).height(), "important");
-            });
-        }
-        // add image to modal
-        function addImageToModal(element) {
-            ModalImageInterval = setInterval(function(){
-                $("#pictureModalFullscreen .modal-body").html(element.clone());
-                if ($("#pictureModalFullscreen .modal-body img").attr("src") != "") {
-                    clearInterval(ModalImageInterval);
-                }
-            }, 250);
-        }
         // set id
         function setImageIdToUrl() {
             window.location.hash = "slick-slide-"+$(".slick-current.slick-active").attr("data-picture-id");
         }
 
-        // info inner content, btn onload and portrait picture
-        $(".info-object.info-slick").map(function(){
-            compareInfoContentSlickActive($(this));
+        $(function(){
+            $('.slick-current.slick-active').trigger('click');
+            setImageIdToUrl();
+            $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
         });
-        $(".btn-open-panel .btn-title").map(function(){
-            compareBtnOpenInfoSlickActive($(this));
-        });
-        loadFixes = setInterval(function(){
-            fixPortraitPicture($(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index") + "'] .project-image"));
-            if ($(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index") + "'] .project-image").hasClass("image-portrait")) {
-                clearInterval(loadFixes);
-            }
-        }, 250);
-        addImageToModal($(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index") + "'] .project-image"));
-        setImageIdToUrl();
         
         // info inner content, btn afterChange and portrait picture
         $('.main-images-preview').on('afterChange', function(event, slick, currentSlide, direction){
-            $(".maincontent").attr("slick-active-index", $(".slick-current.slick-active").attr("data-slick-index"));
-            $(".info-object.info-slick").map(function(){
-                compareInfoContentSlickActive($(this));
-            });
-            $(".btn-open-panel .btn-title").map(function(){
-                compareBtnOpenInfoSlickActive($(this));
-            });
+            $('.slick-current.slick-active').trigger('click');
             setImageIdToUrl();
-            loadFixesAfterChange = setInterval(function(){
-                fixPortraitPicture($(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index") + "'] .project-image"));
-                if ($(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index") + "'] .project-image").hasClass("image-portrait")) {
-                    clearInterval(loadFixesAfterChange);
-                }
-            }, 250);
-            addImageToModal($(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index") + "'] .project-image"));
+            $(".all-images .thumb-item").removeClass("active");
+            $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
         });
-        $('.main-images-preview').on('init', function(event, slick, currentSlide, direction){
-            $(".maincontent").attr("slick-active-index", $(".slick-current.slick-active").attr("data-slick-index"));
-            $(".info-object.info-slick").map(function(){
-                compareInfoContentSlickActive($(this));
+
+        function goToSlide(ID) {
+            $(".object-detail").removeClass("categories-opened");
+            var index = $(".slick-slide[data-picture-id='" + ID + "']").attr("data-slick-index");
+            $('.main-images-preview').slick("slickGoTo", index);
+        }
+        
+        // set thumbs go to slide
+        setTimeout(function(){
+            $(".categories .all-images .thumb-item img").click(function(){
+                goToSlide($(this).parent().attr("data-product-id"));
             });
-            $(".btn-open-panel .btn-title").map(function(){
-                compareBtnOpenInfoSlickActive($(this));
-            });
-            setImageIdToUrl();
-            loadFixesAfterChange = setInterval(function(){
-                fixPortraitPicture($(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index") + "'] .project-image"));
-                if ($(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index") + "'] .project-image").hasClass("image-portrait")) {
-                    clearInterval(loadFixesAfterChange);
-                }
-            }, 250);
-            addImageToModal($(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index") + "'] .project-image"));
-        });
+        }, 1000);
 
         // auto hide panels
         function hideInfoPanel() {
@@ -273,12 +237,7 @@ jQuery(function($) {
                 $(".object-detail").removeClass("more-info-opened");
             }, 4000);
         }
-        // function hideCategoriesPanel() {
-        //     categoriesTimeOut = setTimeout(function(){
-        //         $(".object-detail").removeClass("categories-opened");
-        //     }, 4000);
-        // }
-        // info actions
+        
         hideInfoPanel()
         $(".panel-more-info").mouseout(function(){
             hideInfoPanel();
@@ -288,68 +247,6 @@ jQuery(function($) {
                 clearTimeout(infoTimeOut);
             });
         });
-        // categories actions
-        hideCategoriesPanel()
-        $(".categories").mouseout(function(){
-            hideCategoriesPanel();
-        });
-        $(".categories").mouseover(function(){
-            $(function(){
-                clearTimeout(categoriesTimeOut);
-            });
-        });
     });   
-});
-</script>
-<script type="text/javascript">
-jQuery(function($) {
-    $(function(){
-        $('.similar-images-preview')
-        .on('init', function(event, slick) {
-            $(".slick-slide[data-slick-index='" + $(".maincontent").attr("slick-active-index")).addClass('is-active');
-        })
-        .slick({
-            slidesToShow: 8,
-            slidesToScroll: 3,
-            dots: false,
-            centerMode: true,
-            focusOnSelect: false,
-            infinite: false,
-            swipeToSlide: true,
-            lazyLoad: 'ondemand',
-            responsive: [{
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 5,
-                    slidesToScroll: 5,
-                }
-            }, {
-                breakpoint: 640,
-                settings: {
-                    slidesToShow: 4,
-                    slidesToScroll: 4,
-                }
-            }, {
-                breakpoint: 420,
-                settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 3,
-            }
-            }]
-        });
-        /* sync sliders */
-        $('.main-images-preview').on('afterChange', function(event, slick, currentSlide) {
-            $('.similar-images-preview').slick('slickGoTo', $(".maincontent").attr("slick-active-index"));
-            var currrentNavSlideElem = '.similar-images-preview .slick-slide[data-slick-index="' + currentSlide + '"]';
-            $('.similar-images-preview .slick-slide.is-active').removeClass('is-active');
-            $(currrentNavSlideElem).addClass('is-active');
-        });
-        $('.similar-images-preview').on('click', '.slick-slide', function(event) {
-            event.preventDefault();
-            var goToSingleSlide = $(this).data('slick-index');
-
-            $('.main-images-preview').slick('slickGoTo', goToSingleSlide);
-        });
-    });
 });
 </script>
