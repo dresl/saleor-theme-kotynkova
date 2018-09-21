@@ -54,7 +54,7 @@
     background-size: 170px,107%,100%;
 }
 .front-banner .banner-item > .container {
-    bottom: 7px;
+    bottom: 0px;
 }
 .front-banner .banner-item .item-info h3 {
     font-size: 13px;
@@ -71,6 +71,11 @@
 }
 .front-banner .carousel-indicators {
     bottom: 6.7vw;
+}
+@media screen and (max-width: 992px) {
+  .front-banner .carousel-indicators {
+    bottom: 109px;
+  }
 }
 .btn.btn-order {
     border: 1px solid #e0e0e0;
@@ -151,6 +156,9 @@
 .main-menu .dropdown .dropdown-menu > li a {
     font-size: 13px;
 }
+.dropdown-menu.show {
+    display: block!important;
+}
 .navbar__brand__cart .cart__icon {
     color: #333;
     padding-bottom: 0px;
@@ -190,8 +198,11 @@
 .cart-dropdown .container h3 {
     font-size: 14px;
 }
-.cart-dropdown .container img {
+.cart-dropdown .container .cart-dropdown__empty img {
     height: 160px;
+}
+.cart-dropdown.show {
+    -webkit-transform: translate3d(0,0,0);
 }
 .btn.primary {
     padding: 6px 40px;

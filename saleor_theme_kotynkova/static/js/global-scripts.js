@@ -39,15 +39,15 @@ jQuery(function($) {
       }, 5);
           });
       $(".main-menu .language-menu > div > a").click(function(){
-      $(this).toggleClass("open");
-      setTimeout(function(){
-      if ($(".main-menu .language-menu > div > a").hasClass("open")) {
-          $(".main-menu .language-menu .language-picker > .dropdown-menu").addClass("show");
-          } else {
-      $(".main-menu .language-menu .language-picker > .dropdown-menu").removeClass("show");
-      }
-      }, 5);
-    });
+        $(this).toggleClass("open");
+        setTimeout(function(){
+        if ($(".main-menu .language-menu > div > a").hasClass("open")) {
+            $(".main-menu .language-menu .language-picker > .dropdown-menu").addClass("show");
+            } else {
+        $(".main-menu .language-menu .language-picker > .dropdown-menu").removeClass("show");
+        }
+        }, 5);
+      });
   });
   $(document).mouseup(function(e){
     var container = $(".main-menu li.dropdown");

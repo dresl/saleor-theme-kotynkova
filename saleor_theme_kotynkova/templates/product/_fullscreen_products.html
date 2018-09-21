@@ -151,23 +151,6 @@ jQuery(function($) {
         lazyLoad: 'ondemand',
     });
     $(function() {
-        $(".info-object .btn-order").click(function(){
-            variantText = $(this).attr("activate");
-            variantInterval = setInterval(function(){
-                $(".variant-picker__option").map(function(){
-                    if ($(this).text().toLowerCase() == variantText.toLowerCase()) {
-                        $(this).addClass("active");
-                    } else {
-                        $(this).removeClass("active");
-                    }
-                })
-                if ($(".modal .row.product")) {
-                    setTimeout(function(){
-                        clearInterval(variantInterval);
-                    }, 500);
-                }
-            }, 1)
-        });
         // toggle class more info
         $(".btn-open-panel").click(function(){
             $(".object-detail").toggleClass("more-info-opened");
@@ -204,10 +187,34 @@ jQuery(function($) {
             window.location.hash = "slick-slide-"+$(".slick-current.slick-active").attr("data-picture-id");
         }
 
+        function initBrnOrderVariant() {
+            setTimeout(function(){
+                $(".info-object .btn-order").click(function(){
+                    variantText = $(this).attr("activate");                    
+                    variantInterval = setInterval(function(){
+                        $(".variant-picker__option").map(function(){
+                            console.log($(this).text().toLowerCase());
+                            if ($(this).text().toLowerCase() == variantText.toLowerCase()) {
+                                $(this).addClass("active");
+                            } else {
+                                $(this).removeClass("active");
+                            }
+                        })
+                        if ($(".modal .row.product")) {
+                            setTimeout(function(){
+                                clearInterval(variantInterval);
+                            }, 500);
+                        }
+                    }, 1)
+                });
+            }, 400);
+        }
+
         $(function(){
             $('.slick-current.slick-active').trigger('click');
             setImageIdToUrl();
             $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
+            initBrnOrderVariant();
         });
         
         // info inner content, btn afterChange and portrait picture
@@ -216,6 +223,7 @@ jQuery(function($) {
             setImageIdToUrl();
             $(".all-images .thumb-item").removeClass("active");
             $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
+            initBrnOrderVariant();
         });
 
         function goToSlide(ID) {
@@ -230,6 +238,24 @@ jQuery(function($) {
                 goToSlide($(this).parent().attr("data-product-id"));
             });
         }, 1000);
+
+        // fix dropdowns
+        $(".btn-group.bootstrap-select.show-tick button").click(function(){
+            if ($(this).parent().find("select").prev().hasClass("show")) {
+                $(this).parent().find("select").prev().removeClass("show")
+            }
+            else {
+                $(this).parent().find("select").prev().addClass("show");
+            }
+        });
+
+        $(document).mouseup(function(e){
+            var btnDropdownToggle = $(".btn-group.bootstrap-select.show-tick .dropdown-menu.open.show");
+            if (!btnDropdownToggle.is(e.target) && btnDropdownToggle.has(e.target).length === 0) 
+            {
+                $(".btn-group.bootstrap-select.show-tick .dropdown-menu.open.show").removeClass("show");
+            }
+        });
 
         // auto hide panels
         function hideInfoPanel() {
