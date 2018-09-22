@@ -57,6 +57,73 @@
 .btn-categories .arrow {
     border-color: #fff;
 }
+.object-image.slick-slide {
+    background-image: url(/static/css/ajax-loader.gif);
+    background-repeat: no-repeat;
+    background-position: 50% 40%;
+    height: 100vh;
+}
+.main-images-preview .slick-list {
+    background-image: none;
+}
+@media screen and (max-width: 1300px) {
+    .product-list .object-image img.wide-image {
+        width: 100vw;
+        height: auto;
+    }
+}
+@media screen and (max-width: 600px) {
+    .categories .top-panel {
+        padding-top: 0px;
+        padding-bottom: 250px;
+    }
+    .search-tab .product-filters .btn-order {
+        margin-top: 5px;
+    }
+    .categories .container-fluid .all-images {
+        height: 50vh;
+    }
+    .btn-open-panel.more-info {
+        display: none;
+    }
+    .object-detail.more-info-opened .panel-more-info {
+        right: 0!important;
+        width: 100%;
+    }
+    .object-detail.more-info-opened .main-images-preview .slick-next {
+        right: 0!important;
+    }
+    .product-list {
+        padding: 0;
+    }
+    .row {
+        margin: 0;
+    }
+    .btn-categories {
+        width: 100%;
+        z-index: 999;
+        left: 0;
+    }
+    .btn-fullscreen {
+        display: none;
+    }
+    button.slick-arrow {
+        top: 150px;
+        width: 25px;
+        height: 25px;
+    }
+    .slick-arrow.slick-prev {
+        left: 5px!important;
+    }
+    .slick-arrow.slick-next {
+        right: 5px!important;
+    }
+    .slick-arrow.slick-prev:before,
+    .slick-arrow.slick-next:before {
+        border-width: 0 1px 1px 0!important;
+        padding: 6px!important;
+    }
+}
 </style>
 
 <div class="object-detail more-info-opened search-tab-opened" slick-active-index="">
@@ -106,7 +173,7 @@
                 </div>
                 <div class="row all-images">
                 {% for product, available in picture_list %}
-                    <div class="col-md-1 thumb-item" product-id="{{ product.id }}" data-product-id="{{ product.id }}">
+                    <div class="col-md-1 col-4 thumb-item" product-id="{{ product.id }}" data-product-id="{{ product.id }}">
                         {% thumbnail product.get_first_image "125x125" format="PNG" crop="center" as image %}
                         <img src="{{ image.url }}">
                         {% endthumbnail %}
@@ -210,19 +277,38 @@ jQuery(function($) {
             }, 400);
         }
 
+        // fix Wide picture
+        function fixWidePicture(element) {
+            var image = new Image();
+            image.src = element.attr("src");
+            width = image.naturalWidth;
+            height = image.naturalHeight;
+            console.log(width - height);
+            setTimeout(function(){
+                if (width - height >= 0) {
+                    $(".slick-current.slick-active .project-image").addClass("wide-image");
+                }
+                $(".slick-current.slick-active").css("background-image", "none");
+                if ($(document).width() <= 600) {
+                    $(".panel-more-info").css("top", $(".slick-current.slick-active .project-image").height());
+                }
+            }, 200);
+        }
+        
         $(function(){
             $('.slick-current.slick-active').trigger('click');
             setImageIdToUrl();
             $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
             initBrnOrderVariant();
         });
-        
-        // info inner content, btn afterChange and portrait picture
+
+        // info inner content, btn afterChange and Wide picture
         $('.main-images-preview').on('afterChange', function(event, slick, currentSlide, direction){
             $('.slick-current.slick-active').trigger('click');
             setImageIdToUrl();
             $(".all-images .thumb-item").removeClass("active");
             $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
+            fixWidePicture($(".slick-current.slick-active .project-image"));
             initBrnOrderVariant();
         });
 
@@ -258,21 +344,23 @@ jQuery(function($) {
         });
 
         // auto hide panels
-        function hideInfoPanel() {
-            infoTimeOut = setTimeout(function(){
-                $(".object-detail").removeClass("more-info-opened");
-            }, 4000);
+        if ($(document).width() >= 600) {
+            function hideInfoPanel() {
+                infoTimeOut = setTimeout(function(){
+                    $(".object-detail").removeClass("more-info-opened");
+                }, 4000);
+            }
+            hideInfoPanel()
+            $(".panel-more-info").mouseout(function(){
+                hideInfoPanel();
+            });
+            $(".panel-more-info").mouseover(function(){
+                $(function(){
+                    clearTimeout(infoTimeOut);
+                });
+            });
         }
         
-        hideInfoPanel()
-        $(".panel-more-info").mouseout(function(){
-            hideInfoPanel();
-        });
-        $(".panel-more-info").mouseover(function(){
-            $(function(){
-                clearTimeout(infoTimeOut);
-            });
-        });
     });   
 });
 </script>

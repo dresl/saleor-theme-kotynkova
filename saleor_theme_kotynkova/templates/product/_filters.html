@@ -14,7 +14,7 @@
     {% block title_tree %}{% endblock title_tree %}
   </div> -->
 </div>
-<div class="filters-menu__body d-none d-md-block">
+<div class="filters-menu__body d-md-block">
   <!-- <h2>
     {% trans 'Filters' context 'Filter heading title' %}
     {% if filter_set.is_bound_unsorted %}
@@ -36,18 +36,18 @@
             <input type="hidden" name="sort_by" value="{% if request.GET.sort_by %}{{ request.GET.sort_by }}{% endif %}">
           {% elif field.name == 'price' %}
           {% elif field.name == 'obraz-typ' %}
-          <div class="col-1 title filter-option">
+          <div class="col-12 col-md-1 title filter-option">
             <span class="search-title">{% trans "Search" %}:</span>
           </div>
           {% else %}
-          <div class="col-2 filter-option">
+          <div class="col-12 col-md-2 filter-option">
             <div class="filter-product" title="{{ field.label }}">
                 {{ field }}
             </div>
           </div>
           {% endif %}
           {% if forloop.last %}
-          <div class="col-2 filter-option">
+          <div class="col-12 col-md-2 filter-option">
               <div class="filter-product" title="{% trans 'Varianta' %}">
                 {% with request.GET|get_list:'variants' as variants_list %}
                 <select a="{{ variants_list }}" name="variants" id="id_varianta" multiple="multiple" title="{% trans 'Varianta' %}" class="selectpicker" tabindex="-98">
@@ -58,7 +58,7 @@
                 {% endwith %}
               </div>
           </div>
-          <div class="col-2 filter-option">
+          <div class="col-12 col-md-2 filter-option">
             <div class="filter-product search-name" title="Name">
               <div class="btn-group search-group">
                 <input class="" type="text" name="name" placeholder="{% trans 'Searched text' %}..." value="{% if request.GET.name %}{{ request.GET.name }}{% endif %}">
@@ -67,7 +67,7 @@
           </div>
           {% endif %}
         {% endfor %}
-        <div class="col-1 filter-option">
+        <div class="col-12 col-md-1 filter-option">
           <button class="btn btn-order" type="submit">{% trans 'Update' context 'Apply filters button' %}</button>
         </div>
         </div>
