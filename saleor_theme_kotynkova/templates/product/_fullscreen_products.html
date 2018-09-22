@@ -104,6 +104,9 @@
         z-index: 999;
         left: 0;
     }
+    .object-detail.categories-opened.search-tab-opened .btn-categories {
+        left: 0;
+    }
     .btn-fullscreen {
         display: none;
     }
@@ -326,22 +329,31 @@ jQuery(function($) {
         }, 1000);
 
         // fix dropdowns
-        $(".btn-group.bootstrap-select.show-tick button").click(function(){
+        $(".btn-group.bootstrap-select.show-tick > button").click(function(){
+            button = $(this)
             if ($(this).parent().find("select").prev().hasClass("show")) {
                 $(this).parent().find("select").prev().removeClass("show")
             }
             else {
                 $(this).parent().find("select").prev().addClass("show");
             }
+            setTimeout(function(){
+                $(document).mouseup(function(e){
+                    var btnDropdownToggle = $(".btn-group.bootstrap-select.show-tick .dropdown-menu.open.show");
+                    if (!btnDropdownToggle.is(e.target) && btnDropdownToggle.has(e.target).length === 0) 
+                    {
+                        $(".btn-group.bootstrap-select.show-tick .dropdown-menu.open.show").removeClass("show");
+                    }
+                });
+                if (button.hasClass("opened")) {
+                    $(".btn-group.bootstrap-select.show-tick .dropdown-menu.open.show").removeClass("show");
+                    button.removeClass("opened");
+                } else {
+                    button.addClass("opened");
+                }
+            }, 100);
         });
 
-        $(document).mouseup(function(e){
-            var btnDropdownToggle = $(".btn-group.bootstrap-select.show-tick .dropdown-menu.open.show");
-            if (!btnDropdownToggle.is(e.target) && btnDropdownToggle.has(e.target).length === 0) 
-            {
-                $(".btn-group.bootstrap-select.show-tick .dropdown-menu.open.show").removeClass("show");
-            }
-        });
 
         // auto hide panels
         if ($(document).width() >= 600) {
