@@ -14,15 +14,14 @@ jQuery(function($) {
   });
 });
 jQuery(function($) {
-    setTimeout(function(){
-      $(".carousel").swipe({
-        swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-          if (direction == 'left') $(this).carousel('next');
-          if (direction == 'right') $(this).carousel('prev');
-        },
-      });
-    }, 1000);
-  
+  setTimeout(function(){
+    $(".carousel").swipe({
+      swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+        if (direction == 'left') $(this).carousel('next');
+        if (direction == 'right') $(this).carousel('prev');
+      },
+    });
+  }, 1000);
   $(function(){
     $('.main-menu li.dropdown a.dropdown-toggle').click(function() {
       $("#nav-icon1").toggleClass('open');
@@ -48,6 +47,13 @@ jQuery(function($) {
         }
         }, 5);
       });
+  });
+  $(window).scroll(function() {
+      if ($(this).scrollTop() >= 150) {
+        $(".navbar.fixed-top").addClass("tagged");
+      } else {
+        $(".navbar.fixed-top").removeClass("tagged");
+      }
   });
   $(document).mouseup(function(e){
     var container = $(".main-menu li.dropdown");
