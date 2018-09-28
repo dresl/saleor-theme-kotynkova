@@ -978,7 +978,7 @@ ul.breadcrumbs {
     height: 25px;
     background-color: #fff;
 }
-.front-banner.carousel-control-next,
+.front-banner .carousel-control-next,
 .front-banner .carousel-control-prev {
     top: 8%;
     height: 50%;
