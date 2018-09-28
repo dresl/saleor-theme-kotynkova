@@ -213,6 +213,11 @@
 
 <script type="text/javascript">
 jQuery(function($) {
+    setTimeout(function(){
+        if (window.location.hash == "#show-all-pictures") {
+            $(".object-detail").toggleClass("categories-opened");
+        }
+    }, 200);
     $(".main-images-preview").slick({
         infinite: false,
         slidesToShow: 1,
@@ -300,7 +305,6 @@ jQuery(function($) {
         
         $(function(){
             $('.slick-current.slick-active').trigger('click');
-            setImageIdToUrl();
             $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
             initBrnOrderVariant();
         });
