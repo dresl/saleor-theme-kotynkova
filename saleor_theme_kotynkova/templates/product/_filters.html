@@ -68,6 +68,7 @@
           {% endif %}
         {% endfor %}
         <div class="col-12 col-md-1 filter-option">
+          <button class="btn btn-order" type="reset">{% trans 'Remove filters' context 'Remove filters button' %}</button>
           <button class="btn btn-order" type="submit">{% trans 'Update' context 'Apply filters button' %}</button>
         </div>
         </div>
@@ -80,6 +81,15 @@
   jQuery(function($) {
     $("select[multiple=multiple]").map(function(){
       $(this).attr("title", $(this).parent().attr("title")).addClass("selectpicker").selectpicker({});
+    });
+    $(".product-filters .btn-order[type='reset']").click(function(){
+      setTimeout(function(){
+        $(".filter-product select option").removeAttr("selected");
+        $(".filter-product .selectpicker").selectpicker("refresh");
+      }, 100);
+    });
+    $(".product-filters .btn-order[type='submit']").click(function(){
+      window.location.hash = "show-all-pictures";
     });
   });
 </script>

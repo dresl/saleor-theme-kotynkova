@@ -66,6 +66,17 @@
 .main-images-preview .slick-list {
     background-image: none;
 }
+.btn-open-panel .btn-title {
+    box-shadow: 0px 0px 1px #000000;
+}
+.search-tab .product-filters .btn-order {
+    width: 141px;
+    margin-left: 4px;
+    height: 25px;
+    margin-top: -15px;
+    padding: 0px 15px;
+}
+
 @media screen and (max-width: 1300px) {
     .product-list .object-image img.wide-image {
         width: 100vw;
@@ -79,6 +90,7 @@
     }
     .search-tab .product-filters .btn-order {
         margin-top: 5px;
+        width: auto;
     }
     .categories .container-fluid .all-images {
         height: 50vh;
@@ -188,6 +200,7 @@
     </div>
     <div class="btn-open-panel more-info">
         <span class="open"></span>
+        <span class="btn-title"></span>
     </div>
     <div class="panel-more-info">
         <span class="close">×</span>
@@ -268,7 +281,6 @@ jQuery(function($) {
                     variantText = $(this).attr("activate");                    
                     variantInterval = setInterval(function(){
                         $(".variant-picker__option").map(function(){
-                            console.log($(this).text().toLowerCase());
                             if ($(this).text().toLowerCase() == variantText.toLowerCase()) {
                                 $(this).addClass("active");
                             } else {
@@ -291,7 +303,6 @@ jQuery(function($) {
             image.src = element.attr("src");
             width = image.naturalWidth;
             height = image.naturalHeight;
-            console.log(width - height);
             setTimeout(function(){
                 if (width - height >= 0) {
                     $(".slick-current.slick-active .project-image").addClass("wide-image");
@@ -302,11 +313,17 @@ jQuery(function($) {
                 }
             }, 200);
         }
+
+        // set title to btn-title
+        function setTitle() {
+            $(".btn-open-panel .btn-title").text($(".panel-more-info .info-object h2").text());
+        }
         
         $(function(){
             $('.slick-current.slick-active').trigger('click');
             $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
             initBrnOrderVariant();
+            setTitle();
         });
 
         // info inner content, btn afterChange and Wide picture
@@ -317,6 +334,9 @@ jQuery(function($) {
             $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
             fixWidePicture($(".slick-current.slick-active .project-image"));
             initBrnOrderVariant();
+            setTimeout(function(){
+                setTitle();
+            }, 300);
         });
 
         function goToSlide(ID) {
