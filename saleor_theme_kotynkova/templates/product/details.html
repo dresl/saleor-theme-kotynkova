@@ -167,11 +167,13 @@
           {% blocktrans context "Product details text" %}This product is currently <strong>unavailable</strong>.{% endblocktrans %}
         </p>
       {% endif %}
+      {% if product.translated.description != " " %}
       <div class="product__info__description">
         <h3>{% trans "Description" context "Product details title" %}</h3>
         <hr>
         {{ product.translated.description|safe }}
       </div>
+      {% endif %}
       <hr>
       <table>
         {% for attribute, value in product_attributes.items %}

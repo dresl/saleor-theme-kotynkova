@@ -48,9 +48,9 @@
           {% endif %}
           {% if forloop.last %}
           <div class="col-12 col-md-2 filter-option">
-              <div class="filter-product" title="{% trans 'Varianta' %}">
+              <div class="filter-product" title="{% trans 'Variant' %}">
                 {% with request.GET|get_list:'variants' as variants_list %}
-                <select a="{{ variants_list }}" name="variants" id="id_varianta" multiple="multiple" title="{% trans 'Varianta' %}" class="selectpicker" tabindex="-98">
+                <select a="{{ variants_list }}" name="variants" id="id_varianta" multiple="multiple" title="{% trans 'Variant' %}" class="selectpicker" tabindex="-98">
                   {% for value in product_attr.values.all %}
                   <option value="{{ value.id }}" {% if value.id|is_in:variants_list %}selected{% endif %}>{{ value.translated }}</option>
                   {% endfor %}
