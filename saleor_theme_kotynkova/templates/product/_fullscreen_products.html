@@ -76,6 +76,9 @@
     margin-top: -15px;
     padding: 0px 15px;
 }
+.categories .show-filters.btn.btn-order {
+    display: none;
+}
 
 @media screen and (max-width: 1300px) {
     .product-list .object-image img.wide-image {
@@ -138,6 +141,14 @@
         border-width: 0 1px 1px 0!important;
         padding: 6px!important;
     }
+    .categories .top-panel {
+        display: none;
+    }
+    .categories .show-filters.btn.btn-order {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        display: inline;
+    }
 }
 </style>
 
@@ -180,6 +191,7 @@
         </div>
         <div class="categories">
             <div class="container-fluid">
+                <button class="show-filters btn btn-order">{% trans "Show filters" %}</button>
                 <div class="top-panel">
                     <span class="close">×</span>
                     <div class="search-tab">
@@ -205,7 +217,7 @@
     <div class="panel-more-info">
         <span class="close">×</span>
     </div>
-    
+
     <!-- Modal -->
     <div class="modal fade" id="pictureModalFullscreen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -231,6 +243,9 @@ jQuery(function($) {
             $(".object-detail").toggleClass("categories-opened");
         }
     }, 200);
+    $(".categories .show-filters").click(function(){
+        $(".categories .top-panel").toggle();
+    });
     $(".main-images-preview").slick({
         infinite: false,
         slidesToShow: 1,
@@ -332,11 +347,13 @@ jQuery(function($) {
             setImageIdToUrl();
             $(".all-images .thumb-item").removeClass("active");
             $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
-            fixWidePicture($(".slick-current.slick-active .project-image"));
             initBrnOrderVariant();
             setTimeout(function(){
                 setTitle();
             }, 300);
+            setTimeout(function(){
+                fixWidePicture($(".slick-current.slick-active .project-image"));
+            }, 700);
         });
 
         function goToSlide(ID) {

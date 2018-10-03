@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-30 12:28+0200\n"
+"POT-Creation-Date: 2018-10-03 18:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,7 +60,7 @@ msgctxt "Main navigation item"
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:226 templates/product/_fullscreen_products.html:220
+#: templates/base.html:226 templates/product/_fullscreen_products.html:232
 #: templates/product/details.html:83
 msgid "Close"
 msgstr ""
@@ -263,8 +263,12 @@ msgctxt "Apply filters button"
 msgid "Update"
 msgstr ""
 
-#: templates/product/_fullscreen_products.html:177
+#: templates/product/_fullscreen_products.html:188
 msgid "Displayed"
+msgstr ""
+
+#: templates/product/_fullscreen_products.html:194
+msgid "Show filters"
 msgstr ""
 
 #: templates/product/_product_list_banner.html:49
@@ -295,12 +299,12 @@ msgctxt "Product details text"
 msgid "This product is currently <strong>unavailable</strong>."
 msgstr ""
 
-#: templates/product/details.html:171
+#: templates/product/details.html:172
 msgctxt "Product details title"
 msgid "Description"
 msgstr ""
 
-#: templates/product/details.html:196
+#: templates/product/details.html:198
 msgid "This product variant is not in stock."
 msgstr ""
 

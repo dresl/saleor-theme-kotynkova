@@ -172,7 +172,7 @@ v rodině.</p>
     {% for product in all_products %}
     get_product_thumb("{% url 'product:render_product_thumb' product_id=product.id %}", $("#rendered_thumbs"));
     {% endfor %}
-  }, 1000);
+  }, 2000);
   </script>
   <script type="text/javascript">
     $(function(){
