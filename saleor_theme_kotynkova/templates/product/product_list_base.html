@@ -52,17 +52,9 @@
       <div class="col-md-8 col-lg-12 product-list">
         <div>
           {% if products %}
-              {% include "product/_fullscreen_products.html" with picture_list=products %}
+            {% include "product/_fullscreen_products.html" with picture_list=products %}
           {% else %}
-            <div class="row no-results">
-              <div class="col-12">
-                <svg data-src="{% static "images/no-results-bg.svg" %}"
-                     width="360"
-                     height="360" />
-                <p>{% trans "Sorry, no matches found for your request." context "Search without results text" %}</p>
-                <p>{% trans "Try again or shop new arrivals." context "Search without results text" %}</p>
-              </div>
-            </div>
+            {% include "product/_fullscreen_products.html" with picture_list=products nothing_found=True %}
           {% endif %}
         </div>
       </div>

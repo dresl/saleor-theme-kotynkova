@@ -192,6 +192,7 @@
         display: block;
     }
   </style>
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
   <script type="text/javascript">
     function checkVariantAvailability() {
       if ($(".form-group.product__info__button button").hasClass("disabled")){
@@ -216,24 +217,29 @@
       }
     }
     jQuery(function($) {
+      if ($(".modal.in .maincontent > .row.product").css("display") != "flex") {
+        window.location.href = "{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}";
+        $(".maincontent").hide();
+      }
       setTimeout(function(){
         $("body > .modal-close").click(function(){
           $("#modal-container .modal-close").trigger("click");
         });
-        checkVariantAvailability();
-        checkVariantOriginal();
         $(".modal-close").click(function(){
           setTimeout(function(){
             $("#modal-container").html("");
           }, 300);
         });
+        $(".variant-picker__option.active > input").trigger("click");
+        checkVariantOriginal();
+        checkVariantAvailability();
         $(".btn.variant-picker__option").click(function() {
           setTimeout(function(){
-            checkVariantAvailability();
             checkVariantOriginal();
-          }, 300);
+            checkVariantAvailability();
+          }, 100);
         });
-      }, 200);
+      }, 300);
     });
   </script>
 {% endblock content %}

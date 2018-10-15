@@ -41,7 +41,7 @@
             {% endfor %}
             {% for variant in product.variants.all %}
                 {% if not variant.name == 'originál' %}
-                <span class="format">{{ variant.name }}{% if not forloop.last %},&nbsp;{% endif %}</span>
+                <span class="format{% if not variant.is_in_stock %} not-in-stock{% endif %}">{{ variant.name }}{% if not forloop.last %},&nbsp;{% endif %}</span>
                 {% endif %}
             {% endfor %}
           </div>

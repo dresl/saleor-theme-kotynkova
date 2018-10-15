@@ -9,7 +9,11 @@
     {% endfor %}
     <hr>
     {% for variant in product.variants.all %}
+    {% if variant.is_in_stock %}
         <span class='variant-item'>{{ variant.name }}</span><a activate='{{ variant.name }}' class='btn btn-order open-modal' href='{{ product.get_absolute_url }}'>{% blocktrans context 'Order variants' %}Order{% endblocktrans %}</a><br/>
+    {% else %}
+        <span class='variant-item'>{{ variant.name }}</span><span class="sold-out">{% trans "Sold out" %}</span><br/>
+    {% endif %}
     {% endfor %}
     <hr>
     <span class='description'>{{ product.translated.description|safe }}</span>

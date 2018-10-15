@@ -180,9 +180,11 @@
             </div>
             {% endfor %}
         </div>
+        {% if nothing_found != True %}
         <div class="btn-fullscreen">
             <span class="btn-fullscreen" data-toggle="modal" data-target="#pictureModalFullscreen"></span>
         </div>
+        {% endif %}
         <div class="btn-categories">
             <span class="title">
                 {% trans "Displayed" %} <span>{{ picture_list|count_products }} {{ count_products }}</span>
@@ -206,10 +208,14 @@
                         {% endthumbnail %}
                     </div>
                 {% endfor %}
+                {% if nothing_found == True %}
+                    <p>{% trans "Sorry, no matches found for your request." %}</p>
+                {% endif %}
                 </div>
             </div>
         </div>
     </div>
+    {% if nothing_found != True %}
     <div class="btn-open-panel more-info">
         <span class="open"></span>
         <span class="btn-title"></span>
@@ -217,6 +223,7 @@
     <div class="panel-more-info">
         <span class="close">×</span>
     </div>
+    {% endif %}
 
     <!-- Modal -->
     <div class="modal fade" id="pictureModalFullscreen" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-03 18:56+0200\n"
+"POT-Creation-Date: 2018-10-15 11:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,47 +18,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: templates/base.html:95 templates/base.html:146
+#: templates/base.html:103 templates/base.html:154
 msgctxt "Main navigation item"
 msgid "Your Cart"
 msgstr ""
 
-#: templates/base.html:153 templates/menu_full.html:21
+#: templates/base.html:161 templates/menu_full.html:21
 msgctxt "Main navigation item"
 msgid "Dashboard"
 msgstr ""
 
-#: templates/base.html:158
+#: templates/base.html:166
 msgctxt "Main navigation item"
 msgid "Style guide"
 msgstr ""
 
-#: templates/base.html:164 templates/menu_full.html:27
+#: templates/base.html:172 templates/menu_full.html:27
 msgctxt "Main navigation item"
 msgid "Your account"
 msgstr ""
 
-#: templates/base.html:170 templates/menu_full.html:32
+#: templates/base.html:178 templates/menu_full.html:32
 msgctxt "Main navigation item"
 msgid "Stop impersonating"
 msgstr ""
 
-#: templates/base.html:176 templates/menu_full.html:38
+#: templates/base.html:184 templates/menu_full.html:38
 msgctxt "Main navigation item"
 msgid "Log out"
 msgstr ""
 
-#: templates/base.html:182 templates/menu_full.html:44
+#: templates/base.html:190 templates/menu_full.html:44
 msgctxt "Main navigation item"
 msgid "Register"
 msgstr ""
 
-#: templates/base.html:187 templates/menu_full.html:48
+#: templates/base.html:195 templates/menu_full.html:48
 msgctxt "Main navigation item"
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:226 templates/product/_fullscreen_products.html:232
+#: templates/base.html:234 templates/product/_fullscreen_products.html:239
 #: templates/product/details.html:83
 msgid "Close"
 msgstr ""
@@ -261,12 +261,16 @@ msgctxt "Apply filters button"
 msgid "Update"
 msgstr ""
 
-#: templates/product/_fullscreen_products.html:188
+#: templates/product/_fullscreen_products.html:190
 msgid "Displayed"
 msgstr ""
 
-#: templates/product/_fullscreen_products.html:194
+#: templates/product/_fullscreen_products.html:196
 msgid "Show filters"
+msgstr ""
+
+#: templates/product/_fullscreen_products.html:212
+msgid "Sorry, no matches found for your request."
 msgstr ""
 
 #: templates/product/_product_list_banner.html:49
@@ -306,17 +310,11 @@ msgstr ""
 msgid "This product variant is not in stock."
 msgstr ""
 
-#: templates/product/product_list_base.html:62
-msgctxt "Search without results text"
-msgid "Sorry, no matches found for your request."
-msgstr ""
-
-#: templates/product/product_list_base.html:63
-msgctxt "Search without results text"
-msgid "Try again or shop new arrivals."
-msgstr ""
-
-#: templates/product/render_product_details.html:12
+#: templates/product/render_product_details.html:13
 msgctxt "Order variants"
 msgid "Order"
+msgstr ""
+
+#: templates/product/render_product_details.html:15
+msgid "Sold out"
 msgstr ""
