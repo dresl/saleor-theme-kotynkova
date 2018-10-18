@@ -67,9 +67,24 @@ span.format.not-in-stock {
 .maincontent > .alert {
     margin-top: 53px;
 }
-@media screen and (max-width: 600px) {
-  .front-banner .carousel-indicators {
-    display: none;
+.navbar__brand__cart .cart__icon {
+    z-index: 9999;
+}
+.slick-banner-images button.slick-arrow {
+    width: 32px;
+    height: 32px;
+}
+.slick-banner-images .slick-arrow.slick-next:before,
+.slick-banner-images .slick-arrow.slick-prev:before {
+    padding: 4px;
+}
+@media screen and (max-width: 800px) {
+  .slick-banner-images .banner-item > .container {
+      background-color: #fff;
+      bottom: 0!important;
+  }
+  .slick-banner-images .slick-dots {
+      display: none;
   }
 }
 </style>
