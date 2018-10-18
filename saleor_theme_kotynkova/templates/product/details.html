@@ -217,10 +217,10 @@
       }
     }
     jQuery(function($) {
-      if ($(".modal.in .maincontent > .row.product").css("display") != "flex") {
-        window.location.href = "{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}";
-        $(".maincontent").hide();
-      }
+      // if ($(".modal.in .maincontent > .row.product").css("display") != "flex") {
+      //   window.location.href = "{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}";
+      //   $(".maincontent").hide();
+      // }
       setTimeout(function(){
         $("body > .modal-close").click(function(){
           $("#modal-container .modal-close").trigger("click");
