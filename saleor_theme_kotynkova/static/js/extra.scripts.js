@@ -14,14 +14,6 @@ jQuery(function($) {
   });
 });
 jQuery(function($) {
-  setTimeout(function(){
-    $(".carousel").swipe({
-      swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-        if (direction == 'left') $(this).carousel('next');
-        if (direction == 'right') $(this).carousel('prev');
-      },
-    });
-  }, 1000);
   $(function(){
     $('.main-menu li.dropdown a.dropdown-toggle').click(function() {
       $("#nav-icon1").toggleClass('open');
