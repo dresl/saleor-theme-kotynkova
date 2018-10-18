@@ -191,6 +191,15 @@
     body.modal-open > .modal-close {
         display: block;
     }
+    body > .container-fluid.padding-none.maincontent {
+        width: 92vw;
+    }
+    .main-images-preview {
+        width: 99vw;
+    }
+    .product__gallery .carousel-item img {
+        width: 100%!important;
+    }
   </style>
   <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
   <script type="text/javascript">
@@ -217,10 +226,10 @@
       }
     }
     jQuery(function($) {
-      // if ($(".modal.in .maincontent > .row.product").css("display") != "flex") {
-      //   window.location.href = "{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}";
-      //   $(".maincontent").hide();
-      // }
+      if ($(".modal.in .maincontent > .row.product").css("display") != "flex") {
+        window.location.href = "{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}";
+        $(".maincontent").hide();
+      }
       setTimeout(function(){
         $("body > .modal-close").click(function(){
           $("#modal-container .modal-close").trigger("click");
