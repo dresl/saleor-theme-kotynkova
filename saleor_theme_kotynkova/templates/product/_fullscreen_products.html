@@ -1,10 +1,6 @@
 {% load i18n %}
 {% load staticfiles thumbnail saleor_ext %}
 
-<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
-<script type="text/javascript" src="/static/js/slick.min.js"></script>
-<script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
-
 <style type="text/css">
 .product-list .object-image img {
     height: 100vh;
@@ -151,6 +147,10 @@
     }
 }
 </style>
+
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
 
 <div class="object-detail more-info-opened search-tab-opened" slick-active-index="">
     <script type="text/javascript">
