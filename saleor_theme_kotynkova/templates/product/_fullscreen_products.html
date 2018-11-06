@@ -48,7 +48,6 @@
 .categories .container-fluid .all-images .thumb-item.active img {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
-    border: 7px solid #000;
 }
 .btn-categories .arrow {
     border-color: #fff;
@@ -417,9 +416,6 @@ jQuery(function($) {
                 }, 4000);
             }
             hideInfoPanel()
-            $(".panel-more-info").mouseout(function(){
-                hideInfoPanel();
-            });
             $(".panel-more-info").mouseover(function(){
                 $(function(){
                     clearTimeout(infoTimeOut);

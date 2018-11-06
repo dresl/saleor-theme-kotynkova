@@ -86,6 +86,7 @@
       setTimeout(function(){
         $(".filter-product select option").removeAttr("selected");
         $(".filter-product .selectpicker").selectpicker("refresh");
+        $(".product-filters .btn-order[type='submit']").trigger("click");
       }, 100);
     });
     $(".product-filters .btn-order[type='submit']").click(function(){
