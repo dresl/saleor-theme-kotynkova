@@ -100,7 +100,7 @@
 
 <div class="slick-banner-images">
   {% for product in products %}
-  <div class="banner-item item-{{ product.id }} {% if forloop.first %}active{% endif %}">
+  <div class="banner-item item-{{ product.id }} {% if forloop.first %}active{% endif %}" onclick="window.location.href='{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}';">
     <div class="container">
       <div class="item-info">
         <div class="row">

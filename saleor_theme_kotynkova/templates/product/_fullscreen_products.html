@@ -407,6 +407,19 @@ jQuery(function($) {
             }, 100);
         });
 
+        // arrows
+        $(document).keydown(function(e){
+          if (e.keyCode == 37) { 
+            $(".object-detail .slick-prev.slick-arrow").trigger("click");
+            compareActive(400);
+          }
+        });
+        $(document).keydown(function(e){
+          if (e.keyCode == 39) { 
+            $(".object-detail .slick-next.slick-arrow").trigger("click");
+            compareActive(400);
+          }
+        });
 
         // auto hide panels
         if ($(document).width() >= 600) {
