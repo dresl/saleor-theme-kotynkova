@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-15 11:14+0200\n"
+"POT-Creation-Date: 2018-11-20 15:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,47 +18,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: templates/base.html:103 templates/base.html:154
+#: templates/base.html:140 templates/base.html:191
 msgctxt "Main navigation item"
 msgid "Your Cart"
 msgstr "Váš košík"
 
-#: templates/base.html:161 templates/menu_full.html:21
+#: templates/base.html:198 templates/menu_full.html:21
 msgctxt "Main navigation item"
 msgid "Dashboard"
 msgstr "Ńástěnka"
 
-#: templates/base.html:166
+#: templates/base.html:203
 msgctxt "Main navigation item"
 msgid "Style guide"
 msgstr "Průvodce stylů"
 
-#: templates/base.html:172 templates/menu_full.html:27
+#: templates/base.html:209 templates/menu_full.html:27
 msgctxt "Main navigation item"
 msgid "Your account"
 msgstr "Váš účet"
 
-#: templates/base.html:178 templates/menu_full.html:32
+#: templates/base.html:215 templates/menu_full.html:32
 msgctxt "Main navigation item"
 msgid "Stop impersonating"
 msgstr ""
 
-#: templates/base.html:184 templates/menu_full.html:38
+#: templates/base.html:221 templates/menu_full.html:38
 msgctxt "Main navigation item"
 msgid "Log out"
 msgstr "Odhlásit se"
 
-#: templates/base.html:190 templates/menu_full.html:44
+#: templates/base.html:227 templates/menu_full.html:44
 msgctxt "Main navigation item"
 msgid "Register"
 msgstr "Registrovat se"
 
-#: templates/base.html:195 templates/menu_full.html:48
+#: templates/base.html:232 templates/menu_full.html:48
 msgctxt "Main navigation item"
 msgid "Log in"
 msgstr "Přihlásit se"
 
-#: templates/base.html:234 templates/product/_fullscreen_products.html:239
+#: templates/base.html:271 templates/product/_fullscreen_products.html:244
 #: templates/product/details.html:83
 msgid "Close"
 msgstr "Zavřít"
@@ -94,10 +94,6 @@ msgid "Check out our sales"
 msgstr "Podívejte se na náš sortiment"
 
 #: templates/checkout/details.html:7
-#, fuzzy
-#| msgctxt "Cart dropdown primary action"
-#| msgid "Checkout"
-msgctxt "Checkout page title"
 msgid "Checkout"
 msgstr "Objednat"
 
@@ -197,29 +193,29 @@ msgctxt "cart page: secondary action, empty the cart"
 msgid "Clear cart"
 msgstr "Smazat obsah košíku"
 
-#: templates/home.html:65
-msgid "New pictures"
-msgstr "Nové obrazy"
-
-#: templates/home.html:69
-msgid "All pictures"
-msgstr "Všechny obrazy"
-
-#: templates/home.html:72 templates/home.html:98
-msgid "Exhibitions"
-msgstr "Výstavy"
-
-#: templates/home.html:75
+#: templates/events/event_list.html:5
 msgid "Ongoing Exhibitions"
 msgstr "Probíhající výstavy"
 
-#: templates/home.html:77
+#: templates/events/event_list.html:13
 msgid "Constant Cooperation"
 msgstr "Stálá spolupráce"
 
-#: templates/home.html:81
+#: templates/events/event_list.html:21
 msgid "Older Exhibitions"
 msgstr "Starší výstavy"
+
+#: templates/home.html:71
+msgid "New pictures"
+msgstr "Nové obrazy"
+
+#: templates/home.html:75
+msgid "All pictures"
+msgstr "Všechny obrazy"
+
+#: templates/home.html:78
+msgid "Exhibitions"
+msgstr "Výstavy"
 
 #: templates/page/details.html:46
 #, fuzzy
@@ -283,19 +279,19 @@ msgctxt "Apply filters button"
 msgid "Update"
 msgstr "Aktualizovat"
 
-#: templates/product/_fullscreen_products.html:190
+#: templates/product/_fullscreen_products.html:195
 msgid "Displayed"
 msgstr "Zobrazeno"
 
-#: templates/product/_fullscreen_products.html:196
+#: templates/product/_fullscreen_products.html:201
 msgid "Show filters"
 msgstr "Zobrazit filtry"
 
-#: templates/product/_fullscreen_products.html:212
+#: templates/product/_fullscreen_products.html:217
 msgid "Sorry, no matches found for your request."
 msgstr "Je nám líto, pro váš požadavek nebyly nalezeny žádné výsledky."
 
-#: templates/product/_product_list_banner.html:49
+#: templates/product/_product_list_banner.html:123
 #: templates/product/_product_list_grid.html:31
 msgid "View"
 msgstr "Zobrazit"
@@ -330,7 +326,7 @@ msgctxt "Product details title"
 msgid "Description"
 msgstr "Popis"
 
-#: templates/product/details.html:198
+#: templates/product/details.html:208
 msgid "This product variant is not in stock."
 msgstr "Tato varianta není skladem."
 

@@ -407,6 +407,16 @@ jQuery(function($) {
             }, 100);
         });
 
+        $(document).mouseup(function(e){
+            var container = $(".categories .col-12.col-md-2.filter-option");
+            if (!container.is(e.target) && container.has(e.target).length === 0) 
+            {
+                if ($(".btn-group.bootstrap-select.show-tick").hasClass("open")) {
+                    $(".btn-group.bootstrap-select.show-tick.open").trigger("click");
+                }
+            }
+        });
+
         // arrows
         $(document).keydown(function(e){
           if (e.keyCode == 37) { 

@@ -1,0 +1,30 @@
+{% load i18n %}
+
+<div class="col-8 offset-2 text-center">
+{% if events %}
+    <h3>{% trans "Ongoing Exhibitions" %}</h3>
+    <ul>
+    {% for event in events %}
+    {% if event.ongoing %}
+        <li>{{ event.title }}</li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+    <h3>{% trans "Constant Cooperation" %}</h3>
+    <ul>
+    {% for event in events %}
+    {% if event.constant_cooperation %}
+        <li>{{ event.title }}</li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+    <h3>{% trans "Older Exhibitions" %}</h3>
+    <ul>
+    {% for event in events %}
+    {% if not event.constant_cooperation and not event.ongoing %}
+        <li year="{{ event.start.year}}">{{ event.title }}</li>
+    {% endif %}
+    {% endfor %}
+    </ul>
+{% endif %}
+</div>

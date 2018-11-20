@@ -35,6 +35,12 @@
     line-height: 14px;
     font-weight: bold;
 }
+.exhibitions ul h4 {
+    font-size: 14px;
+    margin-top: 11px;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
 .container-fluid.about-me {
     padding-top: 140px;
     padding-bottom: 140px;
@@ -71,68 +77,7 @@
   <div class="container exhibitions">
     <h1 class="text-center">{% trans "Exhibitions" %}</h1>
     <div class="row">
-      <div class="col-md-12 text-center">
-        <h3>{% trans "Ongoing Exhibitions" %}</h3>
-        {% get_event_list ongoing=True const_coop=False %}
-        <h3>{% trans "Constant Cooperation" %}</h3>
-        {% get_event_list ongoing=False const_coop=True %}
-      </div>
-      <div class="col-md-3 text-center">
-        <h3>{% trans "Older Exhibitions" %}</h3>
-        <ul class="filter-by-year">
-          <li year="2018" class="active">2018</li>
-          <li year="2011">2011</li>
-          <li year="2010">2010</li>
-          <li year="2009">2009</li>
-          <li year="2008">2008</li>
-          <li year="2007">2007</li>
-          <li year="2006">2006</li>
-          <li year="2005">2005</li>
-          <li year="2004">2004</li>
-          <li year="2003">2003</li>
-          <li year="2002">2002</li>
-          <li year="2001">2001</li>
-        </ul>
-      </div>
-      <div class="col-md-9 text-center">
-        <h3>{% trans "Exhibitions" %}</h3>
-        <div year="2018" class="exhib active">
-          {% get_event_list ongoing=False const_coop=False year=2018 %}
-        </div>
-        <div year="2011" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2011 %}
-        </div>
-        <div year="2010" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2010 %}
-        </div>
-        <div year="2009" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2009 %}
-        </div>
-        <div year="2008" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2008 %}
-        </div>
-        <div year="2007" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2007 %}
-        </div>
-        <div year="2006" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2006 %}
-        </div>
-        <div year="2005" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2005 %}
-        </div>
-        <div year="2004" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2004 %}
-        </div>
-        <div year="2003" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2003 %}
-        </div>
-        <div year="2002" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2002 %}
-        </div>
-        <div year="2001" class="exhib">
-          {% get_event_list ongoing=False const_coop=False year=2001 %}
-        </div>
-      </div>
+      {% render_events %}
     </div>
   </div>
   <div style="display: none;" id="rendered_thumbs"></div>
@@ -176,12 +121,15 @@ v rodině.</p>
   </script>
   <script type="text/javascript">
     $(function(){
-      $(".filter-by-year li").click(function(){
-        $(".exhib").css("display", "none");
-        $(".filter-by-year li").removeClass("active");
-        $(this).addClass("active");
-        $(".exhib[year='" + $(this).attr('year') + "']").css("display", "block");
-      });
+      // $(".filter-by-year li").click(function(){
+      //   $(".exhib").css("display", "none");
+      //   $(".filter-by-year li").removeClass("active");
+      //   $(this).addClass("active");
+      //   $(".exhib[year='" + $(this).attr('year') + "']").css("display", "block");
+      // });
+      for (var i = 2000; i <= (new Date).getFullYear(); i++) {
+        $("<h4>" + i + "</h4>").insertBefore($(".container.exhibitions ul li[year=" + i + "]").first());
+      }
     });
   </script>
 {% endblock %}

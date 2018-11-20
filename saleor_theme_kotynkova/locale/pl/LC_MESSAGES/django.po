@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-15 11:14+0200\n"
+"POT-Creation-Date: 2018-11-20 15:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,47 +20,47 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: templates/base.html:103 templates/base.html:154
+#: templates/base.html:140 templates/base.html:191
 msgctxt "Main navigation item"
 msgid "Your Cart"
 msgstr ""
 
-#: templates/base.html:161 templates/menu_full.html:21
+#: templates/base.html:198 templates/menu_full.html:21
 msgctxt "Main navigation item"
 msgid "Dashboard"
 msgstr ""
 
-#: templates/base.html:166
+#: templates/base.html:203
 msgctxt "Main navigation item"
 msgid "Style guide"
 msgstr ""
 
-#: templates/base.html:172 templates/menu_full.html:27
+#: templates/base.html:209 templates/menu_full.html:27
 msgctxt "Main navigation item"
 msgid "Your account"
 msgstr ""
 
-#: templates/base.html:178 templates/menu_full.html:32
+#: templates/base.html:215 templates/menu_full.html:32
 msgctxt "Main navigation item"
 msgid "Stop impersonating"
 msgstr ""
 
-#: templates/base.html:184 templates/menu_full.html:38
+#: templates/base.html:221 templates/menu_full.html:38
 msgctxt "Main navigation item"
 msgid "Log out"
 msgstr ""
 
-#: templates/base.html:190 templates/menu_full.html:44
+#: templates/base.html:227 templates/menu_full.html:44
 msgctxt "Main navigation item"
 msgid "Register"
 msgstr ""
 
-#: templates/base.html:195 templates/menu_full.html:48
+#: templates/base.html:232 templates/menu_full.html:48
 msgctxt "Main navigation item"
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:234 templates/product/_fullscreen_products.html:239
+#: templates/base.html:271 templates/product/_fullscreen_products.html:244
 #: templates/product/details.html:83
 msgid "Close"
 msgstr ""
@@ -190,28 +190,28 @@ msgctxt "cart page: secondary action, empty the cart"
 msgid "Clear cart"
 msgstr ""
 
-#: templates/home.html:65
-msgid "New pictures"
-msgstr ""
-
-#: templates/home.html:69
-msgid "All pictures"
-msgstr ""
-
-#: templates/home.html:72 templates/home.html:98
-msgid "Exhibitions"
-msgstr ""
-
-#: templates/home.html:75
+#: templates/events/event_list.html:5
 msgid "Ongoing Exhibitions"
 msgstr ""
 
-#: templates/home.html:77
+#: templates/events/event_list.html:13
 msgid "Constant Cooperation"
 msgstr ""
 
-#: templates/home.html:81
+#: templates/events/event_list.html:21
 msgid "Older Exhibitions"
+msgstr ""
+
+#: templates/home.html:71
+msgid "New pictures"
+msgstr ""
+
+#: templates/home.html:75
+msgid "All pictures"
+msgstr ""
+
+#: templates/home.html:78
+msgid "Exhibitions"
 msgstr ""
 
 #: templates/page/details.html:46
@@ -263,19 +263,19 @@ msgctxt "Apply filters button"
 msgid "Update"
 msgstr ""
 
-#: templates/product/_fullscreen_products.html:190
+#: templates/product/_fullscreen_products.html:195
 msgid "Displayed"
 msgstr ""
 
-#: templates/product/_fullscreen_products.html:196
+#: templates/product/_fullscreen_products.html:201
 msgid "Show filters"
 msgstr ""
 
-#: templates/product/_fullscreen_products.html:212
+#: templates/product/_fullscreen_products.html:217
 msgid "Sorry, no matches found for your request."
 msgstr ""
 
-#: templates/product/_product_list_banner.html:49
+#: templates/product/_product_list_banner.html:123
 #: templates/product/_product_list_grid.html:31
 msgid "View"
 msgstr ""
@@ -308,7 +308,7 @@ msgctxt "Product details title"
 msgid "Description"
 msgstr ""
 
-#: templates/product/details.html:198
+#: templates/product/details.html:208
 msgid "This product variant is not in stock."
 msgstr ""
 
