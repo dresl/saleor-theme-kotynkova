@@ -162,18 +162,18 @@
         function get_product_image(product_url, element) {
             $.ajax({    
                 url: product_url,
-                    success: function(data) {
-                        $('.object-image.slick-slide.slick-current.slick-active').html(data);
-                        $('#pictureModalFullscreen .modal-body').html(data);
-                    }
+                success: function(data) {
+                    $('.object-image.slick-slide.slick-current.slick-active').html(data);
+                    $('#pictureModalFullscreen .modal-body').html(data);
+                }
             });
         };
         function get_product_details(product_url) {
-            $.ajax({    
+            $.ajax({
                 url: product_url,
-                    success: function(data) {
-                        $('.panel-more-info').html(data);
-                    }
+                success: function(data) {
+                    $('.panel-more-info').html(data);
+                }
             });
         };
     </script>
@@ -302,28 +302,6 @@ jQuery(function($) {
             window.location.hash = "slick-slide-"+$(".slick-current.slick-active").attr("data-picture-id");
         }
 
-        function initBrnOrderVariant() {
-            setTimeout(function(){
-                $(".info-object .btn-order").click(function(){
-                    variantText = $(this).attr("activate");                    
-                    variantInterval = setInterval(function(){
-                        $(".variant-picker__option").map(function(){
-                            if ($(this).text().toLowerCase() == variantText.toLowerCase()) {
-                                $(this).addClass("active");
-                            } else {
-                                $(this).removeClass("active");
-                            }
-                        })
-                        if ($(".modal .row.product")) {
-                            setTimeout(function(){
-                                clearInterval(variantInterval);
-                            }, 800);
-                        }
-                    }, 1)
-                });
-            }, 400);
-        }
-
         // fix Wide picture
         function fixWidePicture(element) {
             var image = new Image();
@@ -346,12 +324,9 @@ jQuery(function($) {
             $(".btn-open-panel .btn-title").text($(".panel-more-info .info-object h2").text());
         }
         
-        $(function(){
-            $('.slick-current.slick-active').trigger('click');
-            $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
-            initBrnOrderVariant();
-            setTitle();
-        });
+        $('.slick-current.slick-active').trigger('click');
+        $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
+        setTitle();
 
         // info inner content, btn afterChange and Wide picture
         $('.main-images-preview').on('afterChange', function(event, slick, currentSlide, direction){
@@ -359,7 +334,6 @@ jQuery(function($) {
             setImageIdToUrl();
             $(".all-images .thumb-item").removeClass("active");
             $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
-            initBrnOrderVariant();
             setTimeout(function(){
                 setTitle();
             }, 300);
@@ -444,8 +418,7 @@ jQuery(function($) {
                     clearTimeout(infoTimeOut);
                 });
             });
-        }
-        
-    });   
+        } 
+    });
 });
 </script>

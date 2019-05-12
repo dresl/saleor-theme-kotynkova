@@ -203,41 +203,39 @@
   </style>
   <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
   <script type="text/javascript">
-    function checkVariantAvailability() {
-      if ($(".form-group.product__info__button button").hasClass("disabled")){
-        $(".product__info__form-error small").html("{% trans 'This product variant is not in stock.' %}");
-      } else {
-        $(".product__info__form-error small").html("");
-      }
-    }
-    function convertToSlug(string)
-    {
-      return string
-        .toLowerCase()
-        .replace(/[^\w ]+/g,'')
-        .replace(/ +/g,'-')
-        ;
-    }
-    function checkVariantOriginal() {
-      if (convertToSlug($(".variant-picker .variant-picker__option.active").text()) == "originl") {
-        $(".product__info__quantity").css("visibility", "hidden");
-      } else {
-        $(".product__info__quantity").css("visibility", "visible");
-      }
-    }
     jQuery(function($) {
+      function checkVariantAvailability() {
+        if ($(".form-group.product__info__button button").hasClass("disabled")){
+          $(".product__info__form-error small").html("{% trans 'This product variant is not in stock.' %}");
+        } else {
+          $(".product__info__form-error small").html("");
+        }
+      }
+      function convertToSlug(string)
+      {
+        return string
+          .toLowerCase()
+          .replace(/[^\w ]+/g,'')
+          .replace(/ +/g,'-')
+          ;
+      }
+      function checkVariantOriginal() {
+        if (convertToSlug($(".variant-picker .variant-picker__option.active").text()) == "originl") {
+          $(".product__info__quantity").css("visibility", "hidden");
+        } else {
+          $(".product__info__quantity").css("visibility", "visible");
+        }
+      }
       if ($(".modal.in .maincontent > .row.product").css("display") != "flex") {
         window.location.href = "{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}";
         $(".maincontent").hide();
       }
-      setTimeout(function(){
+      $(function(){
         $("body > .modal-close").click(function(){
           $("#modal-container .modal-close").trigger("click");
         });
         $(".modal-close").click(function(){
-          setTimeout(function(){
             $("#modal-container").html("");
-          }, 300);
         });
         $(".variant-picker__option.active > input").trigger("click");
         checkVariantOriginal();
@@ -248,7 +246,7 @@
             checkVariantAvailability();
           }, 100);
         });
-      }, 300);
+      });
     });
   </script>
 {% endblock content %}
