@@ -112,21 +112,6 @@ v rodině.</p>
   </div>
   <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
   <script type="text/javascript">
-  function get_product_thumb(product_url, element) {
-    $.ajax({    
-      url: product_url,
-        success: function(data) {
-            element.html(data);
-        }
-    });
-  };
-  setTimeout(function(){
-    {% for product in all_products %}
-    get_product_thumb("{% url 'product:render_product_thumb' product_id=product.id %}", $("#rendered_thumbs"));
-    {% endfor %}
-  }, 2000);
-  </script>
-  <script type="text/javascript">
     $(function(){
       // $(".filter-by-year li").click(function(){
       //   $(".exhib").css("display", "none");

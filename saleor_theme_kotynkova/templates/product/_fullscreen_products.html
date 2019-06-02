@@ -326,7 +326,6 @@ jQuery(function($) {
         
         $('.slick-current.slick-active').trigger('click');
         $(".all-images .thumb-item[data-product-id='" + window.location.hash.replace("#slick-slide-","") + "']").addClass("active");
-        setTitle();
 
         // info inner content, btn afterChange and Wide picture
         $('.main-images-preview').on('afterChange', function(event, slick, currentSlide, direction){
@@ -353,6 +352,7 @@ jQuery(function($) {
             $(".categories .all-images .thumb-item img").click(function(){
                 goToSlide($(this).parent().attr("data-product-id"));
             });
+            setTitle();
         }, 1000);
 
         // fix dropdowns
@@ -395,13 +395,11 @@ jQuery(function($) {
         $(document).keydown(function(e){
           if (e.keyCode == 37) { 
             $(".object-detail .slick-prev.slick-arrow").trigger("click");
-            compareActive(400);
           }
         });
         $(document).keydown(function(e){
           if (e.keyCode == 39) { 
             $(".object-detail .slick-next.slick-arrow").trigger("click");
-            compareActive(400);
           }
         });
 

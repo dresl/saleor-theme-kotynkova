@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "product/modal.html" %}
 
 {% load bootstrap_field from bootstrap4 %}
 {% load build_absolute_uri from urls %}
@@ -12,19 +12,45 @@
 {% load render_bundle from webpack_loader %}
 {% get_current_language as LANGUAGE_CODE %}
 
-{% block title %}
-  {% if product.seo_title %}
-    {{ product.translated.seo_title }}
-  {% else %}
-    {{ product.translated.name }} - {{ block.super }}
-  {% endif %}
+{% block extra_styles %}
+body.modal-open > .modal-close {
+    left: unset;
+    right: 82.0%;
+    opacity: 0.8;
+    display: block;
+}
+.preloader {
+    background: url(https://thumbs.gfycat.com/BriefDescriptiveIcterinewarbler-size_restricted.gif);
+    background-size: 45%;
+    background-attachment: fixed;
+    position: absolute;
+    width: 100%;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-color: #000;
+    z-index: 150;
+    background-position: center;
+}
+.modal.in .row {
+    margin: 0;
+    margin-top: 15px;
+}
+.modal.in .variant-picker__label {
+    display: none;
+}
+
+.cart-dropdown.d-none.show,
+.cart__icon.hover {
+    z-index: 400;
+}
+.fixed-bottom, .fixed-top {
+    z-index: 1080;
+}
 {% endblock %}
 
-{% block main_menu %}
-{% endblock %}
-{% block meta %}{% endblock %}
-{% block meta_tags %}{% endblock %}
-{% block content %}
+{% block modal_content %}
+  <div class="preloader">
+  </div>
   {% if not is_visible %}
     <div class="alert alert-warning" role="alert">
       {% blocktrans trimmed with date=product.available_on|date context "Product details text" %}
@@ -42,7 +68,7 @@
             <div class="carousel-inner" role="listbox">
               {% for image in images %}
                 <div class="carousel-item{% if forloop.first %} active{% endif %}">
-                  {% thumbnail image.image "x540" as detail_image %}
+                  {% thumbnail image.image "x740" as detail_image %}
                   <img src="{{ detail_image.url }}">
                   {% endthumbnail %}
                 </div>
@@ -187,70 +213,43 @@
       </table>
     </div>
   </div>
-  <style type="text/css">
-    body.modal-open > .modal-close {
-        display: block;
-    }
-    body > .container-fluid.padding-none.maincontent {
-        width: 92vw;
-    }
-    .main-images-preview {
-        width: 99vw;
-    }
-    .product__gallery .carousel-item img {
-        width: 100%!important;
-    }
-  </style>
-  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
   <script type="text/javascript">
     jQuery(function($) {
-      function checkVariantAvailability() {
-        if ($(".form-group.product__info__button button").hasClass("disabled")){
-          $(".product__info__form-error small").html("{% trans 'This product variant is not in stock.' %}");
-        } else {
-          $(".product__info__form-error small").html("");
+      function hideOriginalAmount() {
+        if ($(".variant-picker__option.active").text() == "originál")
+        {
+          $(".form-group.product__info__quantity").hide();
+          $(".product__info__price").css("visibility", "hidden");
+          $("input#id_quantity").val(1);
+          $("input#id_quantity").attr("value", 1);
         }
-      }
-      function convertToSlug(string)
-      {
-        return string
-          .toLowerCase()
-          .replace(/[^\w ]+/g,'')
-          .replace(/ +/g,'-')
-          ;
-      }
-      function checkVariantOriginal() {
-        if (convertToSlug($(".variant-picker .variant-picker__option.active").text()) == "originl") {
-          $(".product__info__quantity").css("visibility", "hidden");
-        } else {
-          $(".product__info__quantity").css("visibility", "visible");
+        else
+        {
+          $(".form-group.product__info__quantity").show();
+          $(".product__info__price").css("visibility", "visible");
         }
-      }
-      if ($(".modal.in .maincontent > .row.product").css("display") != "flex") {
-        window.location.href = "{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}";
-        $(".maincontent").hide();
-      }
-      $(function(){
-        $("body > .modal-close").click(function(){
-          $("#modal-container .modal-close").trigger("click");
-        });
-        $(".modal-close").click(function(){
-            $("#modal-container").html("");
-        });
-        $(".variant-picker__option.active > input").trigger("click");
-        checkVariantOriginal();
-        checkVariantAvailability();
-        $(".btn.variant-picker__option").click(function() {
-          setTimeout(function(){
-            checkVariantOriginal();
-            checkVariantAvailability();
-          }, 100);
-        });
+      };
+      $("body > .modal-close").click(function() {
+        $("#modal-container .modal-close").trigger("click");
+        $("#modal-container").html("");
       });
+      // hide preloader
+      setTimeout(function() {
+        $(".preloader").fadeOut();
+      }, 400);
+      // init detail
+      setTimeout(function() {
+        hideOriginalAmount();
+        $(".variant-picker__option").click(function(){
+          setTimeout(function(){
+            hideOriginalAmount();
+          }, 20);
+        });
+      }, 200);
     });
   </script>
-{% endblock content %}
-{% block footer_scripts %}
-{% render_bundle 'storefront' 'js' %}
-{% endblock %}
-{% block footer %}{% endblock %}
+{% endblock modal_content %}
+
+{% block modal_footer_scripts %}
+  {% render_bundle 'storefront' 'js' %}
+{% endblock modal_footer_scripts %}

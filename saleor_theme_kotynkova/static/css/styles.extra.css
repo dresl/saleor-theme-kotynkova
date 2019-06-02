@@ -537,12 +537,6 @@ button.slick-arrow {
 }
 /* info object */
 
-.info-object {
-    display: none;
-    opacity: 0;
-    transition: all 0.5s ease;
-    text-align: left;
-}
 .info-object h2 {
     text-transform: uppercase;
     font-size: 17px;
@@ -1129,10 +1123,6 @@ div#modal-container {
     left: 18%;
     margin-top: 60px;
     margin-bottom: 30px;
-    padding: 25px;
-}
-div#modal-container .navbar .language-picker {
-    display: none;
 }
 #modal-container .modal-close {
     display: none;
