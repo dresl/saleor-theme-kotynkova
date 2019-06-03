@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load staticfiles %}
+{% load bootstrap_form from bootstrap4 %}
+
+{% block title %}
+{% trans "Reservation" %}:
+  {{ reservation.product_name }} — {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb %}
+  {% if reservation.user == user %}
+    <ul class="breadcrumbs list-unstyled">
+      <li>
+        <a href="{% url 'home'%}">
+          {% trans "Home" context "Main navigation item" %}
+        </a>
+      </li>
+      <li>
+        <a href="{% url "account:details" %}">
+          {% trans "Your account" context "Main navigation item" %}
+        </a>
+      </li>
+      <li>
+        {% trans "Reservation" %}:
+        <a href="{{ reservation.get_absolute_url }}">
+          {{ reservation.product_name }}
+        </a>
+      </li>
+    </ul>
+  {% endif %}
+{% endblock breadcrumb %}
+
+{% block meta_tags %}
+  <meta name="robots" content="noindex, nofollow">
+{% endblock meta_tags %}
+
+{% block content %}
+  {# This view is available by just knowing url,          #}
+  {# so we don't show all details (like shipping address) #}
+  {# unless current user is owner of the order.           #}
+  <div class="container">
+    <div class="row order-details">
+      <div class="col-lg-10 m-auto">
+        <h1>
+          {% trans "Reservation" %}: {{ reservation.product_name }}
+        </h1>
+        <div class="card">
+          <div class="card-body">
+            {% trans "Status" %}: {{ reservation.status }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

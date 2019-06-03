@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-20 15:32+0100\n"
+"POT-Creation-Date: 2019-06-03 13:46-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,130 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/account/details.html:10
+msgctxt "User profile page title"
+msgid "Your profile"
+msgstr ""
+
+#: templates/account/details.html:16
+#: templates/account/reservation_details.html:17
+#: templates/checkout/index.html:12 templates/page/details.html:27
+msgctxt "Main navigation item"
+msgid "Home"
+msgstr ""
+
+#: templates/account/details.html:19
+#: templates/account/reservation_details.html:22 templates/base.html:209
+#: templates/menu_full.html:27
+msgctxt "Main navigation item"
+msgid "Your account"
+msgstr ""
+
+#: templates/account/details.html:26
+msgid "My account"
+msgstr ""
+
+#: templates/account/details.html:30
+msgctxt "User profile tab"
+msgid "Recent Orders"
+msgstr ""
+
+#: templates/account/details.html:35
+msgctxt "User profile tab"
+msgid "Reservations"
+msgstr ""
+
+#: templates/account/details.html:41
+msgctxt "User profile tab"
+msgid "Change password"
+msgstr ""
+
+#: templates/account/details.html:47
+msgctxt "User profile tab"
+msgid "Addresses book"
+msgstr ""
+
+#: templates/account/details.html:52
+msgctxt "User profile tab"
+msgid "Settings"
+msgstr ""
+
+#: templates/account/details.html:64 templates/account/details.html:124
+msgctxt "Recent orders column title"
+msgid "Order"
+msgstr ""
+
+#: templates/account/details.html:67 templates/account/details.html:127
+msgctxt "Recent orders column title"
+msgid "Date"
+msgstr ""
+
+#: templates/account/details.html:70
+msgctxt "Recent orders column title"
+msgid "Summary"
+msgstr ""
+
+#: templates/account/details.html:73 templates/account/details.html:130
+msgctxt "Recent orders column title"
+msgid "Status"
+msgstr ""
+
+#: templates/account/details.html:97
+msgctxt "Recent orders link text"
+msgid "Details"
+msgstr ""
+
+#: templates/account/details.html:112 templates/account/details.html:164
+msgctxt "No recent orders text"
+msgid "There are not any completed orders yet."
+msgstr ""
+
+#: templates/account/details.html:149
+msgctxt "Recent reservation link text"
+msgid "Details"
+msgstr ""
+
+#: templates/account/details.html:176
+msgctxt "User profile action"
+msgid "Change password"
+msgstr ""
+
+#: templates/account/details.html:191
+msgctxt "User address action"
+msgid "Edit"
+msgstr ""
+
+#: templates/account/details.html:207
+msgctxt "No addresses text"
+msgid "You will see new addresses here after first successful checkout."
+msgstr ""
+
+#: templates/account/details.html:218
+msgctxt "Message informing about the process of account removal"
+msgid ""
+"\n"
+"                  If you'd like to remove your account, please click on the "
+"button below and a confirmation email will be sent to you.\n"
+"                "
+msgstr ""
+
+#: templates/account/details.html:223
+msgctxt "Remove account form action"
+msgid "Remove Account"
+msgstr ""
+
+#: templates/account/reservation_details.html:8
+#: templates/account/reservation_details.html:26
+#: templates/account/reservation_details.html:47
+#: templates/order/reservation.html:12
+msgid "Reservation"
+msgstr ""
+
+#: templates/account/reservation_details.html:51
+#: templates/dashboard/order/reservation_list.html:32
+msgid "Status"
+msgstr ""
 
 #: templates/base.html:140 templates/base.html:191
 msgctxt "Main navigation item"
@@ -31,11 +155,6 @@ msgstr ""
 #: templates/base.html:203
 msgctxt "Main navigation item"
 msgid "Style guide"
-msgstr ""
-
-#: templates/base.html:209 templates/menu_full.html:27
-msgctxt "Main navigation item"
-msgid "Your account"
 msgstr ""
 
 #: templates/base.html:215 templates/menu_full.html:32
@@ -58,8 +177,9 @@ msgctxt "Main navigation item"
 msgid "Log in"
 msgstr ""
 
-#: templates/base.html:271 templates/product/_fullscreen_products.html:244
-#: templates/product/details.html:83
+#: templates/base.html:271 templates/order/reservation.html:43
+#: templates/product/_fullscreen_products.html:244
+#: templates/product/details.html:112
 msgid "Close"
 msgstr ""
 
@@ -148,11 +268,6 @@ msgctxt "Cart page title"
 msgid "Your cart"
 msgstr ""
 
-#: templates/checkout/index.html:12 templates/page/details.html:27
-msgctxt "Main navigation item"
-msgid "Home"
-msgstr ""
-
 #: templates/checkout/index.html:13
 msgctxt "Cart breadcrumb"
 msgid "Cart"
@@ -188,6 +303,178 @@ msgctxt "cart page: secondary action, empty the cart"
 msgid "Clear cart"
 msgstr ""
 
+#: templates/dashboard/base.html:11
+#, python-format
+msgctxt "Dashboard default page title"
+msgid "Dashboard - %(site_name)s"
+msgstr ""
+
+#: templates/dashboard/base.html:42
+msgctxt "Dashboard top navigation action"
+msgid "Visit storefront"
+msgstr ""
+
+#: templates/dashboard/base.html:47
+msgctxt "Dashboard top navigation action"
+msgid "Style guide"
+msgstr ""
+
+#: templates/dashboard/base.html:52
+msgctxt "Dashboard top navigation action"
+msgid "Log out"
+msgstr ""
+
+#: templates/dashboard/base.html:81
+msgctxt "Dashboard search"
+msgid "Search"
+msgstr ""
+
+#: templates/dashboard/base.html:96 templates/dashboard/base.html:258
+msgctxt "Dashboard homepage"
+msgid "Home"
+msgstr ""
+
+#: templates/dashboard/base.html:102
+msgctxt "Dashboard catalogue"
+msgid "Catalogue"
+msgstr ""
+
+#: templates/dashboard/base.html:107
+msgctxt "Dashboard products list"
+msgid "Products"
+msgstr ""
+
+#: templates/dashboard/base.html:112
+msgctxt "Dashboard categories list"
+msgid "Categories"
+msgstr ""
+
+#: templates/dashboard/base.html:117
+msgctxt "Dashboard side navigation link"
+msgid "Collections"
+msgstr ""
+
+#: templates/dashboard/base.html:126
+msgctxt "Dashboard discounts list"
+msgid "Discounts"
+msgstr ""
+
+#: templates/dashboard/base.html:131
+msgctxt "Dashboard sales (discounts) list"
+msgid "Sales"
+msgstr ""
+
+#: templates/dashboard/base.html:136
+msgctxt "Dashboard vouchers list"
+msgid "Vouchers"
+msgstr ""
+
+#: templates/dashboard/base.html:145
+msgctxt "Dashboard orders. `Sales' is noun of to sell"
+msgid "Orders"
+msgstr ""
+
+#: templates/dashboard/base.html:151
+msgctxt "Dashboard orders list"
+msgid "Orders"
+msgstr ""
+
+#: templates/dashboard/base.html:156
+msgctxt "Dashboard reservations list"
+msgid "Reservations"
+msgstr ""
+
+#: templates/dashboard/base.html:163
+msgctxt "Dashboard customers list"
+msgid "Customers"
+msgstr ""
+
+#: templates/dashboard/base.html:169
+msgctxt "Dashboard events list"
+msgid "Events"
+msgstr ""
+
+#: templates/dashboard/base.html:178
+msgctxt "Management section"
+msgid "Staff management"
+msgstr ""
+
+#: templates/dashboard/base.html:183
+msgctxt "Dashboard staff members list"
+msgid "Staff members"
+msgstr ""
+
+#: templates/dashboard/base.html:192
+msgctxt "Dashboard configuration"
+msgid "Configuration"
+msgstr ""
+
+#: templates/dashboard/base.html:198
+msgctxt "Dashboard product types list"
+msgid "Product types"
+msgstr ""
+
+#: templates/dashboard/base.html:203
+msgctxt "Dashboard attributes list"
+msgid "Attributes"
+msgstr ""
+
+#: templates/dashboard/base.html:210
+msgctxt "Dashboard shipping methods list"
+msgid "Shipping methods"
+msgstr ""
+
+#: templates/dashboard/base.html:217
+msgctxt "Dashboard menus list"
+msgid "Navigation"
+msgstr ""
+
+#: templates/dashboard/base.html:224
+msgctxt "Dashboard site settings"
+msgid "Site settings"
+msgstr ""
+
+#: templates/dashboard/base.html:230
+msgctxt "Dashboard taxes"
+msgid "Taxes"
+msgstr ""
+
+#: templates/dashboard/base.html:236
+msgctxt "Dashboard static pages"
+msgid "Pages"
+msgstr ""
+
+#: templates/dashboard/base.html:244
+msgctxt "Dashboard software version"
+msgid "Release:"
+msgstr ""
+
+#: templates/dashboard/order/reservation_list.html:9
+#: templates/dashboard/order/reservation_list.html:17
+msgctxt "Dashboard reservation list"
+msgid "Reservation"
+msgstr ""
+
+#: templates/dashboard/order/reservation_list.html:34
+msgctxt "Orders table header"
+msgid "Customer"
+msgstr ""
+
+#: templates/dashboard/order/reservation_list.html:37
+msgctxt "Orders table header"
+msgid "Placed on"
+msgstr ""
+
+#: templates/dashboard/order/reservation_list.html:56
+msgctxt "Anonymous user account value"
+msgid "Guest"
+msgstr ""
+
+#: templates/dashboard/order/reservation_list.html:84
+msgctxt "Empty reservation list message"
+msgid "No reservations found."
+msgstr ""
+
 #: templates/events/event_list.html:5
 msgid "Ongoing Exhibitions"
 msgstr ""
@@ -200,16 +487,84 @@ msgstr ""
 msgid "Older Exhibitions"
 msgstr ""
 
-#: templates/home.html:71
+#: templates/home.html:78
 msgid "New pictures"
 msgstr ""
 
-#: templates/home.html:75
+#: templates/home.html:82
 msgid "All pictures"
 msgstr ""
 
-#: templates/home.html:78
+#: templates/home.html:85
 msgid "Exhibitions"
+msgstr ""
+
+#: templates/order/checkout_success.html:8
+msgctxt "Checkout success page title"
+msgid "Thank you"
+msgstr ""
+
+#: templates/order/checkout_success.html:16
+#, python-format
+msgctxt "Checkout title"
+msgid "Thank you for your <a href=\"%(order_url)s\">order</a>!"
+msgstr ""
+
+#: templates/order/checkout_success.html:20
+#, python-format
+msgctxt "Checkout text"
+msgid ""
+"We've sent a confirmation email with details to <span>%(email)s</span>.<br> "
+"In case of any problems or questions please contact us."
+msgstr ""
+
+#: templates/order/checkout_success.html:29
+msgctxt "Checkout secondary action"
+msgid "Continue shopping"
+msgstr ""
+
+#: templates/order/reservation.html:12
+msgid "Back To Detail"
+msgstr ""
+
+#: templates/order/reservation.html:56 templates/order/reservation.html:98
+#: templates/order/reservation.html:99
+msgid "Given Name"
+msgstr ""
+
+#: templates/order/reservation.html:60 templates/order/reservation.html:102
+#: templates/order/reservation.html:103
+msgid "Family Name"
+msgstr ""
+
+#: templates/order/reservation.html:64 templates/order/reservation.html:106
+msgid "Email"
+msgstr ""
+
+#: templates/order/reservation.html:68 templates/order/reservation.html:110
+#: templates/order/reservation.html:111
+msgid "Phone number"
+msgstr ""
+
+#: templates/order/reservation.html:72 templates/order/reservation.html:114
+#: templates/order/reservation.html:115
+msgid "Address"
+msgstr ""
+
+#: templates/order/reservation.html:76 templates/order/reservation.html:118
+#: templates/order/reservation.html:119
+msgid "City"
+msgstr ""
+
+#: templates/order/reservation.html:80 templates/order/reservation.html:122
+#: templates/order/reservation.html:123
+msgid "Zip"
+msgstr ""
+
+#: templates/order/reservation.html:88 templates/order/reservation.html:130
+#: templates/product/details.html:192
+msgctxt "Reserve picture primary action"
+msgid "Reserve picture"
 msgstr ""
 
 #: templates/page/details.html:46
@@ -278,7 +633,7 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: templates/product/details.html:30
+#: templates/product/details.html:59
 #, python-format
 msgctxt "Product details text"
 msgid ""
@@ -286,28 +641,24 @@ msgid ""
 "visible on <strong>%(date)s</strong>."
 msgstr ""
 
-#: templates/product/details.html:92
+#: templates/product/details.html:121
 msgctxt "Product details link text"
 msgid "Edit in dashboard"
 msgstr ""
 
-#: templates/product/details.html:155
+#: templates/product/details.html:184
 msgctxt "Product details primary action"
 msgid "Add to cart"
 msgstr ""
 
-#: templates/product/details.html:167
+#: templates/product/details.html:201
 msgctxt "Product details text"
 msgid "This product is currently <strong>unavailable</strong>."
 msgstr ""
 
-#: templates/product/details.html:172
+#: templates/product/details.html:206
 msgctxt "Product details title"
 msgid "Description"
-msgstr ""
-
-#: templates/product/details.html:208
-msgid "This product variant is not in stock."
 msgstr ""
 
 #: templates/product/render_product_details.html:13

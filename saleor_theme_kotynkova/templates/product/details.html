@@ -46,6 +46,9 @@ body.modal-open > .modal-close {
 .fixed-bottom, .fixed-top {
     z-index: 1080;
 }
+.btn.primary {
+    text-decoration: none;
+}
 {% endblock %}
 
 {% block modal_content %}
@@ -184,10 +187,15 @@ body.modal-open > .modal-close {
             </form>
           {% endif %}
         {% endblock %}
+        <div class="form-group product__reserve__button">
+          <a href="{% url 'product:reserve_picture' product_id=product.pk slug=product.get_slug %}" class="btn primary btn-reserve btn-block">
+            {% trans "Reserve picture" context "Reserve picture primary action" %}
+          </a>
+        </div>
+
         <div class="product__info__form-error">
           <small class="text-danger"></small>
         </div>
-
       {% else %}
         <p class="alert alert-warning">
           {% blocktrans context "Product details text" %}This product is currently <strong>unavailable</strong>.{% endblocktrans %}
@@ -200,7 +208,6 @@ body.modal-open > .modal-close {
         {{ product.translated.description|safe }}
       </div>
       {% endif %}
-      <hr>
       <table>
         {% for attribute, value in product_attributes.items %}
         {% if attribute.slug == "format" %}
@@ -222,11 +229,15 @@ body.modal-open > .modal-close {
           $(".product__info__price").css("visibility", "hidden");
           $("input#id_quantity").val(1);
           $("input#id_quantity").attr("value", 1);
+          $(".product__reserve__button").show();
+          $(".product__info__button").hide();
         }
         else
         {
           $(".form-group.product__info__quantity").show();
           $(".product__info__price").css("visibility", "visible");
+          $(".product__reserve__button").hide();
+          $(".product__info__button").show();
         }
       };
       $("body > .modal-close").click(function() {
