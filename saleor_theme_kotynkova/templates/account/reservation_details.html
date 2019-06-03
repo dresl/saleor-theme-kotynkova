@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% load i18n %}
-{% load staticfiles %}
+{% load staticfiles thumbnail %}
 {% load bootstrap_form from bootstrap4 %}
 
 {% block title %}
@@ -51,7 +51,12 @@
             {% trans "Status" %}: {{ reservation.status }}
           </div>
         </div>
+        <br>
+        {% thumbnail product.get_first_image "x600" format="PNG" crop="center" as image %}
+        <img data-toggle="modal" data-target="#detailModalImage" class="img-fluid detail-img" src="{{ image.url }}">
+        {% endthumbnail %}
       </div>
     </div>
   </div>
+  <br>
 {% endblock content %}

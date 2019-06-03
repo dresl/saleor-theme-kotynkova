@@ -48,9 +48,11 @@
     </div>
 
     <div class="col-md-7">
-    {% if request.user.is_authenticated %}
+    {% if request.user.is_authenticated and not is_reserved %}
       <form id="product-reserve-form" role="form" class="product-reserve-form" method="post" action="{% url 'order:create_reservation' %}">
         {% csrf_token %}
+        <input type="hidden" value="{{ product.id }}" name="product_id">
+        <input type="hidden" value="{{ product.name }}" name="product_name">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="givenName">{% trans "Given Name" %}</label>
@@ -90,49 +92,13 @@
           </div>
         </div>
       </form>
+    {% elif request.user.is_authenticated and is_reserved %}
+    <p>{% trans "You have already created reservation to this picture." %}</p>
+    <a class="btn primary" href="{{ reservation.get_absolute_url }}">{% trans "View Reservation"%}</a>
     {% else %}
-    <form id="product-reserve-form" role="form" class="product-reserve-form" method="post" action="{% url 'order:create_reservation' %}">
-        {% csrf_token %}
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="givenName">{% trans "Given Name" %}</label>
-            <input type="text" class="form-control" id="givenName" placeholder="{% trans "Given Name"%}" required="true">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="familyName">{% trans "Family Name" %}</label>
-            <input type="text" class="form-control" id="familyName" placeholder="{% trans "Family Name"%}" required="true">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="email">{% trans "Email" %}</label>
-            <input type="email" class="form-control" id="email" placeholder="Email" required="true">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="phoneNumber">{% trans "Phone number" %}</label>
-            <input type="text" class="form-control" id="phoneNumber" placeholder="{% trans "Phone number" %}" required="true">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputAddress">{% trans "Address" %}</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="{% trans "Address" %}" required="true">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputCity">{% trans "City" %}</label>
-            <input type="text" class="form-control" id="inputCity" placeholder="{% trans "City" %}" required="true">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputZip">{% trans "Zip" %}</label>
-            <input type="text" class="form-control" id="inputZip" placeholder="{% trans "Zip" %}" required="true">
-          </div>
-          <div class="form-group col-md-6">
-            {% bootstrap_form country_form %}
-          </div>
-          <div class="form-group product__info__button col-md-6 m-auto">
-            <button class="btn primary">
-              {% trans "Reserve picture" context "Reserve picture primary action" %}
-            </button>
-          </div>
-        </div>
-      </form>
-      {% endif %}
+    <p>{% trans "You have to log in to create a new reservation." %}</p>
+    <a class="btn primary" href="{% url "account:login" %}">{% trans "Log In"%}</a>
+    {% endif %}
     </div>
   </div>
 </div>

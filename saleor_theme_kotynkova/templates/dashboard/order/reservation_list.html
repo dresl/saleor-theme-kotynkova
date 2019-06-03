@@ -28,7 +28,7 @@
               <thead>
                 <tr>
                   {% sorting_header 'pk' '#' %}
-
+                  <th>{% trans "Product" %}</th>
                   <th>{% trans "Status" %}</th>
 
                   {% trans "Customer" context "Orders table header" as label %}
@@ -45,6 +45,11 @@
                       <td>
                       <a style="display: block" href="/django-admin/order/reservation/{{ order.id }}/change/" target="_blank">
                         #{{ order.id }}
+                      </a>
+                      </td>
+                      <td>
+                      <a style="display: block" href="/django-admin/order/reservation/{{ order.id }}/change/" target="_blank">
+                        {{ order.product_name }}
                       </a>
                       </td>
                       <td>
