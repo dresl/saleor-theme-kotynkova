@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-03 13:46-0500\n"
+"POT-Creation-Date: 2019-06-04 07:23-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -91,7 +91,7 @@ msgctxt "Recent orders link text"
 msgid "Details"
 msgstr ""
 
-#: templates/account/details.html:112 templates/account/details.html:164
+#: templates/account/details.html:112
 msgctxt "No recent orders text"
 msgid "There are not any completed orders yet."
 msgstr ""
@@ -99,6 +99,11 @@ msgstr ""
 #: templates/account/details.html:149
 msgctxt "Recent reservation link text"
 msgid "Details"
+msgstr ""
+
+#: templates/account/details.html:164
+msgctxt "No recent reservations text"
+msgid "There are not any reservations yet."
 msgstr ""
 
 #: templates/account/details.html:176
@@ -132,14 +137,35 @@ msgstr ""
 
 #: templates/account/reservation_details.html:8
 #: templates/account/reservation_details.html:26
-#: templates/account/reservation_details.html:47
+#: templates/account/reservation_details.html:55
 #: templates/order/reservation.html:12
 msgid "Reservation"
 msgstr ""
 
-#: templates/account/reservation_details.html:51
+#: templates/account/reservation_details.html:59
 #: templates/dashboard/order/reservation_list.html:32
+#: templates/dashboard/product/detail.html:99
 msgid "Status"
+msgstr ""
+
+#: templates/account/reservation_details.html:60
+#: templates/account/reservation_details.html:76
+msgid "Remove Reservation"
+msgstr ""
+
+#: templates/account/reservation_details.html:84
+msgid "Are you sure to remove this reservation?"
+msgstr ""
+
+#: templates/account/reservation_details.html:91 templates/base.html:271
+#: templates/order/reservation.html:43
+#: templates/product/_fullscreen_products.html:244
+#: templates/product/details.html:112
+msgid "Close"
+msgstr ""
+
+#: templates/account/reservation_details.html:92
+msgid "Remove"
 msgstr ""
 
 #: templates/base.html:140 templates/base.html:191
@@ -175,12 +201,6 @@ msgstr ""
 #: templates/base.html:232 templates/menu_full.html:48
 msgctxt "Main navigation item"
 msgid "Log in"
-msgstr ""
-
-#: templates/base.html:271 templates/order/reservation.html:43
-#: templates/product/_fullscreen_products.html:244
-#: templates/product/details.html:112
-msgid "Close"
 msgstr ""
 
 #: templates/cart_dropdown.html:39
@@ -455,6 +475,10 @@ msgctxt "Dashboard reservation list"
 msgid "Reservation"
 msgstr ""
 
+#: templates/dashboard/order/reservation_list.html:31
+msgid "Product"
+msgstr ""
+
 #: templates/dashboard/order/reservation_list.html:34
 msgctxt "Orders table header"
 msgid "Customer"
@@ -465,14 +489,156 @@ msgctxt "Orders table header"
 msgid "Placed on"
 msgstr ""
 
-#: templates/dashboard/order/reservation_list.html:56
+#: templates/dashboard/order/reservation_list.html:61
 msgctxt "Anonymous user account value"
 msgid "Guest"
 msgstr ""
 
-#: templates/dashboard/order/reservation_list.html:84
+#: templates/dashboard/order/reservation_list.html:89
 msgctxt "Empty reservation list message"
 msgid "No reservations found."
+msgstr ""
+
+#: templates/dashboard/product/detail.html:19
+msgctxt "Product form breadcrumbs"
+msgid "Products"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:54
+msgctxt "Product field"
+msgid "Published"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:56
+msgctxt "Product field"
+msgid "Draft"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:75
+msgctxt "Product action"
+msgid "Edit product"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:78
+msgctxt "Product action"
+msgid "Remove product"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:81
+msgctxt "Product action"
+msgid "View on site"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:88
+#: templates/product/_filters.html:52 templates/product/_filters.html:54
+msgid "Variant"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:91
+msgid "Add"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:97
+msgid "Počet na skladě"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:98
+msgid "Name"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:102
+msgid "Gross price"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:104
+msgid "Net price"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:107
+msgid "Margin"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:130
+msgid "Edit"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:134
+msgctxt "Dashboard product details page"
+msgid "No variants found"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:150
+msgctxt "Product pricing card header"
+msgid "Pricing"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:154
+#, python-format
+msgctxt "Product pricing card header subtitle"
+msgid "Taxes are charged (%(tax_rate)s tax rate)"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:158
+msgctxt "Product pricing card header subtitle"
+msgid "Taxes are not charged"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:169
+msgctxt "Product field"
+msgid "Gross sale price"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:171
+msgctxt "Product field"
+msgid "Net sale price"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:182
+msgctxt "Product field"
+msgid "Gross discounted price"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:184
+msgctxt "Product field"
+msgid "Net discounted price"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:195
+msgctxt "Product field"
+msgid "Gross purchase cost"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:197
+msgctxt "Product field"
+msgid "Net purchase cost"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:206
+msgctxt "Product field"
+msgid "Margin"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:229
+msgctxt "Product variant inventory card header"
+msgid "Inventory"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:238
+msgctxt "Dashboard variant details view"
+msgid "Number in stock"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:246
+msgctxt "Dashboard variant details view"
+msgid "Allocated"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:259
+msgid "Images"
+msgstr ""
+
+#: templates/dashboard/product/detail.html:269
+msgid "Edit images"
 msgstr ""
 
 #: templates/events/event_list.html:5
@@ -527,44 +693,53 @@ msgstr ""
 msgid "Back To Detail"
 msgstr ""
 
-#: templates/order/reservation.html:56 templates/order/reservation.html:98
-#: templates/order/reservation.html:99
+#: templates/order/reservation.html:58
 msgid "Given Name"
 msgstr ""
 
-#: templates/order/reservation.html:60 templates/order/reservation.html:102
-#: templates/order/reservation.html:103
+#: templates/order/reservation.html:62
 msgid "Family Name"
 msgstr ""
 
-#: templates/order/reservation.html:64 templates/order/reservation.html:106
+#: templates/order/reservation.html:66
 msgid "Email"
 msgstr ""
 
-#: templates/order/reservation.html:68 templates/order/reservation.html:110
-#: templates/order/reservation.html:111
+#: templates/order/reservation.html:70
 msgid "Phone number"
 msgstr ""
 
-#: templates/order/reservation.html:72 templates/order/reservation.html:114
-#: templates/order/reservation.html:115
+#: templates/order/reservation.html:74
 msgid "Address"
 msgstr ""
 
-#: templates/order/reservation.html:76 templates/order/reservation.html:118
-#: templates/order/reservation.html:119
+#: templates/order/reservation.html:78
 msgid "City"
 msgstr ""
 
-#: templates/order/reservation.html:80 templates/order/reservation.html:122
-#: templates/order/reservation.html:123
+#: templates/order/reservation.html:82
 msgid "Zip"
 msgstr ""
 
-#: templates/order/reservation.html:88 templates/order/reservation.html:130
-#: templates/product/details.html:192
+#: templates/order/reservation.html:90 templates/product/details.html:192
 msgctxt "Reserve picture primary action"
 msgid "Reserve picture"
+msgstr ""
+
+#: templates/order/reservation.html:96
+msgid "You have already created reservation to this picture."
+msgstr ""
+
+#: templates/order/reservation.html:97
+msgid "View Reservation"
+msgstr ""
+
+#: templates/order/reservation.html:99
+msgid "You have to log in to create a new reservation."
+msgstr ""
+
+#: templates/order/reservation.html:100
+msgid "Log In"
 msgstr ""
 
 #: templates/page/details.html:46
@@ -596,10 +771,6 @@ msgstr ""
 
 #: templates/product/_filters.html:41
 msgid "Search"
-msgstr ""
-
-#: templates/product/_filters.html:52 templates/product/_filters.html:54
-msgid "Variant"
 msgstr ""
 
 #: templates/product/_filters.html:65

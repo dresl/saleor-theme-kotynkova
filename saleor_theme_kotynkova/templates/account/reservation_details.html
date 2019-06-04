@@ -37,6 +37,14 @@
 {% endblock meta_tags %}
 
 {% block content %}
+<style>
+.btn.remove-res {
+    color: #fff!important;
+    padding: 2px 17px;
+    font-weight: bold;
+    font-size: 15px;
+}
+</style>
   {# This view is available by just knowing url,          #}
   {# so we don't show all details (like shipping address) #}
   {# unless current user is owner of the order.           #}
@@ -49,6 +57,7 @@
         <div class="card">
           <div class="card-body">
             {% trans "Status" %}: {{ reservation.status }}
+            <a data-toggle="modal" data-target="#removeReservationModal" class="btn remove-res btn-danger float-right">{% trans "Remove Reservation" %}</a>
           </div>
         </div>
         <br>
@@ -59,4 +68,31 @@
     </div>
   </div>
   <br>
+  <!-- Modal -->
+  <div class="modal fade" id="removeReservationModal" tabindex="-1" role="dialog" aria-labelledby="removeReservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="removeReservationModalLabel">{% trans "Remove Reservation" %}?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="reservation-remove-form" role="form" class="reservation-remove-form" method="post" action="{% url 'order:remove_reservation' %}">
+          {% csrf_token %}
+          <div class="modal-body">
+            {% trans "Are you sure to remove this reservation?" %}
+            <ul>
+              <li>{{ reservation.product_name }}</li>
+            </ul>
+            <input type="hidden" value="{{ reservation.slug_id }}" name="res_slug_id">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+            <button type="submit" class="btn btn-danger">{% trans "Remove" %}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
