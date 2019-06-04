@@ -27,26 +27,19 @@
             <table class="bordered highlight responsive data-table last-right-align">
               <thead>
                 <tr>
-                  {% sorting_header 'pk' '#' %}
-                  <th>{% trans "Product" %}</th>
+                  {% trans "Product" as label %}
+                  {% sorting_header 'product_name' label %}
                   <th>{% trans "Status" %}</th>
-
+                  <th>{% trans "Customer Note" %}</th>
                   {% trans "Customer" context "Orders table header" as label %}
                   {% sorting_header 'email' label %}
-
                   {% trans "Placed on" context "Orders table header" as label %}
                   {% sorting_header 'created' label %}
-
                 </tr>
               </thead>
               <tbody>
                 {% for order in orders %}
                     <tr>
-                      <td>
-                      <a style="display: block" href="/django-admin/order/reservation/{{ order.id }}/change/" target="_blank">
-                        #{{ order.id }}
-                      </a>
-                      </td>
                       <td>
                       <a style="display: block" href="/django-admin/order/reservation/{{ order.id }}/change/" target="_blank">
                         {{ order.product_name }}
@@ -57,9 +50,16 @@
                         {% render_order_status order.status order.get_status_display %}
                       </a>
                       </td>
+                      <td>
+                      <a style="display: block" href="/django-admin/order/reservation/{{ order.id }}/change/" target="_blank">
+                        {{ order.note|truncatechars:"20" }}
+                      </a>
+                      </td>
+                      <td style="display: none">
                       <a style="display: block" href="/django-admin/order/reservation/{{ order.id }}/change/" target="_blank">
                         {% trans "Guest" context "Anonymous user account value" as guest %}
                       </a>
+                      </td>
                       <td>
                       <a style="display: block" href="/django-admin/order/reservation/{{ order.id }}/change/" target="_blank">
                         {{ order.user|default:guest }}

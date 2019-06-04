@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-04 07:23-0500\n"
+"POT-Creation-Date: 2019-06-04 07:44-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -709,36 +709,28 @@ msgstr ""
 msgid "Phone number"
 msgstr ""
 
-#: templates/order/reservation.html:74
-msgid "Address"
+#: templates/order/reservation.html:77
+msgid "Note"
 msgstr ""
 
-#: templates/order/reservation.html:78
-msgid "City"
-msgstr ""
-
-#: templates/order/reservation.html:82
-msgid "Zip"
-msgstr ""
-
-#: templates/order/reservation.html:90 templates/product/details.html:192
+#: templates/order/reservation.html:82 templates/product/details.html:192
 msgctxt "Reserve picture primary action"
 msgid "Reserve picture"
 msgstr ""
 
-#: templates/order/reservation.html:96
+#: templates/order/reservation.html:88
 msgid "You have already created reservation to this picture."
 msgstr ""
 
-#: templates/order/reservation.html:97
+#: templates/order/reservation.html:89
 msgid "View Reservation"
 msgstr ""
 
-#: templates/order/reservation.html:99
+#: templates/order/reservation.html:91
 msgid "You have to log in to create a new reservation."
 msgstr ""
 
-#: templates/order/reservation.html:100
+#: templates/order/reservation.html:92
 msgid "Log In"
 msgstr ""
 

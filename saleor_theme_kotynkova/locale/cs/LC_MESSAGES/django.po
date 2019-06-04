@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-04 07:23-0500\n"
+"POT-Creation-Date: 2019-06-04 07:44-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -756,36 +756,28 @@ msgstr "Email"
 msgid "Phone number"
 msgstr "Telefon"
 
-#: templates/order/reservation.html:74
-msgid "Address"
-msgstr "Adresa"
+#: templates/order/reservation.html:77
+msgid "Note"
+msgstr "Poznámka"
 
-#: templates/order/reservation.html:78
-msgid "City"
-msgstr "Město"
-
-#: templates/order/reservation.html:82
-msgid "Zip"
-msgstr "PSČ"
-
-#: templates/order/reservation.html:90 templates/product/details.html:192
+#: templates/order/reservation.html:82 templates/product/details.html:192
 msgctxt "Reserve picture primary action"
 msgid "Reserve picture"
 msgstr "Rezervovat obraz"
 
-#: templates/order/reservation.html:96
+#: templates/order/reservation.html:88
 msgid "You have already created reservation to this picture."
 msgstr "Tento obraz už máte zarezervovaný"
 
-#: templates/order/reservation.html:97
+#: templates/order/reservation.html:89
 msgid "View Reservation"
 msgstr "Zobrazit rezeravaci"
 
-#: templates/order/reservation.html:99
+#: templates/order/reservation.html:91
 msgid "You have to log in to create a new reservation."
 msgstr "Pro vytvoření rezeravce k tomu obrazu se musíte nejdříve přihlásit."
 
-#: templates/order/reservation.html:100
+#: templates/order/reservation.html:92
 msgid "Log In"
 msgstr "Přihlásit se"
 
@@ -902,6 +894,15 @@ msgstr "Objednat"
 #: templates/product/render_product_details.html:15
 msgid "Sold out"
 msgstr "Prodáno"
+
+#~ msgid "Address"
+#~ msgstr "Adresa"
+
+#~ msgid "City"
+#~ msgstr "Město"
+
+#~ msgid "Zip"
+#~ msgstr "PSČ"
 
 #~ msgid "This product variant is not in stock."
 #~ msgstr "Tato varianta není skladem."
