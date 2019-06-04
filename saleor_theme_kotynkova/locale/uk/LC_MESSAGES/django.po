@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-04 07:44-0500\n"
+"POT-Creation-Date: 2019-06-04 15:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -476,8 +476,12 @@ msgctxt "Dashboard reservation list"
 msgid "Reservation"
 msgstr ""
 
-#: templates/dashboard/order/reservation_list.html:31
+#: templates/dashboard/order/reservation_list.html:30
 msgid "Product"
+msgstr ""
+
+#: templates/dashboard/order/reservation_list.html:33
+msgid "Customer Note"
 msgstr ""
 
 #: templates/dashboard/order/reservation_list.html:34
@@ -485,12 +489,12 @@ msgctxt "Orders table header"
 msgid "Customer"
 msgstr ""
 
-#: templates/dashboard/order/reservation_list.html:37
+#: templates/dashboard/order/reservation_list.html:36
 msgctxt "Orders table header"
 msgid "Placed on"
 msgstr ""
 
-#: templates/dashboard/order/reservation_list.html:61
+#: templates/dashboard/order/reservation_list.html:60
 msgctxt "Anonymous user account value"
 msgid "Guest"
 msgstr ""
