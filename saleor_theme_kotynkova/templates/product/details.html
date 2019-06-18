@@ -35,6 +35,9 @@ body.modal-open > .modal-close {
     margin: 0;
     margin-top: 15px;
 }
+.row.product {
+    visibility: hidden;
+}
 .modal.in .variant-picker__label {
     display: none;
 }
@@ -157,7 +160,7 @@ body.modal-open > .modal-close {
             {% if request.taxes %}
               <small>
                 {% if site.settings.display_gross_prices %}
-                  
+
                 {% else %}
                   
                 {% endif %}
@@ -240,14 +243,11 @@ body.modal-open > .modal-close {
           $(".product__info__button").show();
         }
       };
-      $("body > .modal-close").click(function() {
-        $("#modal-container .modal-close").trigger("click");
-        $("#modal-container").html("");
-      });
       // hide preloader
       setTimeout(function() {
         $(".preloader").fadeOut();
-      }, 400);
+        $(".row.product").css("visibility", "visible");
+      }, 600);
       // init detail
       setTimeout(function() {
         hideOriginalAmount();
@@ -255,6 +255,14 @@ body.modal-open > .modal-close {
           setTimeout(function(){
             hideOriginalAmount();
           }, 20);
+        });
+        getIndex = window.location.href.indexOf("?")
+        if (getIndex != -1)
+          getAndHash = window.location.href.substr(getIndex, window.location.href.length);
+        $("body > .modal-close").click(function() {
+          $("#modal-container .modal-close").trigger("click");
+          $("#modal-container").html("");
+          window.location.hash = "slick-slide-" + {{ product.id }};
         });
       }, 200);
     });

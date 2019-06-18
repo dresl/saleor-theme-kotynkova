@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-04 15:10+0200\n"
+"POT-Creation-Date: 2019-06-18 08:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,14 +24,15 @@ msgstr ""
 
 #: templates/account/details.html:16
 #: templates/account/reservation_details.html:17
-#: templates/checkout/index.html:12 templates/page/details.html:27
+#: templates/checkout/index.html:12 templates/order/details.html:18
+#: templates/page/details.html:27
 msgctxt "Main navigation item"
 msgid "Home"
 msgstr ""
 
 #: templates/account/details.html:19
 #: templates/account/reservation_details.html:22 templates/base.html:209
-#: templates/menu_full.html:27
+#: templates/menu_full.html:27 templates/order/details.html:23
 msgctxt "Main navigation item"
 msgid "Your account"
 msgstr ""
@@ -137,7 +138,7 @@ msgstr ""
 #: templates/account/reservation_details.html:8
 #: templates/account/reservation_details.html:26
 #: templates/account/reservation_details.html:55
-#: templates/order/reservation.html:12
+#: templates/order/reservation.html:16
 msgid "Reservation"
 msgstr ""
 
@@ -157,9 +158,9 @@ msgid "Are you sure to remove this reservation?"
 msgstr ""
 
 #: templates/account/reservation_details.html:91 templates/base.html:271
-#: templates/order/reservation.html:43
+#: templates/order/reservation.html:47
 #: templates/product/_fullscreen_products.html:244
-#: templates/product/details.html:112
+#: templates/product/details.html:115
 msgid "Close"
 msgstr ""
 
@@ -320,6 +321,31 @@ msgstr ""
 #: templates/checkout/index.html:86
 msgctxt "cart page: secondary action, empty the cart"
 msgid "Clear cart"
+msgstr ""
+
+#: templates/checkout/summary_without_shipping.html:8
+msgctxt "Checkout summary without shipping title"
+msgid "Billing address"
+msgstr ""
+
+#: templates/checkout/summary_without_shipping.html:15
+msgctxt "Checkout summary without shipping note title"
+msgid "Add a note to your order"
+msgstr ""
+
+#: templates/checkout/summary_without_shipping.html:18
+#: templates/order/reservation.html:85
+msgid "You must agree to the processing of personal data to submit this form."
+msgstr ""
+
+#: templates/checkout/summary_without_shipping.html:19
+#: templates/order/reservation.html:86
+msgid "I agree to the processing of personal data."
+msgstr ""
+
+#: templates/checkout/summary_without_shipping.html:23
+msgctxt "Checkout summary without shipping action"
+msgid "Place order"
 msgstr ""
 
 #: templates/dashboard/base.html:11
@@ -692,48 +718,91 @@ msgctxt "Checkout secondary action"
 msgid "Continue shopping"
 msgstr ""
 
-#: templates/order/reservation.html:12
+#: templates/order/details.html:8
+#, python-format
+msgctxt "Order details page title"
+msgid "Order %(order)s"
+msgstr ""
+
+#: templates/order/details.html:28
+#, python-format
+msgctxt "Order details breadcrumb"
+msgid "Order %(order)s"
+msgstr ""
+
+#: templates/order/details.html:49
+#, python-format
+msgctxt "Order detail text"
+msgid "Order %(order)s: %(order_status)s"
+msgstr ""
+
+#: templates/order/details.html:56
+msgctxt "Order details link text"
+msgid "Payment details"
+msgstr ""
+
+#: templates/order/details.html:60
+msgctxt "Order details primary action"
+msgid "Pay for order"
+msgstr ""
+
+#: templates/order/details.html:67
+msgctxt "Customer order note"
+msgid "Your note"
+msgstr ""
+
+#: templates/order/details.html:73
+msgctxt "Order note title"
+msgid "Add a note to your order"
+msgstr ""
+
+#: templates/order/details.html:75
+msgctxt "Customer panel - order details: add note submit button"
+msgid "Submit note"
+msgstr ""
+
+#: templates/order/reservation.html:16
 msgid "Back To Detail"
 msgstr ""
 
-#: templates/order/reservation.html:58
+#: templates/order/reservation.html:62 templates/order/reservation.html:63
 msgid "Given Name"
 msgstr ""
 
-#: templates/order/reservation.html:62
+#: templates/order/reservation.html:66 templates/order/reservation.html:67
 msgid "Family Name"
 msgstr ""
 
-#: templates/order/reservation.html:66
+#: templates/order/reservation.html:70 templates/order/reservation.html:71
 msgid "Email"
 msgstr ""
 
-#: templates/order/reservation.html:70
+#: templates/order/reservation.html:74 templates/order/reservation.html:75
 msgid "Phone number"
 msgstr ""
 
-#: templates/order/reservation.html:77
+#: templates/order/reservation.html:81
 msgid "Note"
 msgstr ""
 
-#: templates/order/reservation.html:82 templates/product/details.html:192
+#: templates/order/reservation.html:90 templates/product/details.html:195
 msgctxt "Reserve picture primary action"
 msgid "Reserve picture"
 msgstr ""
 
-#: templates/order/reservation.html:88
+#: templates/order/reservation.html:96
 msgid "You have already created reservation to this picture."
 msgstr ""
 
-#: templates/order/reservation.html:89
+#: templates/order/reservation.html:97
 msgid "View Reservation"
 msgstr ""
 
-#: templates/order/reservation.html:91
+#: templates/order/reservation.html:99
 msgid "You have to log in to create a new reservation."
 msgstr ""
 
-#: templates/order/reservation.html:92
+#: templates/order/reservation.html:100
 msgid "Log In"
 msgstr ""
 
@@ -799,7 +868,7 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-#: templates/product/details.html:59
+#: templates/product/details.html:62
 #, python-format
 msgctxt "Product details text"
 msgid ""
@@ -807,22 +876,22 @@ msgid ""
 "visible on <strong>%(date)s</strong>."
 msgstr ""
 
-#: templates/product/details.html:121
+#: templates/product/details.html:124
 msgctxt "Product details link text"
 msgid "Edit in dashboard"
 msgstr ""
 
-#: templates/product/details.html:184
+#: templates/product/details.html:187
 msgctxt "Product details primary action"
 msgid "Add to cart"
 msgstr ""
 
-#: templates/product/details.html:201
+#: templates/product/details.html:204
 msgctxt "Product details text"
 msgid "This product is currently <strong>unavailable</strong>."
 msgstr ""
 
-#: templates/product/details.html:206
+#: templates/product/details.html:209
 msgctxt "Product details title"
 msgid "Description"
 msgstr ""

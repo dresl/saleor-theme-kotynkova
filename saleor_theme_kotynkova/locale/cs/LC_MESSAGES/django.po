@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-04 15:10+0200\n"
+"POT-Creation-Date: 2019-06-18 08:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,14 +25,15 @@ msgstr ""
 
 #: templates/account/details.html:16
 #: templates/account/reservation_details.html:17
-#: templates/checkout/index.html:12 templates/page/details.html:27
+#: templates/checkout/index.html:12 templates/order/details.html:18
+#: templates/page/details.html:27
 msgctxt "Main navigation item"
 msgid "Home"
 msgstr "Domů"
 
 #: templates/account/details.html:19
 #: templates/account/reservation_details.html:22 templates/base.html:209
-#: templates/menu_full.html:27
+#: templates/menu_full.html:27 templates/order/details.html:23
 msgctxt "Main navigation item"
 msgid "Your account"
 msgstr "Váš účet"
@@ -138,7 +139,7 @@ msgstr "Váš účet"
 #: templates/account/reservation_details.html:8
 #: templates/account/reservation_details.html:26
 #: templates/account/reservation_details.html:55
-#: templates/order/reservation.html:12
+#: templates/order/reservation.html:16
 msgid "Reservation"
 msgstr "Rezervace"
 
@@ -158,9 +159,9 @@ msgid "Are you sure to remove this reservation?"
 msgstr "Jste si opravdu jisti, že chcete odebrat tuto rezeravaci?"
 
 #: templates/account/reservation_details.html:91 templates/base.html:271
-#: templates/order/reservation.html:43
+#: templates/order/reservation.html:47
 #: templates/product/_fullscreen_products.html:244
-#: templates/product/details.html:112
+#: templates/product/details.html:115
 msgid "Close"
 msgstr "Zavřít"
 
@@ -327,6 +328,35 @@ msgstr "Objednat"
 msgctxt "cart page: secondary action, empty the cart"
 msgid "Clear cart"
 msgstr "Smazat obsah košíku"
+
+#: templates/checkout/summary_without_shipping.html:8
+msgctxt "Checkout summary without shipping title"
+msgid "Billing address"
+msgstr ""
+
+#: templates/checkout/summary_without_shipping.html:15
+msgctxt "Checkout summary without shipping note title"
+msgid "Add a note to your order"
+msgstr "Přidat poznámku k objednávce"
+
+#: templates/checkout/summary_without_shipping.html:18
+#: templates/order/reservation.html:85
+msgid "You must agree to the processing of personal data to submit this form."
+msgstr ""
+"Pro odeslání tohoto formuláře musíte souhlasit se zpracováním osobních údajů."
+
+#: templates/checkout/summary_without_shipping.html:19
+#: templates/order/reservation.html:86
+msgid "I agree to the processing of personal data."
+msgstr "Souhlasím se zpracováním osobních údajů."
+
+#: templates/checkout/summary_without_shipping.html:23
+#, fuzzy
+#| msgctxt "Orders table header"
+#| msgid "Placed on"
+msgctxt "Checkout summary without shipping action"
+msgid "Place order"
+msgstr "Vytvořeno"
 
 #: templates/dashboard/base.html:11
 #, python-format
@@ -520,16 +550,11 @@ msgid "Guest"
 msgstr ""
 
 #: templates/dashboard/order/reservation_list.html:89
-#, fuzzy
-#| msgid "Reservation"
 msgctxt "Empty reservation list message"
 msgid "No reservations found."
-msgstr "Rezervace"
+msgstr "Žádné rezervace nebyly nalezeny."
 
 #: templates/dashboard/product/detail.html:19
-#, fuzzy
-#| msgctxt "Cart table header"
-#| msgid "Product"
 msgctxt "Product form breadcrumbs"
 msgid "Products"
 msgstr "Produkt"
@@ -537,7 +562,7 @@ msgstr "Produkt"
 #: templates/dashboard/product/detail.html:54
 msgctxt "Product field"
 msgid "Published"
-msgstr ""
+msgstr "Publikováno"
 
 #: templates/dashboard/product/detail.html:56
 msgctxt "Product field"
@@ -545,25 +570,19 @@ msgid "Draft"
 msgstr ""
 
 #: templates/dashboard/product/detail.html:75
-#, fuzzy
-#| msgctxt "Cart table header"
-#| msgid "Product"
 msgctxt "Product action"
 msgid "Edit product"
 msgstr "Produkt"
 
 #: templates/dashboard/product/detail.html:78
-#, fuzzy
-#| msgctxt "Remove account form action"
-#| msgid "Remove Account"
 msgctxt "Product action"
 msgid "Remove product"
-msgstr "Váš účet"
+msgstr "Odstranit produkt"
 
 #: templates/dashboard/product/detail.html:81
 msgctxt "Product action"
 msgid "View on site"
-msgstr ""
+msgstr "Zobrazit na webu"
 
 #: templates/dashboard/product/detail.html:88
 #: templates/product/_filters.html:52 templates/product/_filters.html:54
@@ -582,7 +601,7 @@ msgstr ""
 
 #: templates/dashboard/product/detail.html:98
 msgid "Name"
-msgstr ""
+msgstr "Jméno"
 
 #: templates/dashboard/product/detail.html:102
 msgid "Gross price"
@@ -597,15 +616,10 @@ msgid "Margin"
 msgstr ""
 
 #: templates/dashboard/product/detail.html:130
-#, fuzzy
-#| msgctxt "User address action"
-#| msgid "Edit"
 msgid "Edit"
 msgstr "Upravit"
 
 #: templates/dashboard/product/detail.html:134
-#, fuzzy
-#| msgid "Reservation"
 msgctxt "Dashboard product details page"
 msgid "No variants found"
 msgstr "Rezervace"
@@ -735,48 +749,97 @@ msgctxt "Checkout secondary action"
 msgid "Continue shopping"
 msgstr ""
 
-#: templates/order/reservation.html:12
+#: templates/order/details.html:8
+#, python-format
+msgctxt "Order details page title"
+msgid "Order %(order)s"
+msgstr ""
+
+#: templates/order/details.html:28
+#, python-format
+msgctxt "Order details breadcrumb"
+msgid "Order %(order)s"
+msgstr ""
+
+#: templates/order/details.html:49
+#, python-format
+msgctxt "Order detail text"
+msgid "Order %(order)s: %(order_status)s"
+msgstr ""
+
+#: templates/order/details.html:56
+msgctxt "Order details link text"
+msgid "Payment details"
+msgstr ""
+
+#: templates/order/details.html:60
+#, fuzzy
+#| msgctxt "Orders table header"
+#| msgid "Placed on"
+msgctxt "Order details primary action"
+msgid "Pay for order"
+msgstr "Vytvořeno"
+
+#: templates/order/details.html:67
+#, fuzzy
+#| msgctxt "Main navigation item"
+#| msgid "Your account"
+msgctxt "Customer order note"
+msgid "Your note"
+msgstr "Váš účet"
+
+#: templates/order/details.html:73
+msgctxt "Order note title"
+msgid "Add a note to your order"
+msgstr "Přidat poznámku k objednávce"
+
+#: templates/order/details.html:75
+msgctxt "Customer panel - order details: add note submit button"
+msgid "Submit note"
+msgstr "Odeslat poznámku"
+
+#: templates/order/reservation.html:16
 msgid "Back To Detail"
 msgstr "Zpět na detail"
 
-#: templates/order/reservation.html:58
+#: templates/order/reservation.html:62 templates/order/reservation.html:63
 msgid "Given Name"
 msgstr "Jméno"
 
-#: templates/order/reservation.html:62
+#: templates/order/reservation.html:66 templates/order/reservation.html:67
 msgid "Family Name"
 msgstr "Příjmení"
 
-#: templates/order/reservation.html:66
+#: templates/order/reservation.html:70 templates/order/reservation.html:71
 msgid "Email"
 msgstr "Email"
 
-#: templates/order/reservation.html:70
+#: templates/order/reservation.html:74 templates/order/reservation.html:75
 msgid "Phone number"
 msgstr "Telefon"
 
-#: templates/order/reservation.html:77
+#: templates/order/reservation.html:81
 msgid "Note"
 msgstr "Poznámka"
 
-#: templates/order/reservation.html:82 templates/product/details.html:192
+#: templates/order/reservation.html:90 templates/product/details.html:195
 msgctxt "Reserve picture primary action"
 msgid "Reserve picture"
 msgstr "Rezervovat obraz"
 
-#: templates/order/reservation.html:88
+#: templates/order/reservation.html:96
 msgid "You have already created reservation to this picture."
 msgstr "Tento obraz už máte zarezervovaný"
 
-#: templates/order/reservation.html:89
+#: templates/order/reservation.html:97
 msgid "View Reservation"
 msgstr "Zobrazit rezeravaci"
 
-#: templates/order/reservation.html:91
+#: templates/order/reservation.html:99
 msgid "You have to log in to create a new reservation."
 msgstr "Pro vytvoření rezeravce k tomu obrazu se musíte nejdříve přihlásit."
 
-#: templates/order/reservation.html:92
+#: templates/order/reservation.html:100
 msgid "Log In"
 msgstr "Přihlásit se"
 
@@ -855,7 +918,7 @@ msgstr "Je nám líto, pro váš požadavek nebyly nalezeny žádné výsledky."
 msgid "View"
 msgstr "Zobrazit"
 
-#: templates/product/details.html:59
+#: templates/product/details.html:62
 #, python-format
 msgctxt "Product details text"
 msgid ""
@@ -865,22 +928,22 @@ msgstr ""
 "<strong>Upozornění!</strong> Prohlížíte si produkt, který se bude zobrazovat "
 "<strong>%(date)s</strong>."
 
-#: templates/product/details.html:121
+#: templates/product/details.html:124
 msgctxt "Product details link text"
 msgid "Edit in dashboard"
 msgstr "Editovat v administraci"
 
-#: templates/product/details.html:184
+#: templates/product/details.html:187
 msgctxt "Product details primary action"
 msgid "Add to cart"
 msgstr "Přidat do košíku"
 
-#: templates/product/details.html:201
+#: templates/product/details.html:204
 msgctxt "Product details text"
 msgid "This product is currently <strong>unavailable</strong>."
 msgstr "Tento produkt je momentálně <strong>nedostupný</strong>."
 
-#: templates/product/details.html:206
+#: templates/product/details.html:209
 msgctxt "Product details title"
 msgid "Description"
 msgstr "Popis"

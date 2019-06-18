@@ -7,6 +7,10 @@
 .detail-img {
   cursor: pointer;
 }
+.modal .detail-img {
+    margin: 0 auto;
+    display: block;
+}
 </style>
 <div class="container">
   <h1>{{ product.name }} - {% trans "Reservation" %} - <a class="btn btn-order" href="{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}">{% trans "Back To Detail" %}</a></h1>
@@ -56,19 +60,19 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="givenName">{% trans "Given Name" %}</label>
-            <input name="given_name" type="text" class="form-control" value="{{ request.user.default_billing_address.first_name|default:"" }}" id="givenName" placeholder="Given Name" required="true">
+            <input name="given_name" type="text" class="form-control" value="{{ request.user.default_billing_address.first_name|default:"" }}" id="givenName" placeholder="{% trans "Given Name" %}" required="true">
           </div>
           <div class="form-group col-md-6">
             <label for="familyName">{% trans "Family Name" %}</label>
-            <input name="family_name" type="text" class="form-control" value="{{ request.user.default_billing_address.last_name }}" id="familyName" placeholder="FamilyName" required="true">
+            <input name="family_name" type="text" class="form-control" value="{{ request.user.default_billing_address.last_name }}" id="familyName" placeholder="{% trans "Family Name" %}" required="true">
           </div>
           <div class="form-group col-md-6">
             <label for="email">{% trans "Email" %}</label>
-            <input name="email" type="email" class="form-control" value="{{ request.user.email }}" id="email" placeholder="email" required="true">
+            <input name="email" type="email" class="form-control" value="{{ request.user.email }}" id="email" placeholder="{% trans "Email" %}" required="true">
           </div>
           <div class="form-group col-md-6">
             <label for="phoneNumber">{% trans "Phone number" %}</label>
-            <input name="phone_number" type="text" class="form-control" value="{{ request.user.default_billing_address.phone }}" id="phoneNumber" placeholder="Phone number" required="true">
+            <input name="phone_number" type="text" class="form-control" value="{{ request.user.default_billing_address.phone }}" id="phoneNumber" placeholder="{% trans "Phone number" %}" required="true">
           </div>
           <div class="form-group col-md-12">
             {% bootstrap_form country_form %}
@@ -76,6 +80,10 @@
           <div class="form-group col-md-12">
             <label for="comment">{% trans "Note" %}</label>
             <textarea name="note" class="form-control" rows="5" id="comment"></textarea>
+          </div>
+          <div class="form group col-md-12">
+            <input id="consentCheck" type="checkbox" oninvalid="this.setCustomValidity('{% trans 'You must agree to the processing of personal data to submit this form.' %}')" onchange="this.setCustomValidity('')" required/>
+            <label for="consentCheck">{% trans 'I agree to the processing of personal data.' %}</label>
           </div>
           <div class="form-group product__info__button col-md-6 m-auto">
             <button class="btn primary">
