@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 08:14+0200\n"
+"POT-Creation-Date: 2019-06-18 08:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -168,6 +168,53 @@ msgstr "Zavřít"
 #: templates/account/reservation_details.html:92
 msgid "Remove"
 msgstr ""
+
+#: templates/account/signup.html:6
+msgctxt "Signup page title"
+msgid "Sign Up"
+msgstr ""
+
+#: templates/account/signup.html:17
+msgctxt "Signup form secondary title"
+msgid "Already have an account?"
+msgstr ""
+
+#: templates/account/signup.html:21
+#, fuzzy
+#| msgctxt "Main navigation item"
+#| msgid "Log in"
+msgctxt "Signup form secondary action"
+msgid "Log in"
+msgstr "Přihlásit se"
+
+#: templates/account/signup.html:28
+#, fuzzy
+#| msgctxt "Main navigation item"
+#| msgid "Your account"
+msgctxt "Signup form title"
+msgid "Create an account"
+msgstr "Váš účet"
+
+#: templates/account/signup.html:36
+#: templates/checkout/summary_without_shipping.html:18
+#: templates/order/reservation.html:85
+msgid "You must agree to the processing of personal data to submit this form."
+msgstr ""
+"Pro odeslání tohoto formuláře musíte souhlasit se zpracováním osobních údajů."
+
+#: templates/account/signup.html:37
+#: templates/checkout/summary_without_shipping.html:19
+#: templates/order/reservation.html:86
+msgid "I agree to the processing of personal data."
+msgstr "Souhlasím se zpracováním osobních údajů."
+
+#: templates/account/signup.html:40
+#, fuzzy
+#| msgctxt "Main navigation item"
+#| msgid "Your account"
+msgctxt "Signup form primary action"
+msgid "Create an account"
+msgstr "Váš účet"
 
 #: templates/base.html:140 templates/base.html:191
 msgctxt "Main navigation item"
@@ -339,17 +386,6 @@ msgctxt "Checkout summary without shipping note title"
 msgid "Add a note to your order"
 msgstr "Přidat poznámku k objednávce"
 
-#: templates/checkout/summary_without_shipping.html:18
-#: templates/order/reservation.html:85
-msgid "You must agree to the processing of personal data to submit this form."
-msgstr ""
-"Pro odeslání tohoto formuláře musíte souhlasit se zpracováním osobních údajů."
-
-#: templates/checkout/summary_without_shipping.html:19
-#: templates/order/reservation.html:86
-msgid "I agree to the processing of personal data."
-msgstr "Souhlasím se zpracováním osobních údajů."
-
 #: templates/checkout/summary_without_shipping.html:23
 #, fuzzy
 #| msgctxt "Orders table header"
@@ -357,6 +393,21 @@ msgstr "Souhlasím se zpracováním osobních údajů."
 msgctxt "Checkout summary without shipping action"
 msgid "Place order"
 msgstr "Vytvořeno"
+
+#: templates/cookielaw/banner.html:5
+msgid "COOKIE_INFO_HEADER"
+msgstr ""
+
+#: templates/cookielaw/banner.html:7
+msgid "COOKIE_INFO_OK"
+msgstr "Souhlasím"
+
+#: templates/cookielaw/banner.html:8
+msgid "COOKIE_INFO_PARA"
+msgstr ""
+"Tento web používá k poskytování funkcí sociálních médií a analýze "
+"návštěvnosti soubory cookies. Používáním tohoto webu souhlasíte s ukládáním "
+"a používáním souborů cookies."
 
 #: templates/dashboard/base.html:11
 #, python-format
