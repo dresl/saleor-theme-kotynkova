@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% load materializecss %}
+{% load materializecss static %}
 {% load build_absolute_uri from urls %}
 
 {% block title %}
@@ -20,26 +20,56 @@
   <meta property="og:url" content="{{ page_url }}">
 {% endblock meta_tags %}
 
-{% block breadcrumb %}
-  <ul class="breadcrumbs list-unstyled">
-    <li>
-      <a href="{% url 'home' %}">
-        {% trans "Home" context "Main navigation item" %}
-      </a>
-    </li>
-    {% if page %}
-      <li>
-        <a href="{{ page.get_absolute_url }}">{{ page.translated.title }}</a>
-      </li>
-    {% endif %}
-  </ul>
-{% endblock breadcrumb %}
 
 {% block content %}
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
 <style type="text/css">
+.main-page.container-fluid {
+    padding: 0px;
+}
+.main-page.container-fluid img {
+    width: 100vw;
+}
 .main-page {
     font-size: 13px;
 }
+.heading-info a {
+    color: #fff;
+}
+.navbar.tagged .heading-info a {
+    color: #000;
+}
+.container-fluid.main-page {
+    background-color: #000;
+}
+.container-fluid.main-page .black-box {
+  margin-top: 50px;
+}
+.container-fluid.main-page .black-box * {
+    color: #fff;
+}
+.white-box {
+    background-color: #fff;
+    position: absolute;
+    top: 150px;
+    width: 530px;
+    right: 50px;
+    padding: 30px;
+}
+.white-box:after {
+    content: '';
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: -50px;
+}
+.white-box p {
+    font-size: 15px;
+}
+
 </style>
   {% if not page.is_visible %}
     <div class="alert alert-warning" role="alert">
@@ -56,7 +86,7 @@
       {% endblocktrans %}
     </div>
   {% endif %}
-  <div class="container main-page">
+  <div class="container-fluid main-page">
     {{ page.translated.content|safe }}
   </div>
 {% endblock %}
