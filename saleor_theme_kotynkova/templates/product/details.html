@@ -264,6 +264,20 @@ body.modal-open > .modal-close {
           $("#modal-container").html("");
           window.location.hash = "slick-slide-" + {{ product.id }};
         });
+        // set active variant
+        activeVariant = window.location.hash.replace("%20", " ").replace("%C3%97", "×").replace('%C3%A1', 'á').replace('%C4%8D', 'č').replace('%C3%AD', 'í').replace('%C5%99', 'ř');
+        indexActive = activeVariant.indexOf("-act-");
+        activeVariant = activeVariant.substr(indexActive+5, activeVariant.length);
+        $(".btn.variant-picker__option").removeClass("active");
+        $(".btn.variant-picker__option").map(function(){
+          if ($(this).text() == activeVariant)
+            $(this).trigger("click");
+        });
+        // bind escape to close modal
+        $(document).keyup(function(e) {
+          if(e.keyCode === 27)
+            $("#modal-container .modal-close").trigger("click");
+        });
       }, 200);
     });
   </script>
