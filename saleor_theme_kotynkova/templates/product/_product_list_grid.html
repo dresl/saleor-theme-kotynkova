@@ -11,7 +11,7 @@
     <div class="list-item col-md-4">
       <a href="{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}">
         {% thumbnail product.get_first_image "520x270" format="PNG" crop="center" as image %}
-          <img src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}">
+          <img class="lazyload lazypreload" src="{{ image.url }}" width="{{ image.width }}" height="{{ image.height }}">
         {% endthumbnail %}
       </a>
       <div class="col-6 desc">

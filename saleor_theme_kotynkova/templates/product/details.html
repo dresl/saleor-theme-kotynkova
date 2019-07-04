@@ -191,9 +191,20 @@ body.modal-open > .modal-close {
           {% endif %}
         {% endblock %}
         <div class="form-group product__reserve__button">
+          {% for variant in product.variants.all %}
+          {% if variant.name == "originál" %}
+          {% if variant.is_in_stock %}
           <a href="{% url 'product:reserve_picture' product_id=product.pk slug=product.get_slug %}" class="btn primary btn-reserve btn-block">
             {% trans "Reserve picture" context "Reserve picture primary action" %}
           </a>
+          {% else %}
+          <h3 class="text-danger">{% trans "This picture is already sold out." %}</h3>
+          {% if product.variants.count > 0 %}
+          <h3>{% trans "But you can choose from another variants." %}</h3>
+          {% endif %}
+          {% endif %}
+          {% endif %}
+          {% endfor %}
         </div>
 
         <div class="product__info__form-error">
@@ -271,7 +282,7 @@ body.modal-open > .modal-close {
         $(".btn.variant-picker__option").removeClass("active");
         $(".btn.variant-picker__option").map(function(){
           if ($(this).text() == activeVariant)
-            $(this).trigger("click");
+            $(this).find("input").trigger("click");
         });
         // bind escape to close modal
         $(document).keyup(function(e) {
