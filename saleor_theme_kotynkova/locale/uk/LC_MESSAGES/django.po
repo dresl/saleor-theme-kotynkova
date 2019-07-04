@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-18 08:32+0200\n"
+"POT-Creation-Date: 2019-07-04 11:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,6 @@ msgstr ""
 #: templates/account/details.html:16
 #: templates/account/reservation_details.html:17
 #: templates/checkout/index.html:12 templates/order/details.html:18
-#: templates/page/details.html:27
 msgctxt "Main navigation item"
 msgid "Home"
 msgstr ""
@@ -137,10 +136,30 @@ msgctxt "Remove account form action"
 msgid "Remove Account"
 msgstr ""
 
+#: templates/account/login.html:5
+msgctxt "Login page title"
+msgid "Log in"
+msgstr ""
+
+#: templates/account/login.html:16
+msgctxt "Login form secondary title"
+msgid "Don't have an account yet?"
+msgstr ""
+
+#: templates/account/login.html:21
+msgctxt "Login form secondary action"
+msgid "Register"
+msgstr ""
+
+#: templates/account/login.html:26
+msgctxt "Login form title"
+msgid "Log in"
+msgstr ""
+
 #: templates/account/reservation_details.html:8
 #: templates/account/reservation_details.html:26
 #: templates/account/reservation_details.html:55
-#: templates/order/reservation.html:16
+#: templates/order/reservation.html:5 templates/order/reservation.html:18
 msgid "Reservation"
 msgstr ""
 
@@ -160,7 +179,7 @@ msgid "Are you sure to remove this reservation?"
 msgstr ""
 
 #: templates/account/reservation_details.html:91 templates/base.html:271
-#: templates/order/reservation.html:47
+#: templates/order/reservation.html:49
 #: templates/product/_fullscreen_products.html:244
 #: templates/product/details.html:115
 msgid "Close"
@@ -192,13 +211,13 @@ msgstr ""
 
 #: templates/account/signup.html:36
 #: templates/checkout/summary_without_shipping.html:18
-#: templates/order/reservation.html:85
+#: templates/order/reservation.html:90
 msgid "You must agree to the processing of personal data to submit this form."
 msgstr ""
 
 #: templates/account/signup.html:37
 #: templates/checkout/summary_without_shipping.html:19
-#: templates/order/reservation.html:86
+#: templates/order/reservation.html:91
 msgid "I agree to the processing of personal data."
 msgstr ""
 
@@ -535,6 +554,100 @@ msgctxt "Dashboard software version"
 msgid "Release:"
 msgstr ""
 
+#: templates/dashboard/order/pdf/invoice.html:8
+msgctxt "Invoice title"
+msgid "Invoice for Order"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:17
+msgctxt "Order invoice"
+msgid "Invoice"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:18
+msgctxt "Invoice header"
+msgid "Order"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:34
+msgctxt "Invoice shipping address"
+msgid "Shipping address"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:39
+msgctxt "Invoice billing address"
+msgid "Billing address"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:65
+msgctxt "Invoice ordered items header"
+msgid "Items Ordered"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:72
+msgctxt "Shipment order table header"
+msgid "Item"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:76
+msgctxt "Shipment order table header"
+msgid "SKU"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:79
+msgctxt "Shipment order table header"
+msgid "Tax rate"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:82
+msgctxt "Shipment order table header"
+msgid "Gross price"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:85
+msgctxt "Shipment order table header"
+msgid "Quantity"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:88
+msgctxt "Shipment order table header"
+msgid "Total"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:102
+#, python-format
+msgctxt "Order line tax rate value"
+msgid ""
+"\n"
+"              %(tax_rate)s %%\n"
+"            "
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:125
+msgctxt "Order subtotal net price"
+msgid "Subtotal"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:133
+msgctxt "Order total shipping price header"
+msgid "Shipping"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:141
+msgctxt "Order total taxes header"
+msgid "Total taxes (included)"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:150
+msgctxt "Order voucher header"
+msgid "Discount"
+msgstr ""
+
+#: templates/dashboard/order/pdf/invoice.html:161
+msgctxt "Order total price header"
+msgid "Grand total"
+msgstr ""
+
 #: templates/dashboard/order/reservation_list.html:9
 #: templates/dashboard/order/reservation_list.html:17
 msgctxt "Dashboard reservation list"
@@ -735,6 +848,69 @@ msgstr ""
 msgid "Exhibitions"
 msgstr ""
 
+#: templates/order/_ordered_items_table.html:14
+msgctxt "Order details address title"
+msgid "Shipping address"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:21
+msgctxt "Order details address title"
+msgid "Billing address"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:32
+#: templates/order/_ordered_items_table.html:173
+msgctxt "Order details column title"
+msgid "Product"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:37
+#: templates/order/_ordered_items_table.html:178
+msgctxt "Order details column title"
+msgid "Quantity"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:42
+msgctxt "Order details column title"
+msgid "Price"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:85
+msgctxt "Order details subtotal row text"
+msgid "Subtotal"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:102
+msgctxt "Order details shipment row text"
+msgid "Shipping"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:134
+msgctxt "Order details taxes text"
+msgid "Taxes (included)"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:136
+msgctxt "Order details taxes text"
+msgid "Taxes"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:150
+msgctxt "Order details total text"
+msgid "Total"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:164
+#, python-format
+msgctxt "Order details fulfillment title"
+msgid "Fulfillment #%(fulfillment)s"
+msgstr ""
+
+#: templates/order/_ordered_items_table.html:207
+msgctxt "Fulfillment tracking number details"
+msgid "Tracking number"
+msgstr ""
+
 #: templates/order/checkout_success.html:8
 msgctxt "Checkout success page title"
 msgid "Thank you"
@@ -802,52 +978,56 @@ msgctxt "Customer panel - order details: add note submit button"
 msgid "Submit note"
 msgstr ""
 
-#: templates/order/reservation.html:16
+#: templates/order/reservation.html:18
 msgid "Back To Detail"
 msgstr ""
 
-#: templates/order/reservation.html:62 templates/order/reservation.html:63
+#: templates/order/reservation.html:67 templates/order/reservation.html:68
 msgid "Given Name"
 msgstr ""
 
-#: templates/order/reservation.html:66 templates/order/reservation.html:67
+#: templates/order/reservation.html:71 templates/order/reservation.html:72
 msgid "Family Name"
 msgstr ""
 
-#: templates/order/reservation.html:70 templates/order/reservation.html:71
+#: templates/order/reservation.html:75 templates/order/reservation.html:76
 msgid "Email"
 msgstr ""
 
-#: templates/order/reservation.html:74 templates/order/reservation.html:75
+#: templates/order/reservation.html:79 templates/order/reservation.html:80
 msgid "Phone number"
 msgstr ""
 
-#: templates/order/reservation.html:81
+#: templates/order/reservation.html:86
 msgid "Note"
 msgstr ""
 
-#: templates/order/reservation.html:90 templates/product/details.html:195
+#: templates/order/reservation.html:95 templates/product/details.html:198
 msgctxt "Reserve picture primary action"
 msgid "Reserve picture"
 msgstr ""
 
-#: templates/order/reservation.html:96
+#: templates/order/reservation.html:101
 msgid "You have already created reservation to this picture."
 msgstr ""
 
-#: templates/order/reservation.html:97
+#: templates/order/reservation.html:102
 msgid "View Reservation"
 msgstr ""
 
-#: templates/order/reservation.html:99
+#: templates/order/reservation.html:104
 msgid "You have to log in to create a new reservation."
 msgstr ""
 
-#: templates/order/reservation.html:100
+#: templates/order/reservation.html:105
 msgid "Log In"
 msgstr ""
 
-#: templates/page/details.html:46
+#: templates/order/reservation.html:108 templates/product/details.html:201
+msgid "This picture is already sold out."
+msgstr ""
+
+#: templates/page/details.html:76
 msgctxt "Unavailable page detail text"
 msgid ""
 "\n"
@@ -856,7 +1036,7 @@ msgid ""
 "      "
 msgstr ""
 
-#: templates/page/details.html:53
+#: templates/page/details.html:83
 #, python-format
 msgctxt "Unpublished page details text"
 msgid ""
@@ -927,12 +1107,16 @@ msgctxt "Product details primary action"
 msgid "Add to cart"
 msgstr ""
 
-#: templates/product/details.html:204
+#: templates/product/details.html:203
+msgid "But you can choose from another variants."
+msgstr ""
+
+#: templates/product/details.html:215
 msgctxt "Product details text"
 msgid "This product is currently <strong>unavailable</strong>."
 msgstr ""
 
-#: templates/product/details.html:209
+#: templates/product/details.html:220
 msgctxt "Product details title"
 msgid "Description"
 msgstr ""
