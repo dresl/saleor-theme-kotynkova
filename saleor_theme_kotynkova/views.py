@@ -1,8 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.template.response import TemplateResponse
-from django.db.models import Q
-from saleor.product.models import Category, DigitalContentUrl, Attribute, ProductVariant
+from saleor.product.models import Category, DigitalContentUrl, Attribute, ProductVariant, AttributeValue
 from saleor.product.utils import products_with_details, products_for_products_list, get_product_list_context
 from saleor.product.filters import ProductCategoryFilter
 
@@ -83,16 +82,9 @@ def category_index(request, slug, category_id):
 
     if request.GET.getlist('variants'):
         variants = request.GET.getlist('variants')
-        query_q = ""
-        counter = 0
-        for variant in variants:
-            query_q += "Q(attributes={" + "'{}':'{}'".format(obraz_attr.id,
-                                                             variants[counter]) + "})"
-            counter += 1
-            if len(variants) - counter > 0:
-                query_q += "|"
-        my_variants = ProductVariant.objects.filter(eval(query_q))
-        products = products.filter(variants__in=my_variants).distinct()
+        filtered_variants = ProductVariant.objects.filter(
+            name__in=[i.name for i in AttributeValue.objects.filter(id__in=variants)])
+        products = products.filter(variants__in=filtered_variants).distinct()
 
     if request.GET.get('name'):
         products = products.filter(name__icontains=request.GET.get('name')).distinct()

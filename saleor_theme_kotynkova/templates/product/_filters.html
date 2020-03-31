@@ -31,6 +31,14 @@
       background-color: transparent;
       border-color: #616161;
   }
+  .product-filters .filter-section__header h3 {
+    font-weight: bold;
+    padding-right: .5rem;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
+  }
   .filter-product .bootstrap-select.btn-group .dropdown-menu.inner {
       padding-left: 8px;
   }
@@ -60,6 +68,20 @@
   /* Handle on hover */
   .product-filters ::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+
+  .product-filters .dropdown-menu.open.show {
+    background: #121212;
+  }
+  .product-filters .dropdown-menu.open.show ul {
+    background: #121212;
+  }
+  .product-filters .dropdown-menu.open.show ul li a {
+    color: #fff;
+    padding: 5px 3px;
+  }
+  span.glyphicon.glyphicon-ok.check-mark {
+    filter: invert(1);
   }
 </style>
 
@@ -132,7 +154,7 @@
           <div class="col-12 col-md-2 filter-option">
             <div class="filter-product search-name" title="Name">
               <div class="btn-group search-group">
-                <input class="" type="text" name="name" placeholder="{% trans 'Searched text' %}..." value="{% if request.GET.name %}{{ request.GET.name }}{% endif %}">
+                <input autocomplete="off" class="" type="text" name="name" placeholder="{% trans 'Searched text' %}..." value="{% if request.GET.name %}{{ request.GET.name }}{% endif %}">
               </div>
             </div>
           </div>
@@ -157,6 +179,12 @@
       setTimeout(function(){
         $(".filter-product select option").removeAttr("selected");
         $(".filter-product .selectpicker").selectpicker("refresh");
+        $(".filter-section__content input[type='checkbox']:checked").map(function (){
+          $(this).prop("checked", false);
+        });
+        $(".filter-section__content input[type='text']").prop('value', '');
+        $(".filter-option input[type='text']").prop('value', '');
+
         $(".product-filters .btn-order[type='submit']").trigger("click");
       }, 100);
     });
