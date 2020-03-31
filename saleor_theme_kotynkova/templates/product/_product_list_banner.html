@@ -10,7 +10,7 @@
 
 <style type="text/css">
 {% for product in products %}
-{% thumbnail product.get_first_image "x900" crop="center" format="PNG" as product_image %}
+{% thumbnail product.get_first_image.image "x900" crop="center" format="PNG" as product_image %}
 .slick-banner-images .banner-item.item-{{ product.id }} {
   background-image: url(/static/img/logo-kotynkova.png), url("/static/img/front_banner_layer_full.png"), url("{{ product_image.url }}");
 }

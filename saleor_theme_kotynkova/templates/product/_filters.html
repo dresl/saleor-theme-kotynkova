@@ -1,5 +1,68 @@
 {% load i18n %}
 {% load staticfiles saleor_ext %}
+
+<style>
+  .categories .top-panel .filter-option.search-buttons {
+      margin-top: 20px;
+      text-align: right;
+  }
+  .categories .top-panel .filter-option.search-buttons button {
+      height: 32px;
+  }
+  .filter-section__content {
+      position: absolute;
+      margin-top: 15px;
+      z-index: 999;
+      background-color: #121212;
+      padding: 13px;
+      text-align: left;
+      width: 85%;
+      overflow-y: auto!important;
+  }
+  .filter-section.filter-section--closed .filter-section__content {
+      margin: 0;
+      padding: 0;
+      height: 0;
+  }
+  .form-control[type="checkbox"]:checked, select[type="checkbox"]:checked, input[type="checkbox"]:checked {
+      background-color: #fff;
+  }
+  .form-control[type="checkbox"], select[type="checkbox"], input[type="checkbox"] {
+      background-color: transparent;
+      border-color: #616161;
+  }
+  .filter-product .bootstrap-select.btn-group .dropdown-menu.inner {
+      padding-left: 8px;
+  }
+  .filter-product .form-control[type="checkbox"], select[type="checkbox"], input[type="checkbox"] {
+      border-radius: 0px;
+      height: 9px;
+      width: 9px;
+  }
+  .bootstrap-select.btn-group .dropdown-toggle .filter-option {
+    height: 17px;
+  }
+  /* width */
+  .product-filters ::-webkit-scrollbar {
+    width: 2px;
+  }
+
+  /* Track */
+  .product-filters ::-webkit-scrollbar-track {
+    background: #151515;
+  }
+
+  /* Handle */
+  .product-filters ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  .product-filters ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>
+
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 
@@ -34,29 +97,37 @@
               This is required if you want to have sorting to be kept during further filtering.
             {% endcomment %}
             <input type="hidden" name="sort_by" value="{% if request.GET.sort_by %}{{ request.GET.sort_by }}{% endif %}">
-          {% elif field.name == 'price' %}
+          {% elif field.name == 'minimal_variant_price' %}
           {% elif field.name == 'obraz-typ' %}
-          <div class="col-12 col-md-1 title filter-option">
+          <div class="col-12 col-md-2 title filter-option">
             <span class="search-title">{% trans "Search" %}:</span>
           </div>
           {% else %}
-          <div class="col-12 col-md-2 filter-option">
-            <div class="filter-product" title="{{ field.label }}">
-                {{ field }}
+            <div class="col-md-2 filter-section filter-section--closed">
+              <div class="filter-section__header">
+                <h3>{{ field.label }}</h3>
+                <div class="filter-section__icon">
+                  <img class="lazyload lazypreload" data-src="{% static "images/chevron-up.svg" %}">
+                </div>
+              </div>
+              <div class="filter-section__content">
+                <div class="filter-form-field" data-simplebar>
+                  {{ field }}
+                </div>
+              </div>
             </div>
-          </div>
           {% endif %}
           {% if forloop.last %}
           <div class="col-12 col-md-2 filter-option">
-              <div class="filter-product" title="{% trans 'Variant' %}">
-                {% with request.GET|get_list:'variants' as variants_list %}
-                <select a="{{ variants_list }}" name="variants" id="id_varianta" multiple="multiple" title="{% trans 'Variant' %}" class="selectpicker" tabindex="-98">
-                  {% for value in product_attr.values.all %}
-                  <option value="{{ value.id }}" {% if value.id|is_in:variants_list %}selected{% endif %}>{{ value.translated }}</option>
-                  {% endfor %}
-                </select>
-                {% endwith %}
-              </div>
+            <div class="filter-product" title="{% trans 'Variant' %}">
+              {% with request.GET|get_list:'variants' as variants_list %}
+              <select a="{{ variants_list }}" name="variants" id="id_varianta" multiple="multiple" title="{% trans 'Variant' %}" class="selectpicker" tabindex="-98">
+                {% for value in product_attr.values.all %}
+                <option value="{{ value.id }}" {% if value.id|is_in:variants_list %}selected{% endif %}>{{ value.translated }}</option>
+                {% endfor %}
+              </select>
+              {% endwith %}
+            </div>
           </div>
           <div class="col-12 col-md-2 filter-option">
             <div class="filter-product search-name" title="Name">
@@ -67,7 +138,7 @@
           </div>
           {% endif %}
         {% endfor %}
-        <div class="col-12 col-md-1 filter-option">
+        <div class="col-12 col-md-12 filter-option search-buttons">
           <button class="btn btn-order" type="reset">{% trans 'Remove filters' context 'Remove filters button' %}</button>
           <button class="btn btn-order" type="submit">{% trans 'Update' context 'Apply filters button' %}</button>
         </div>

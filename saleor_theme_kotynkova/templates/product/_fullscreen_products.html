@@ -181,7 +181,7 @@
         <!-- <h1>{{ object.translation.title }}</h1> -->
         <div class="col-xs-12 padding-none main-images-preview">
             {% for product, available in picture_list %}
-            <div class="object-image" data-picture-id="{{ product.id }}" data-slick-index="{{ forloop.counter0 }}" onclick="get_product_image('{% url 'product:render_product_image' product_id=product.id %}');get_product_details('{% url 'product:render_product_details' product_id=product.id %}');">
+            <div class="object-image" data-picture-id="{{ product.id }}" data-slick-index="{{ forloop.counter0 }}" onclick="get_product_image('{% url 'theme_kotynkova:render_product_image' product_id=product.id %}');get_product_details('{% url 'theme_kotynkova:render_product_details' product_id=product.id %}');">
             </div>
             {% endfor %}
         </div>
@@ -208,7 +208,7 @@
                 <div class="row all-images">
                 {% for product, available in picture_list %}
                     <div class="col-md-1 col-4 thumb-item" product-id="{{ product.id }}" data-product-id="{{ product.id }}">
-                        {% thumbnail product.get_first_image "125x125" format="PNG" crop="center" as image %}
+                        {% thumbnail product.get_first_image.image "125x125" format="PNG" crop="center" as image %}
                         <img src="{{ image.url }}">
                         {% endthumbnail %}
                     </div>
@@ -354,32 +354,6 @@ jQuery(function($) {
             });
             setTitle();
         }, 1000);
-
-        // fix dropdowns
-        $(".btn-group.bootstrap-select.show-tick > button").click(function(){
-            button = $(this)
-            if ($(this).parent().find("select").prev().hasClass("show")) {
-                $(this).parent().find("select").prev().removeClass("show")
-            }
-            else {
-                $(this).parent().find("select").prev().addClass("show");
-            }
-            setTimeout(function(){
-                $(document).mouseup(function(e){
-                    var btnDropdownToggle = $(".btn-group.bootstrap-select.show-tick .dropdown-menu.open.show");
-                    if (!btnDropdownToggle.is(e.target) && btnDropdownToggle.has(e.target).length === 0) 
-                    {
-                        $(".btn-group.bootstrap-select.show-tick .dropdown-menu.open.show").removeClass("show");
-                    }
-                });
-                if (button.hasClass("opened")) {
-                    $(".btn-group.bootstrap-select.show-tick .dropdown-menu.open.show").removeClass("show");
-                    button.removeClass("opened");
-                } else {
-                    button.addClass("opened");
-                }
-            }, 100);
-        });
 
         $(document).mouseup(function(e){
             var container = $(".categories .col-12.col-md-2.filter-option");

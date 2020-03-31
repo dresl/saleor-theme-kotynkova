@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load staticfiles i18n %}
+{% load static i18n %}
 {% load render_bundle from webpack_loader %}
 {% load version %}
 {% load serialize_messages from utils %}
@@ -70,7 +70,7 @@
             </li>
             <li>
               <a href="{% url 'dashboard:index' %}" class="logo">
-                <svg data-src="{% static "dashboard/images/logo.svg" %}" height="38px" width="176px" />
+                <svg data-src="{% static "images/logo-white.svg" %}" height="38px" width="176px" />
               </a>
             </li>
             <li class="search">
@@ -142,18 +142,13 @@
             {% if perms.order.manage_orders or perms.account.manage_users %}
             <li class="side-nav-section">
               <p>
-                {% trans "Orders" context "Dashboard orders. `Sales' is noun of to sell" %}
+                {% trans "Sales" context "Dashboard sales. `Sales' is noun of to sell" %}
               </p>
               <ul>
                 {% if perms.order.manage_orders %}
                   <li class="{% block menu_orders_class %}{% endblock %}">
                     <a href="{% url 'dashboard:orders' %}">
                       {% trans "Orders" context "Dashboard orders list" %}
-                    </a>
-                  </li>
-                  <li class="{% block menu_reservation_class %}{% endblock %}">
-                    <a href="{% url 'dashboard:reservation_list' %}">
-                      {% trans "Reservations" context "Dashboard reservations list" %}
                     </a>
                   </li>
                 {% endif %}
@@ -164,11 +159,6 @@
                     </a>
                   </li>
                 {% endif %}
-                  <li class="">
-                    <a href="/django-admin/fullcalendar/calendarevent/" target="_blank">
-                      {% trans "Events" context "Dashboard events list" %}
-                    </a>
-                  </li>
               </ul>
             </li>
             {% endif %}
@@ -186,7 +176,7 @@
                 </ul>
               </li>
             {% endif %}
-            {% if perms.site.manage_settings or perms.shipping.manage_shipping or perms.product.manage_products or perms.page.manage_pages %}
+            {% if perms.site.manage_settings or perms.shipping.manage_shipping or perms.product.manage_products or perms.page.manage_pages or perms.extensions.manage_plugins %}
               <li class="side-nav-section">
                 <p>
                   {% trans "Configuration"  context "Dashboard configuration" %}
@@ -199,15 +189,15 @@
                       </a>
                     </li>
                     <li class="{% block menu_attributes_class %}{% endblock %}">
-                      <a href="{% url 'dashboard:product-attributes' %}">
+                      <a href="{% url 'dashboard:attributes' %}">
                         {% trans "Attributes" context "Dashboard attributes list" %}
                       </a>
                     </li>
                   {% endif %}
                   {% if perms.shipping.manage_shipping %}
                     <li class="{% block menu_delivery_class %}{% endblock %}">
-                      <a href="{% url 'dashboard:shipping-methods' %}">
-                        {% trans "Shipping methods" context "Dashboard shipping methods list" %}
+                      <a href="{% url 'dashboard:shipping-zone-list' %}">
+                        {% trans "Shipping" context "Dashboard shipping zones list" %}
                       </a>
                     </li>
                   {% endif %}
@@ -234,6 +224,13 @@
                     <li class="{% block menu_pages_class %}{% endblock %}">
                       <a href="{% url 'dashboard:page-list' %}">
                         {% trans "Pages" context "Dashboard static pages" %}
+                      </a>
+                    </li>
+                  {% endif %}
+                  {% if perms.extensions.manage_plugins %}
+                    <li class="{% block menu_payments_class %}{% endblock %}">
+                      <a href="{% url "dashboard:payments-index" %}">
+                        {% trans "Payments configuration" context "Dashboard static pages" %}
                       </a>
                     </li>
                   {% endif %}
@@ -268,6 +265,7 @@
       <div id="base-modal-fixed" class="modal modal-fixed-footer"></div>
       <div class="container">
         {% block content %}{% endblock %}
+        <div id="dashboard-app"></div>
       </div>
     </main>
     <div id="messages-container" data-messages="{% serialize_messages %}"></div>

@@ -2,12 +2,13 @@ import json
 
 from django.template import Library
 from django.utils.http import urlencode
-from saleor.product.models import Collection, Category
 from django.conf import settings
+from saleor.product.models import Collection, Category
 from django.utils.safestring import SafeString
 from fullcalendar.models import CalendarEvent
 
 register = Library()
+
 
 @register.inclusion_tag('product/product_collection.html')
 def collection_prodcuts(collection_slug, template_style, count=None):
@@ -17,6 +18,7 @@ def collection_prodcuts(collection_slug, template_style, count=None):
         'template_style': template_style,
         }
 
+
 @register.filter(name='count_products')
 def count_products(value):
     counted = 0
@@ -24,6 +26,7 @@ def count_products(value):
         if product:
             counted += 1
     return counted
+
 
 @register.simple_tag
 def fullcalendar_config():
@@ -59,9 +62,11 @@ def fullcalendar_config():
 
     return final_config
 
+
 @register.filter
 def get_list(dictionary, key):
     return dictionary.getlist(key)
+
 
 @register.filter
 def is_in(dictionary, key):
@@ -70,10 +75,12 @@ def is_in(dictionary, key):
     else:
         return False
 
+
 @register.inclusion_tag('events/event_list.html')
 def render_events():
     events = CalendarEvent.objects.all().order_by("-start")
     return {'events' : events}
+
 
 @register.simple_tag
 def get_category_url(value):

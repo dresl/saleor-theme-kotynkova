@@ -1,5 +1,5 @@
 {% load thumbnail %}
 
-{% thumbnail product.get_first_image "125x125" format="PNG" crop="center" as image %}
+{% thumbnail product.get_first_image.image "125x125" format="PNG" crop="center" as image %}
 <img src="{{ image.url }}">
 {% endthumbnail %}

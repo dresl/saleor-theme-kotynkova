@@ -6,7 +6,7 @@
 {% load staticfiles cookielaw_tags %}
 {% load translate_url from urls %}
 
-<html lang="{{ LANGUAGE_CODE }}" class="no-js" data-shipping-options-url="{% url 'cart:shipping-options' %}" data-cart-summary-url="{% url 'cart:summary' %}">
+<html lang="{{ LANGUAGE_CODE }}" class="no-js" data-shipping-options-url="{% url 'checkout:shipping-options' %}" data-checkout-summary-url="{% url 'checkout:dropdown' %}">
 <head>
   <title>{% block title %}{{ site.name }}{% endblock %}</title>
   {% block meta %}
@@ -86,6 +86,79 @@ span.format.not-in-stock {
 .banner-item {
     cursor: pointer;
 }
+
+.categories .top-panel .close {
+  cursor: pointer;
+}
+
+.categories .top-panel .btn.dropdown-toggle.btn-default {
+    background-color: #000;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    padding: 9px;
+    height: 37px;
+    border-radius: 0px!important;
+    outline: none!important;
+    font-size: 15px;
+    color: #fff;
+    font-weight: bold;
+    margin-top: -8px;
+}
+
+.categories .filter-product.search-name input {
+    padding-left: 10px;
+    height: 35px;
+    width: 100%;
+    border-radius: 0px;
+    border: 0;
+    margin-top: -6px;
+    margin-left: 9px;
+    background: #000;
+    border-bottom: 1px solid #fff;
+    color: #fff;
+    font-weight: bold;
+}
+
+.product-filters .filter-section__icon img {
+    filter: invert(0.5);
+}
+
+.footer .footer__logo img {
+  margin-top: 10px;
+}
+
+.navbar__brand__checkout .checkout__icon {
+    padding: 0 17px;
+    right: 0;
+    top: 0;
+    z-index: 4;
+    font-size: 13px;
+    margin-top: -23px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+}
+.navbar__brand__checkout .checkout__icon:hover {
+    border: none;
+}
+.navbar__brand__checkout .checkout__icon .badge {
+    width: 22px;
+    height: 22px;
+    right: 6px;
+    top: 4px;
+}
+.checkout-preview-dropdown {
+    position: absolute;
+    width: 33rem;
+    top: 14px;
+    right: 0;
+    z-index: 3;
+    display: none;
+    border: solid 1px #d3d1d0;
+    border-radius: 4px 0 4px 4px;
+    background-color: #fff;
+}
+
 @media screen and (max-width: 800px) {
   .slick-banner-images .banner-item > .container {
       background-color: #fff;
@@ -137,28 +210,24 @@ span.format.not-in-stock {
         </ul>
       </div>
       <div class="col-4 col-md-3">
-        <div class="navbar__brand__cart float-right">
-          <a rel="nofollow" class="cart__icon" href="{% url "cart:index" %}">
-            <span class="cart-label d-none d-md-inline-block">
-              {% if request.user.is_authenticated %}
-              {{ request.user.email }}
-              {% else %}
-              {% trans "Your Cart" context "Main navigation item" %}
-              {% endif %}
+        <div class="navbar__brand__checkout float-right">
+          <a rel="nofollow" class="checkout__icon" href="{% url "checkout:index" %}">
+            <span class="checkout-label d-none d-md-inline-block">
+              {% trans "Your cart" context "Main navigation item" %}
             </span>
-            <div class="navbar__brand__cart__icon">
-              <svg data-src="{% static "images/cart.svg" %}" width="35" height="30"/>
+            <div class="navbar__brand__checkout__icon">
+              <svg data-src="{% static "images/checkout.svg" %}" width="24" height="24"/>
             </div>
-            <span class="badge {% if not cart_counter %}empty{% endif %}">
-              {% if cart_counter %}
-                {{ cart_counter }}
+            <span class="badge {% if not checkout_counter %}empty{% endif %}">
+              {% if checkout_counter %}
+                {{ checkout_counter }}
               {% else %}
                 0
               {% endif %}
             </span>
           </a>
-          <div class="cart-dropdown d-none">
-            {% include 'cart_dropdown.html' %}
+          <div class="checkout-preview-dropdown d-none">
+            {% include 'checkout_dropdown.html' %}
           </div>
         </div>
       </div>
@@ -193,7 +262,7 @@ span.format.not-in-stock {
         <div class="col-md-8 col-sm-6">
           <ul>
             <li>
-              <a rel="nofollow" href="{% url "cart:index" %}">
+              <a rel="nofollow" href="{% url "checkout:index" %}">
                 {% trans "Your Cart" context "Main navigation item" %}
               </a>
             </li>
@@ -242,7 +311,7 @@ span.format.not-in-stock {
           </ul>
         </div>
         <div class="col-md-1 col-sm-12">
-          <a target="_blank" rel="noopener" class="social-footer" href="https://www.facebook.com/mirumeelabs/">
+          <a target="_blank" rel="noopener" style="margin-top: 25px" class="social-footer" href="https://www.facebook.com/mirumeelabs/">
             <svg data-src="{% static "images/facebook-logo.svg" %}" width="45px" height="45px"/>
           </a>
 <!--           <a target="_blank" rel="noopener" class="social-footer" href="https://github.com/mirumee/saleor">

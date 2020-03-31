@@ -1,5 +1,5 @@
 {% load thumbnail %}
 
-{% thumbnail product.get_first_image "1920x1080" format="PNG" as image %}
+{% thumbnail product.get_first_image.image "1920x1080" format="PNG" as image %}
 <img class="project-image image-{{ product.id }}" src="{{ image.url }}"/>
 {% endthumbnail %}
