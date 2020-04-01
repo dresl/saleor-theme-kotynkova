@@ -3,7 +3,7 @@
 {% load bootstrap_form from bootstrap4 %}
 
 {% block forms %}
-  <form method="post">
+  <form method="post" novalidate>
     {% csrf_token %}
     <h2>{% trans "Billing address" context "Checkout summary without shipping title" %}</h2>
     {% if request.user.is_authenticated %}
@@ -14,12 +14,8 @@
     {% endif %}
     <h2>{% trans "Add a note to your order" context "Checkout summary without shipping note title" %}</h2>
     {% bootstrap_form note_form show_label=False %}
-    <div class="form group col-md-12">
-      <input id="consentCheck" type="checkbox" oninvalid="this.setCustomValidity('{% trans 'You must agree to the processing of personal data to submit this form.' %}')" onchange="this.setCustomValidity('')" required/>
-      <label for="consentCheck">{% trans 'I agree to the processing of personal data.' %}</label>
-    </div>
     <p class="text-md-right">
-      <button type="submit" class="btn primary">
+      <button type="submit" class="btn btn-primary">
         {% trans "Place order" context "Checkout summary without shipping action" %}
       </button>
     </p>

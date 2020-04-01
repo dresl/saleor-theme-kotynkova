@@ -39,10 +39,17 @@
 {% endblock meta_tags %}
 
 {% block content %}
+<style>
+.btn-secondary {
+    color: #212529;
+    background-color: #fff;
+    border-color: #212529;
+}
+</style>
   {# This view is available by just knowing url,          #}
   {# so we don't show all details (like shipping address) #}
   {# unless current user is owner of the order.           #}
-
+<div class="container">
   <div class="row order-details">
     <div class="col-lg-10 m-auto">
       <h2 class="order-details__header">
@@ -56,7 +63,7 @@
             {% trans "Payment details" context "Order details link text" %}
           </a>
         {% else %}
-          <a href="{% url "order:payment" token=order.token %}" class="btn primary">
+          <a href="{% url "order:payment" token=order.token %}" class="btn btn-primary">
             {% trans "Pay for order" context "Order details primary action" %}
           </a>
         {% endif %}
@@ -72,10 +79,11 @@
           {% csrf_token %}
           <h2>{% trans "Add a note to your order" context "Order note title" %}</h2>
           {% bootstrap_form note_form display_labels=False %}
-          <input type="submit" value="{% trans 'Submit note' context 'Customer panel - order details: add note submit button' %}" class="btn primary" />
+          <input type="submit" value="{% trans 'Submit note' context 'Customer panel - order details: add note submit button' %}" class="btn btn-secondary" />
         </form>
       {% endif %}
       </div>
     </div>
   </div>
+</div>
 {% endblock content %}

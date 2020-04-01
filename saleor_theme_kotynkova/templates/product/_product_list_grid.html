@@ -16,14 +16,16 @@
       </a>
       <div class="col-6 desc">
         <h4>{{ product.translated }}</h4>
-        {% for attribute, value in product.get_product_attributes.items %}
-        {% if attribute.slug == 'format' %}
-            <span class="format">{{ value.translated }}{% if product.variants.count != 1%},&nbsp;{% endif %}</span>
+        {% for attr in product.attributes.all %}
+        {% if attr.assignment.attribute.slug == 'format' %}
+          {% for val in attr.values.all %}
+            <span class="format">{{ val }}</span><br/>
+          {% endfor %}
         {% endif %}
         {% endfor %}
         {% for variant in product.variants.all %}
             {% if not variant.name == 'originál' %}
-            <span class="format{% if not variant.is_in_stock %} not-in-stock{% endif %}">{{ variant.name }}{% if not forloop.last %},&nbsp;{% endif %}</span>
+            <span class="format{% if not variant.is_in_stock %} not-in-stock{% endif %}">{{ variant.name }}{% if not forloop.last %},{% endif %}</span>
             {% endif %}
         {% endfor %}
       </div>

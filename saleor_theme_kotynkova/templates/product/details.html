@@ -173,9 +173,9 @@ body.modal-open > .modal-close {
         {% block orderform %}
           {% if show_variant_picker %}
             {% csrf_token %}
-            <div id="variant-picker" data-variant-picker-data="{{ variant_picker_data }}" data-action="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}"></div>
+            <div id="variant-picker" data-variant-picker-data="{{ variant_picker_data }}" data-action="{% url 'product:add-to-checkout' product_id=product.pk slug=product.get_slug %}"></div>
           {% else %}
-            <form id="product-form" role="form" class="product-form clearfix" method="post" action="{% url 'product:add-to-cart' product_id=product.pk slug=product.get_slug %}" novalidate>
+            <form id="product-form" role="form" class="product-form clearfix" method="post" action="{% url 'product:add-to-checkout' product_id=product.pk slug=product.get_slug %}" novalidate>
               {% csrf_token %}
               {% bootstrap_field form.variant %}
               <div class="product__info__quantity">
@@ -194,7 +194,7 @@ body.modal-open > .modal-close {
           {% for variant in product.variants.all %}
           {% if variant.name == "originál" %}
           {% if variant.is_in_stock %}
-          <a href="{% url 'product:reserve_picture' product_id=product.pk slug=product.get_slug %}" class="btn primary btn-reserve btn-block">
+          <a href="" class="btn btn-primary btn-block">
             {% trans "Reserve picture" context "Reserve picture primary action" %}
           </a>
           {% else %}

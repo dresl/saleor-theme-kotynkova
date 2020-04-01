@@ -21,7 +21,7 @@
 {% endblock breadcrumb %}
 
 {% block content %}
-  <div class="account">
+  <div class="account container">
     <div class="account__nav container">
       <h2>{% trans "My account" %}</h2>
       <ul class="nav nav-tabs col-lg-10 m-auto" role="tablist">
@@ -173,7 +173,7 @@
             <form action="" method="post">
               {% csrf_token %}
               {% bootstrap_form change_password_form %}
-              <input type="submit" class="btn primary narrow" value="{% trans "Change password" context "User profile action" %}">
+              <input type="submit" class="btn btn-primary narrow" value="{% trans "Change password" context "User profile action" %}">
             </form>
           </div>
         </div>
