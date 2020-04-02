@@ -1,3 +1,2 @@
--e git+https://github.com/dresl/django-fullcalendar#egg=fullcalendar
 django-cookie-law
 sorl-thumbnail
