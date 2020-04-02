@@ -60,8 +60,8 @@
   {% else %}
     <div class="text-md-center checkout-preview-dropdown__empty">
       <h3>{% trans "There are no products in your shopping cart." context "Empty checkout message" %}</h3>
-      <img src="{% static 'img/logo-kotynkova.png' %}"
-           data-srcset="{% static 'img/logo-kotynkova.png' %} 1x, {% static 'img/logo-kotynkova.png' %} 2x">
+      <img src="{% static 'images/logo-kotynkova.png' %}"
+           data-srcset="{% static 'images/logo-kotynkova.png' %} 1x, {% static 'images/logo-kotynkova.png' %} 2x">
       <a href="{% get_category_url 'vsechny-obrazy' %}#show-all-pictures" class="btn btn-primary">{% trans "Check out our sales" context "Empty checkout link" %}</a>
     </div>
   {% endif %}

@@ -88,7 +88,7 @@
       </div>
     {% else %}
       <div class="checkout-preview__empty">
-        <img class="lazyload lazypreload" data-src="{% static 'images/empty-checkout-bg.png' %}" data-srcset="{% static 'img/logo-kotynkova.png' %} 1x, {% static 'img/logo-kotynkova.png' %} 2x">
+        <img class="lazyload lazypreload" data-src="{% static 'images/empty-checkout-bg.png' %}" data-srcset="{% static 'images/logo-kotynkova.png' %} 1x, {% static 'images/logo-kotynkova.png' %} 2x">
         <h2>{% trans "There are no products in your shopping cart." context "Empty checkout message" %}</h2>
         <a href="{% url 'home' %}" class="btn btn-primary">{% trans "Check out our sales" context "Empty checkout link" %}</a>
       </div>
