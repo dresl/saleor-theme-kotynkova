@@ -1,0 +1,10 @@
+{% extends 'dashboard/base_zero_page.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans "No reservations found." %}{% endblock %}
+{% block content %}
+  {% blocktrans %}
+    Reservations will appear here after customers complete picture reservation.
+  {% endblocktrans %}
+{% endblock %}

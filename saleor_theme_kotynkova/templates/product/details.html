@@ -194,7 +194,7 @@ body.modal-open > .modal-close {
           {% for variant in product.variants.all %}
           {% if variant.name == "originál" %}
           {% if variant.is_in_stock %}
-          <a href="" class="btn btn-primary btn-block">
+          <a href="{% url 'theme_kotynkova:reserve_picture' product_id=product.pk slug=product.get_slug %}" class="btn btn-primary btn-block">
             {% trans "Reserve picture" context "Reserve picture primary action" %}
           </a>
           {% else %}

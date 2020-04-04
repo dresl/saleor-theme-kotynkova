@@ -1,20 +1,20 @@
 {% extends "dashboard/base.html" %}
 {% load i18n %}
 {% load price from taxed_prices %}
-{% load prices_i18n %}
+{% load prices %}
 {% load status %}
 {% load utils %}
-{% load staticfiles %}
+{% load static %}
 
-{% block title %}{% trans "Reservation" context "Dashboard reservation list" %} - {{ block.super }}{% endblock %}
+{% block title %}{% trans "Reservations" context "Dashboard reservation list" %} - {{ block.super }}{% endblock %}
 
-{% block body_class %}body-orders{% endblock %}
+{% block body_class %}body-reservations{% endblock %}
 
-{% block menu_reservation_class %}active{% endblock %}
+{% block menu_reservations_class %}active{% endblock %}
 
 {% block breadcrumbs %}
   <ul class="breadcrumbs">
-    <li class="visible-s">{% trans "Reservation" context "Dashboard reservation list" %}</li>
+    <li class="visible-s">{% trans "Reservations" context "Reservations list" %}</li>
   </ul>
 {% endblock %}
 
@@ -27,19 +27,27 @@
             <table class="bordered highlight responsive data-table last-right-align">
               <thead>
                 <tr>
-                  {% trans "Product" as label %}
-                  {% sorting_header 'product_name' label %}
-                  <th>{% trans "Status" %}</th>
-                  <th>{% trans "Customer Note" %}</th>
-                  {% trans "Customer" context "Orders table header" as label %}
-                  {% sorting_header 'email' label %}
+                  {% sorting_header 'pk' '#' %}
+
                   {% trans "Placed on" context "Orders table header" as label %}
                   {% sorting_header 'created' label %}
+
+                  {% trans "Customer" context "Orders table header" as label %}
+                  {% sorting_header 'email' label %}
+
+                  {% trans "Payment status" context "Orders table header" as label %}
+                  {% sorting_header 'payment_status' label %}
+
+                  {% trans "Order status" context "Orders table header" as label %}
+                  {% sorting_header 'order_status' label %}
+
+                  {% trans "Total" context "Orders table header" as label %}
+                  {% sorting_header 'total' label %}
                 </tr>
               </thead>
               <tbody>
                 {% for order in orders %}
-                    <tr>
+                  <tr>
                       <td>
                       <a style="display: block" href="/django-admin/order/reservation/{{ order.id }}/change/" target="_blank">
                         {{ order.product_name }}
@@ -81,7 +89,7 @@
         </div>
       {% else %}
         {% if is_empty %}
-          {% include 'dashboard/order/zero_page.html' %}
+          {% include 'dashboard/order/reserve_zero_page.html' %}
         {% else %}
           <div class="col s12">
             <div class="not-found">

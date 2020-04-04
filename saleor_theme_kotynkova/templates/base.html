@@ -206,6 +206,32 @@
         left: 22vw!important;
     }
   }
+
+  .navbar.tagged .navbar__brand__checkout .checkout__icon {
+    top: 2px;
+  }
+
+  @media (max-width: 767.98px) {
+    .navbar.fixed-top.tagged .heading-info .name {
+      display: none;
+    }
+    .navbar__brand__checkout .checkout__icon {
+      padding: 8px 17px;
+      top: 1px;
+    }
+    .navbar.tagged .navbar__brand__checkout .checkout__icon {
+      top: 11px;
+    }
+    .navbar__brand__checkout .checkout__icon.hover {
+      border: solid 1px transparent;
+      background: none;
+      padding: 0 17px;
+    }
+    .navbar svg {
+      max-height: 20px;
+      width: auto;
+    }
+  }
 </style>
 </head>
 
@@ -242,7 +268,11 @@
         <div class="navbar__brand__checkout float-right">
           <a rel="nofollow" class="checkout__icon" href="{% url "checkout:index" %}">
             <span class="checkout-label d-none d-md-inline-block">
-              {% trans "Your cart" context "Main navigation item" %}
+              {% if user.is_authenticated %}
+              {{ request.user.email }}
+              {% else %}
+              {% trans "Your Cart" context "Main navigation item" %}
+              {% endif %}
             </span>
             <div class="navbar__brand__checkout__icon">
               <svg data-src="{% static "images/checkout.svg" %}" width="24" height="24"/>

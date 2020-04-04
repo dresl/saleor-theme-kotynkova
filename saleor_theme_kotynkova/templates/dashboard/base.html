@@ -151,6 +151,11 @@
                       {% trans "Orders" context "Dashboard orders list" %}
                     </a>
                   </li>
+                  <li class="{% block menu_reservations_class %}{% endblock %}">
+                    <a href="{% url 'dashboard:reservation_list' %}">
+                      {% trans "Reservations" context "Reservation list" %}
+                    </a>
+                  </li>
                 {% endif %}
                 {% if perms.account.manage_users %}
                   <li class="{% block menu_customers_class %}{% endblock %}">

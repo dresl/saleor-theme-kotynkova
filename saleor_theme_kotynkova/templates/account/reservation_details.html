@@ -52,7 +52,7 @@
     <div class="row order-details">
       <div class="col-lg-10 m-auto">
         <h1>
-          {% trans "Reservation" %}: {{ reservation.product_name }}
+          {% trans "Reservation" %}: <a href="{% url 'product:category' slug=product.category.slug category_id=product.category.id %}#slick-slide-{{ product.id }}">{{ reservation.product_name }}</a>
         </h1>
         <div class="card">
           <div class="card-body">
@@ -61,7 +61,7 @@
           </div>
         </div>
         <br>
-        {% thumbnail product.get_first_image "x600" format="PNG" crop="center" as image %}
+        {% thumbnail product.get_first_image.image "x600" format="PNG" crop="center" as image %}
         <img data-toggle="modal" data-target="#detailModalImage" class="img-fluid detail-img" src="{{ image.url }}">
         {% endthumbnail %}
       </div>
@@ -78,7 +78,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form id="reservation-remove-form" role="form" class="reservation-remove-form" method="post" action="{% url 'order:remove_reservation' %}">
+        <form id="reservation-remove-form" role="form" class="reservation-remove-form" method="post" action="{% url 'theme_kotynkova:remove_reservation' %}">
           {% csrf_token %}
           <div class="modal-body">
             {% trans "Are you sure to remove this reservation?" %}

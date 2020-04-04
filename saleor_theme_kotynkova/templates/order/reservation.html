@@ -19,7 +19,7 @@
   <hr>
   <div class="row">
     <div class="col-md-5">
-      {% thumbnail product.get_first_image "x600" format="PNG" crop="center" as image %}
+      {% thumbnail product.get_first_image.image "x600" format="PNG" crop="center" as image %}
       <img data-toggle="modal" data-target="#detailModalImage" class="img-fluid detail-img" src="{{ image.url }}">
       {% endthumbnail %}
       <hr>
@@ -41,7 +41,7 @@
               </button>
             </div>
             <div class="modal-body">
-              {% thumbnail product.get_first_image "x800" format="PNG" crop="center" as image %}
+              {% thumbnail product.get_first_image.image "x900" crop="center" format="PNG" as image %}
               <img data-toggle="modal" data-target="#detailModalImage" class="img-fluid detail-img" src="{{ image.url }}">
               {% endthumbnail %}
             </div>
@@ -58,29 +58,26 @@
     {% if variant.name == "originál" %}
     {% if variant.is_in_stock %}
       {% if request.user.is_authenticated and not is_reserved %}
-        <form id="product-reserve-form" role="form" class="product-reserve-form" method="post" action="{% url 'order:create_reservation' %}">
+        <form id="product-reserve-form" role="form" class="product-reserve-form" method="post" action="{% url 'theme_kotynkova:create_reservation' %}">
           {% csrf_token %}
           <input name="product_id" type="hidden" value="{{ product.id }}">
           <input name="product_name" type="hidden" value="{{ product.name }}">
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="givenName">{% trans "Given Name" %}</label>
-              <input name="given_name" type="text" class="form-control" value="{{ request.user.default_billing_address.first_name|default:"" }}" id="givenName" placeholder="{% trans "Given Name" %}" required="true">
+              <input name="given_name" type="text" class="form-control" value="{{ request.user.default_billing_address.first_name|default:'' }}" id="givenName" placeholder="{% trans "Given Name" %}" required="true">
             </div>
             <div class="form-group col-md-6">
               <label for="familyName">{% trans "Family Name" %}</label>
-              <input name="family_name" type="text" class="form-control" value="{{ request.user.default_billing_address.last_name }}" id="familyName" placeholder="{% trans "Family Name" %}" required="true">
+              <input name="family_name" type="text" class="form-control" value="{{ request.user.default_billing_address.last_name|default:'' }}" id="familyName" placeholder="{% trans "Family Name" %}" required="true">
             </div>
             <div class="form-group col-md-6">
               <label for="email">{% trans "Email" %}</label>
-              <input name="email" type="email" class="form-control" value="{{ request.user.email }}" id="email" placeholder="{% trans "Email" %}" required="true">
+              <input name="email" type="email" class="form-control" value="{{ request.user.email|default:'' }}" id="email" placeholder="{% trans "Email" %}" required="true">
             </div>
             <div class="form-group col-md-6">
               <label for="phoneNumber">{% trans "Phone number" %}</label>
-              <input name="phone_number" type="text" class="form-control" value="{{ request.user.default_billing_address.phone }}" id="phoneNumber" placeholder="{% trans "Phone number" %}" required="true">
-            </div>
-            <div class="form-group col-md-12">
-              {% bootstrap_form country_form %}
+              <input name="phone_number" type="text" class="form-control" value="{{ request.user.default_billing_address.phone|default:'+420 ' }}" id="phoneNumber" placeholder="{% trans "Phone number" %}" required="true">
             </div>
             <div class="form-group col-md-12">
               <label for="comment">{% trans "Note" %}</label>
@@ -91,7 +88,7 @@
               <label for="consentCheck">{% trans 'I agree to the processing of personal data.' %}</label>
             </div>
             <div class="form-group product__info__button col-md-6 m-auto">
-              <button class="btn primary">
+              <button class="btn btn-primary">
                 {% trans "Reserve picture" context "Reserve picture primary action" %}
               </button>
             </div>
@@ -99,10 +96,10 @@
         </form>
       {% elif request.user.is_authenticated and is_reserved %}
       <p>{% trans "You have already created reservation to this picture." %}</p>
-      <a class="btn primary" href="{{ reservation.get_absolute_url }}">{% trans "View Reservation"%}</a>
+      <a class="btn btn-primary" href="{{ reservation.get_absolute_url }}">{% trans "View Reservation"%}</a>
       {% else %}
       <p>{% trans "You have to log in to create a new reservation." %}</p>
-      <a class="btn primary" href="{% url "account:login" %}">{% trans "Log In"%}</a>
+      <a class="btn btn-primary" href="{% url "account:login" %}?next={{ request.path }}">{% trans "Log In"%}</a>
       {% endif %}
     {% else %}
     <h3 class="text-danger">{% trans "This picture is already sold out." %}</h3>
